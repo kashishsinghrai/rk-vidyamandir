@@ -23,7 +23,11 @@ export default function AcademicsPage() {
     { name: "Biology", icon: <FaMicroscope />, desc: "Life Sciences" },
     { name: "IT & Coding", icon: <FaLaptopCode />, desc: "Digital Literacy" },
     { name: "Geography", icon: <FaGlobeAmericas />, desc: "Earth & Beyond" },
-    { name: "Art & Craft", icon: <FaPalette />, desc: "Creative Expression" },
+    {
+      name: "Art &amp; Craft",
+      icon: <FaPalette />,
+      desc: "Creative Expression",
+    }, // & badal kar &amp; kiya
     { name: "History", icon: <FaBook />, desc: "Our Heritage" },
   ];
 
@@ -133,7 +137,7 @@ export default function AcademicsPage() {
         <FaAward
           style={{ fontSize: "3rem", color: "#f59e0b", marginBottom: "20px" }}
         />
-        <h2>Resources & Calendars</h2>
+        <h2>Resources &amp; Calendars</h2> {/* & badal kar &amp; kiya */}
         <p>
           Download the latest academic resources and stay updated with school
           schedules.

@@ -117,8 +117,8 @@ export default function AlumniPage() {
             Are you an RKV Alumnus?
           </h2>
           <p style={{ marginTop: "10px", opacity: 0.9 }}>
-            We'd love to stay connected! Join our official Alumni network to
-            mentor students, receive newsletters, and attend reunions.
+            We&apos;d love to stay connected! Join our official Alumni network
+            to mentor students, receive newsletters, and attend reunions.
           </p>
         </div>
         <a href="/contact" className={styles.ctaBtn}>
@@ -139,11 +139,11 @@ export default function AlumniPage() {
             margin: "0 auto",
           }}
         >
-          "Your roots will always be here at Late R.K. Vidyamandir. No matter
-          how high you fly, you are the pride of our school."
+          &quot;Your roots will always be here at Late R.K. Vidyamandir. No
+          matter how high you fly, you are the pride of our school.&quot;
         </p>
         <p style={{ marginTop: "20px", fontWeight: "bold", color: "#f59e0b" }}>
-          — Chand Sir, Founder
+          &mdash; Chand Sir, Founder
         </p>
       </section>
     </main>

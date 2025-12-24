@@ -41,11 +41,11 @@ export default function AdministrationPage() {
       {/* 1. Hero Section */}
       <section className={styles.hero}>
         <h1>
-          Leadership & <span>Governance</span>
+          Leadership &amp; <span>Governance</span> {/* & ko &amp; kiya */}
         </h1>
         <p>
-          The visionary team behind Late R.K. Vidyamandir's two decades of
-          educational excellence.
+          The visionary team behind Late R.K. Vidyamandir&apos;s two decades of
+          educational excellence. {/* ' ko &apos; kiya */}
         </p>
       </section>
 
@@ -63,7 +63,7 @@ export default function AdministrationPage() {
               />
             </div>
             <div className={styles.cardContent}>
-              <span className={styles.roleBadge}>Manager & Founder</span>
+              <span className={styles.roleBadge}>Manager &amp; Founder</span>
               <h3>Chand Sir</h3>
               <p
                 style={{
@@ -146,10 +146,10 @@ export default function AdministrationPage() {
             lineHeight: "1.6",
           }}
         >
-          "Administration at R.K. Vidyamandir is not just about management; it
-          is about serving the future of our nation. We are committed to
+          &quot;Administration at R.K. Vidyamandir is not just about management;
+          it is about serving the future of our nation. We are committed to
           transparency, excellence, and the safety of every child entrusted to
-          us."
+          us.&quot; {/* Quotes ko &quot; kiya */}
         </p>
         <p
           style={{
@@ -159,7 +159,7 @@ export default function AdministrationPage() {
             textTransform: "uppercase",
           }}
         >
-          — The Management Board
+          &mdash; The Management Board {/* Dash ko &mdash; kiya */}
         </p>
       </section>
 

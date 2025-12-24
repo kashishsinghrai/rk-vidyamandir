@@ -32,7 +32,6 @@ export default function AboutPage() {
             </p>
           </div>
           <div className={styles.imagePlaceholder}>
-            {/* Founder Image can go here */}
             <div
               style={{
                 position: "relative",
@@ -76,12 +75,12 @@ export default function AboutPage() {
             }}
           >
             <h4 style={{ color: "#f59e0b", marginBottom: "10px" }}>
-              "The Teacher of the People"
+              &quot;The Teacher of the People&quot;
             </h4>
             <p style={{ fontStyle: "italic", color: "#1e1b4b" }}>
-              Chand Sir's journey started with a small room and a big dream.
-              Today, R.K. Vidyamandir stands as a testament to his grit and
-              passion.
+              Chand Sir&apos;s journey started with a small room and a big
+              dream. Today, R.K. Vidyamandir stands as a testament to his grit
+              and passion.
             </p>
           </div>
         </div>
@@ -104,7 +103,7 @@ export default function AboutPage() {
             <h3>Character Building</h3>
             <p>
               Instilling values of honesty, respect, and compassion to prepare
-              students for life's challenges.
+              students for life&apos;s challenges.
             </p>
           </div>
           <div className={styles.pCard}>
@@ -174,10 +173,10 @@ export default function AboutPage() {
           “
         </div>
         <blockquote>
-          "We are committed to providing an environment where every child can
-          discover their potential and develop into confident, responsible, and
-          successful individuals. Our students are well-prepared for the
-          challenges of tomorrow."
+          &quot;We are committed to providing an environment where every child
+          can discover their potential and develop into confident, responsible,
+          and successful individuals. Our students are well-prepared for the
+          challenges of tomorrow.&quot;
         </blockquote>
         <span className={styles.author}>— Chand Sir, Founder & Director</span>
       </section>

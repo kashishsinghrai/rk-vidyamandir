@@ -36,6 +36,7 @@ export default function StudentLife() {
 
   return (
     <main className={styles.main}>
+      {/* Hero Section */}
       <section className={styles.hero}>
         <h1>
           Student <span>Life</span>
@@ -78,9 +79,10 @@ export default function StudentLife() {
             textAlign: "center",
             marginBottom: "50px",
             fontSize: "2.5rem",
+            color: "#1e1b4b",
           }}
         >
-          Clubs & Societies
+          Clubs &amp; Societies {/* & badal kar &amp; kiya */}
         </h2>
         <div className={styles.clubGrid}>
           {clubs.map((club, i) => (
@@ -96,7 +98,7 @@ export default function StudentLife() {
               <div className={styles.clubContent}>
                 <div
                   style={{
-                    fontSize: "2rem",
+                    fontSize: "2.5rem",
                     color: "#f59e0b",
                     marginBottom: "10px",
                   }}
@@ -104,7 +106,13 @@ export default function StudentLife() {
                   {club.icon}
                 </div>
                 <h3>{club.name}</h3>
-                <p style={{ color: "#64748b", fontSize: "0.9rem" }}>
+                <p
+                  style={{
+                    color: "#64748b",
+                    fontSize: "0.95rem",
+                    lineHeight: "1.6",
+                  }}
+                >
                   {club.desc}
                 </p>
               </div>
@@ -113,21 +121,33 @@ export default function StudentLife() {
         </div>
       </section>
 
-      {/* Daily Routine Preview */}
+      {/* Daily Routine Preview - FIXED QUOTES HERE */}
       <section
         className={styles.section}
         style={{
           background: "#1e1b4b",
           color: "white",
           borderRadius: "50px",
-          margin: "0 8%",
+          margin: "0 8% 80px",
         }}
       >
         <div style={{ textAlign: "center" }}>
-          <h2 style={{ color: "#f59e0b" }}>Our Daily Spirit</h2>
-          <p style={{ marginTop: "20px", fontSize: "1.2rem", opacity: 0.8 }}>
-            "From the morning assembly prayers to the evening sports practice,
-            every minute at R.K. Vidyamandir is designed to build character."
+          <h2 style={{ color: "#f59e0b", marginBottom: "20px" }}>
+            Our Daily Spirit
+          </h2>
+          <p
+            style={{
+              fontSize: "1.3rem",
+              opacity: 0.9,
+              maxWidth: "800px",
+              margin: "0 auto",
+              fontStyle: "italic",
+              lineHeight: "1.8",
+            }}
+          >
+            &quot;From the morning assembly prayers to the evening sports
+            practice, every minute at R.K. Vidyamandir is designed to build
+            character.&quot;
           </p>
         </div>
       </section>

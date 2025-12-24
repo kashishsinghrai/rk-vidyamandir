@@ -103,9 +103,10 @@ export default function TransportPage() {
               Smart Tracking Portal
             </h2>
             <p style={{ opacity: 0.9, lineHeight: "1.6" }}>
-              Parents can now monitor their child's bus location through our
-              upcoming Mobile App. Experience a stress-free morning with precise
-              arrival alerts.
+              {/* FIXED: ' child's ' changed to ' child&apos;s ' */}
+              Parents can now monitor their child&apos;s bus location through
+              our upcoming Mobile App. Experience a stress-free morning with
+              precise arrival alerts.
             </p>
             <div style={{ marginTop: "20px" }}>
               <span className={styles.statusPulse}></span>
@@ -130,7 +131,7 @@ export default function TransportPage() {
       <section className={styles.section} style={{ paddingTop: 0 }}>
         <div style={{ textAlign: "center", marginBottom: "40px" }}>
           <FaBus style={{ fontSize: "2.5rem", color: "#f59e0b" }} />
-          <h2>Network & Schedule</h2>
+          <h2>Network &amp; Schedule</h2> {/* & replaced with &amp; */}
           <p>Find your nearest pick-up point and timing details.</p>
         </div>
 

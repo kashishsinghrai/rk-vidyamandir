@@ -40,7 +40,7 @@ export default function ContactPage() {
           Contact <span>Us</span>
         </h1>
         <p>
-          Have questions? We're here to help. Reach out to the Late R.K.
+          Have questions? We&apos;re here to help. Reach out to the Late R.K.
           Vidyamandir administration for any inquiries or support.
         </p>
       </section>
@@ -173,7 +173,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* 4. Administrative Details ... (rest of your code remains same) */}
+      {/* 4. Administrative Details */}
       <section className={styles.infoSection}>
         <div className={styles.grid2}>
           <div className={styles.hourCard}>
@@ -235,7 +235,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* 5. Quick Connect Socials ... (rest of your code remains same) */}
+      {/* 5. Quick Connect Socials */}
       <section className={styles.socialGrid}>
         <a
           href="https://wa.me/917267011705"

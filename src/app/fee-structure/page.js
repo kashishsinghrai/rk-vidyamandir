@@ -45,7 +45,8 @@ export default function FeePage() {
             <FaInfoCircle style={{ color: "#f59e0b" }} /> Quick Fee Preview
           </h3>
           <p style={{ marginBottom: "20px", color: "#64748b" }}>
-            Select your child's grade to see the monthly estimate.
+            Select your child&apos;s grade to see the monthly estimate.{" "}
+            {/* FIXED HERE */}
           </p>
           <select
             className={styles.selectPremium}
@@ -181,7 +182,7 @@ export default function FeePage() {
                 color: "#64748b",
               }}
             >
-              Scan the QR at reception or pay to:
+              Scan the QR code at reception or pay to:
               <br />
               <b>rkvidya@upi</b>
             </p>

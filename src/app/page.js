@@ -111,9 +111,10 @@ export default function HomePage() {
                 marginBottom: "25px",
               }}
             >
-              "Education is the most powerful weapon which you can use to change
-              the world. At RK Vidyamandir, we don't just teach books, we build
-              futures."
+              {/* FIXED QUOTES AND APOSTROPHE HERE */}
+              &quot;Education is the most powerful weapon which you can use to
+              change the world. At RK Vidyamandir, we don&apos;t just teach
+              books, we build futures.&quot;
             </p>
             <p>
               <strong>Mr. Anshuman Singh</strong>
