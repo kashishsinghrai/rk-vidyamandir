@@ -1,0 +1,284 @@
+/* page.module.css */
+
+.main {
+  background-color: #f8fafc;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  color: #1e1b4b;
+}
+
+/* --- Hero Section --- */
+.hero {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+  padding: 120px 8% 160px;
+  text-align: center;
+  color: white;
+  position: relative;
+  /* Futuristic diagonal cut */
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 15px;
+  letter-spacing: -1px;
+}
+
+.hero h1 span {
+  color: #f59e0b;
+}
+
+.hero p {
+  opacity: 0.85;
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto 30px;
+}
+
+.downloadBtn {
+  background: transparent;
+  border: 2px solid #f59e0b;
+  color: #f59e0b;
+  padding: 12px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.downloadBtn:hover {
+  background: #f59e0b;
+  color: #1e1b4b;
+  box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+}
+
+/* --- Calculator Box --- */
+.calculatorBox {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 2px dashed #cbd5e1;
+  padding: 40px;
+  border-radius: 30px;
+  margin: -80px auto 40px;
+  max-width: 800px;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.selectPremium {
+  padding: 14px 20px;
+  border-radius: 12px;
+  border: 2px solid #e2e8f0;
+  width: 100%;
+  max-width: 350px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e1b4b;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+  appearance: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23f59e0b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") no-repeat right 15px center;
+}
+
+.selectPremium:focus {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.1);
+}
+
+/* --- Fee Table --- */
+.section {
+  padding: 60px 8%;
+}
+
+.tableCard {
+  background: white;
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.04);
+  overflow-x: auto;
+}
+
+.feeTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.feeTable th {
+  background: #f1f5f9;
+  padding: 20px;
+  color: #1e1b4b;
+  text-align: left;
+  font-weight: 700;
+  border-bottom: 3px solid #e2e8f0;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.feeTable td {
+  padding: 20px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #475569;
+  font-size: 1rem;
+}
+
+.feeTable tr:last-child td {
+  border-bottom: none;
+}
+
+.amount {
+  color: #1e1b4b;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+/* --- Grid & Cards --- */
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.paymentCard {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 20px;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.paymentCard:hover {
+  transform: translateY(-10px);
+  border-color: #f59e0b;
+  box-shadow: 0 20px 40px rgba(30, 27, 75, 0.08);
+}
+
+.iconBox {
+  font-size: 2.5rem;
+  color: #f59e0b;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.paymentCard h3, .paymentCard h4 {
+  color: #1e1b4b;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+/* --- Alert / Scholarship Box --- */
+.alertBox {
+  background: #1e1b4b;
+  background-image: radial-gradient(circle at top right, #312e81, transparent);
+  color: white;
+  padding: 50px;
+  border-radius: 35px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  box-shadow: 0 20px 50px rgba(30, 27, 75, 0.2);
+}
+
+.btnGold {
+  background: #f59e0b;
+  color: #1e1b4b;
+  padding: 15px 35px;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: 0.3s;
+}
+
+.btnGold:hover {
+  background: #fbbf24;
+  transform: scale(1.05);
+}
+
+/* --- FAQ Section --- */
+.faqSection {
+  padding: 100px 8%;
+  background: white;
+}
+
+.faqGrid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.faqItem {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 25px 30px;
+  border-radius: 18px;
+  transition: 0.3s;
+}
+
+.faqItem:hover {
+  border-color: #f59e0b;
+  background: #fff;
+}
+
+.faqItem h4 {
+  color: #1e1b4b;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* --- Responsive Queries --- */
+@media (max-width: 1024px) {
+  .grid3 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid3 {
+    grid-template-columns: 1fr;
+  }
+  
+  .alertBox {
+    flex-direction: column;
+    text-align: center;
+    padding: 35px 25px;
+  }
+
+  .section {
+    padding: 40px 5%;
+  }
+
+  .hero {
+    padding: 100px 5% 120px;
+  }
+
+  .tableCard {
+    padding: 20px;
+  }
+
+  .calculatorBox {
+    margin: -60px 20px 40px;
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+}

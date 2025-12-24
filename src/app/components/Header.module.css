@@ -1,0 +1,141 @@
+.headerWrapper {
+  width: 100%;
+  position: relative;
+  z-index: 1000;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Top Bar: Contact & Info */
+.topBar {
+  background-color: #0f172a; /* Deep Navy */
+  color: #cbd5e1;
+  padding: 8px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.topBarInfo span {
+  margin-right: 20px;
+  letter-spacing: 0.5px;
+}
+
+.udiseBadge {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* Main Header Section */
+.mainHeader {
+  background-color: #ffffff;
+  padding: 15px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.titleContainer h1 {
+  font-size: 1.6rem;
+  color: #1e1b4b; /* Navy Blue */
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.titleContainer h1 span {
+  color: #f59e0b; /* Gold accent */
+}
+
+.subtitle {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* Right Section Actions */
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.callWidget {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.iconCircle {
+  background: #f1f5f9;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #1e1b4b;
+  font-size: 1.1rem;
+  border: 1px solid #e2e8f0;
+}
+
+.callText span {
+  display: block;
+  font-size: 0.75rem;
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.callText b {
+  color: #1e1b4b;
+  font-size: 1rem;
+}
+
+.loginBtn {
+  background: #1e1b4b;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(30, 27, 75, 0.2);
+}
+
+.loginBtn:hover {
+  background: #f59e0b;
+  color: #1e1b4b;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .topBar { display: none; }
+  .subtitle { display: none; }
+  .callWidget { display: none; }
+  .titleContainer h1 { font-size: 1.2rem; }
+}

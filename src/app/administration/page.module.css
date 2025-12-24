@@ -1,0 +1,135 @@
+.main {
+  background-color: #f8fafc;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  color: #1e1b4b;
+}
+
+/* --- Hero Section --- */
+.hero {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+  padding: 100px 8% 140px;
+  text-align: center;
+  color: white;
+  clip-path: polygon(0 0, 100% 0, 100% 88%, 0% 100%);
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.hero h1 span { color: #f59e0b; }
+
+/* --- Management Profiles --- */
+.profileSection {
+  margin-top: -100px;
+  padding: 0 8%;
+}
+
+.profileGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.leaderCard {
+  background: white;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(30, 27, 75, 0.1);
+  display: flex;
+  flex-direction: column;
+  transition: 0.4s;
+  border: 1px solid #e2e8f0;
+}
+
+.leaderCard:hover {
+  transform: translateY(-10px);
+  border-color: #f59e0b;
+}
+
+.imageWrapper {
+  position: relative;
+  height: 350px;
+  width: 100%;
+  background: #f1f5f9;
+}
+
+.cardContent {
+  padding: 30px;
+  text-align: center;
+}
+
+.roleBadge {
+  background: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+  padding: 5px 15px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+/* --- Administrative Wings --- */
+.section { padding: 100px 8%; }
+
+.wingsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.wingCard {
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 20px;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+  transition: 0.3s;
+}
+
+.wingCard:hover {
+  background: #1e1b4b;
+  color: white;
+  border-color: #f59e0b;
+}
+
+.iconBox {
+  font-size: 2.5rem;
+  color: #f59e0b;
+  margin-bottom: 20px;
+}
+
+/* --- Vision Quote --- */
+.visionBox {
+  background: #1e1b4b;
+  color: white;
+  padding: 80px 10%;
+  border-radius: 50px;
+  text-align: center;
+  margin: 40px 8%;
+  position: relative;
+  overflow: hidden;
+}
+
+.visionBox::before {
+  content: '"';
+  position: absolute;
+  top: 10px;
+  left: 40px;
+  font-size: 15rem;
+  opacity: 0.1;
+  color: #f59e0b;
+  font-family: serif;
+}
+
+@media (max-width: 768px) {
+  .profileGrid { grid-template-columns: 1fr; }
+  .visionBox { padding: 50px 20px; border-radius: 30px; }
+}

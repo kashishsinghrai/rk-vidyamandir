@@ -1,162 +1,92 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaTwitter,
-  FaLinkedinIn,
-  FaYoutube,
-  FaPhone,
-  FaBars,
-  FaTimes,
-} from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
+import styles from "./Navbar.module.css";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  // Check if screen is mobile size
+  // Scroll effect for sticky navbar transparency/color change
   useEffect(() => {
-    const checkScreenSize = () => {
-      setIsMobile(window.innerWidth <= 768);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
     };
-
-    checkScreenSize();
-    window.addEventListener("resize", checkScreenSize);
-
-    return () => window.removeEventListener("resize", checkScreenSize);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
-
-  // Close menu when clicking outside
-  useEffect(() => {
-    const handleOutsideClick = (event) => {
-      if (
-        isMenuOpen &&
-        !event.target.closest(".mobile-sidebar") &&
-        !event.target.closest(".mobile-menu-btn")
-      ) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    if (isMenuOpen) {
-      document.addEventListener("click", handleOutsideClick);
-    }
-
-    return () => {
-      document.removeEventListener("click", handleOutsideClick);
-    };
-  }, [isMenuOpen]);
-
-  // Prevent body scroll when menu is open
-  useEffect(() => {
-    if (isMenuOpen && isMobile) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isMenuOpen, isMobile]);
-
+  // Updated Navigation Items with New Features
   const navItems = [
     { href: "/", label: "Home" },
-    { href: "/academics", label: "Academics", hasDropdown: true },
-    { href: "/administration", label: "Administration", hasDropdown: true },
-    { href: "/admission", label: "Online Admission" },
-    { href: "/exam-result", label: "Exam Result" },
-    { href: "/fee-structure", label: "FEE STRUCTURE" },
-    { href: "/about", label: "About Us" },
-    { href: "/events", label: "Events" },
+    { href: "/academics", label: "Academics" },
+    { href: "/administration", label: "Administration" },
+    { href: "/admission", label: "Admission" },
+    { href: "/student-life", label: "Student Life" }, // New: Clubs & Houses
+    { href: "/exam-result", label: "Results" },
+    { href: "/fee-structure", label: "Fees" },
+    { href: "/transport", label: "Transport" }, // New: Safety & Routes
+    { href: "/alumni", label: "Alumni" }, // New: Wall of Fame
+    { href: "/about", label: "About" },
     { href: "/gallery", label: "Gallery" },
-    { href: "/complain", label: "Complain" },
-    { href: "/contact", label: "Contact Us" },
+    { href: "/contact", label: "Contact" },
   ];
 
   return (
-    <nav className="navbar">
-      <div className="nav-container">
-        {/* Mobile Menu Button - Only visible on mobile */}
-        {isMobile && (
-          <button
-            className="mobile-menu-btn"
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
-            aria-expanded={isMenuOpen}
-          >
-            <FaBars />
-          </button>
-        )}
+    <nav
+      className={`${styles.navbar} ${isScrolled ? styles.navbarScrolled : ""}`}
+    >
+      <div className={styles.navContainer}>
+        {/* Mobile Menu Trigger */}
+        <button className={styles.mobileMenuBtn} onClick={toggleMenu}>
+          <FaBars />
+        </button>
 
-        {/* Desktop Navigation */}
-        <ul
-          className={`nav-links ${
-            isMobile ? "desktop-nav-hidden" : "desktop-nav"
-          }`}
-        >
+        {/* Desktop Links */}
+        <ul className={styles.desktopNav}>
           {navItems.map((item, index) => (
-            <li key={index} className={item.hasDropdown ? "dropdown" : ""}>
-              <Link href={item.href} className="nav-link">
+            <li key={index}>
+              <Link href={item.href} className={styles.navLink}>
                 {item.label}
-                {item.hasDropdown && " ▾"}
               </Link>
             </li>
           ))}
         </ul>
 
-        {/* Mobile Sidebar Menu */}
-        {isMobile && (
-          <>
-            <div
-              className={`mobile-sidebar ${
-                isMenuOpen ? "mobile-sidebar-open" : ""
-              }`}
-            >
-              <div className="mobile-sidebar-header">
-                <h3>Menu</h3>
-                <button
-                  className="close-btn"
+        {/* Mobile Sidebar */}
+        <div
+          className={`${styles.mobileSidebar} ${
+            isMenuOpen ? styles.mobileSidebarOpen : ""
+          }`}
+        >
+          <div className={styles.sidebarHeader}>
+            <h3>RK Vidyamandir</h3>
+            <button className={styles.closeBtn} onClick={closeMenu}>
+              <FaTimes />
+            </button>
+          </div>
+          <ul className={styles.mobileNavLinks}>
+            {navItems.map((item, index) => (
+              <li key={index}>
+                <Link
+                  href={item.href}
+                  className={styles.mobileNavLink}
                   onClick={closeMenu}
-                  aria-label="Close menu"
                 >
-                  <FaTimes />
-                </button>
-              </div>
-              <ul className="mobile-nav-links">
-                {navItems.map((item, index) => (
-                  <li key={index}>
-                    <Link
-                      href={item.href}
-                      className="mobile-nav-link"
-                      onClick={closeMenu}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-            {/* Overlay for mobile menu */}
-            {isMenuOpen && (
-              <div
-                className="mobile-overlay"
-                onClick={closeMenu}
-                aria-hidden="true"
-              ></div>
-            )}
-          </>
+        {/* Overlay */}
+        {isMenuOpen && (
+          <div className={styles.overlay} onClick={closeMenu}></div>
         )}
       </div>
     </nav>

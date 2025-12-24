@@ -1,0 +1,147 @@
+.navbar {
+  background-color: #1e1b4b; /* Solid Navy for Desktop */
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  border-bottom: 2px solid #f59e0b; /* Gold line indicator */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.navContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  height: 60px;
+}
+
+/* Desktop Links */
+.desktopNav {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  width: 100%;
+  justify-content: center;
+}
+
+.navLink {
+  color: #e2e8f0;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  padding: 20px 0;
+  position: relative;
+}
+
+.navLink:hover {
+  color: #f59e0b;
+}
+
+/* Hover Underline Effect */
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 12px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #f59e0b;
+  transition: width 0.3s ease;
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+/* Mobile Toggle */
+.mobileMenuBtn {
+  background: transparent;
+  border: none;
+  color: #f59e0b;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none;
+}
+
+/* Mobile Sidebar */
+.mobileSidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 80%;
+  max-width: 300px;
+  height: 100vh;
+  background: #0f172a;
+  z-index: 1001;
+  transition: all 0.4s cubic-bezier(0.77,0.2,0.05,1.0);
+  padding: 30px;
+  box-shadow: 10px 0 30px rgba(0,0,0,0.5);
+}
+
+.mobileSidebarOpen {
+  left: 0;
+}
+
+.sidebarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  border-bottom: 1px solid rgba(245, 158, 11, 0.2);
+  padding-bottom: 15px;
+}
+
+.sidebarHeader h3 {
+  color: #f59e0b;
+  font-size: 1.2rem;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.mobileNavLinks {
+  list-style: none;
+  padding: 0;
+}
+
+.mobileNavLinks li {
+  margin-bottom: 20px;
+}
+
+.mobileNavLink {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 1.1rem;
+  display: block;
+  transition: 0.3s;
+}
+
+.mobileNavLink:hover {
+  color: #f59e0b;
+  padding-left: 10px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+}
+
+@media (max-width: 1024px) {
+  .mobileMenuBtn { display: block; }
+  .desktopNav { display: none; }
+}

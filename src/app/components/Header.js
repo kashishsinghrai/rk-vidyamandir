@@ -1,45 +1,69 @@
+"use client";
 import Navbar from "./Navbar";
-import { FaPhone } from "react-icons/fa";
-import Image from "next/image"; // ✅ Use next/image
+import { FaPhone, FaUserCircle } from "react-icons/fa";
+import Image from "next/image";
+import styles from "./Header.module.css";
 
 export default function Header() {
   return (
-    <header className="site-header">
-      {/* Top Header Section */}
-      <div className="header-top">
-        <div className="header-left">
-          <Image
-            src="/logo.png"
-            alt="Late R.K. Vidyamandir Logo"
-            width={80}
-            height={80}
-            className="site-logo"
-          />
-          <div className="header-info">
-            <h1>Late Ramkali Vidya mandir junior highschool</h1>
-            <p className="header-subtitle">
-              Ruhellapur | Established in 2000 by Chand Sir | Excellence in
-              Education | UDISE Code-09421306803
+    <header className={styles.headerWrapper}>
+      {/* 1. Top Mini-Header */}
+      <div className={styles.topBar}>
+        <div className={styles.topBarInfo}>
+          <span>📍 Ruhellapur, Khaga, Fatehpur</span>
+          <span>🗓 Estd. 2000 by Chand Sir</span>
+        </div>
+        <div className={styles.topBarInfo}>
+          <span>
+            UDISE Code: <b className={styles.udiseBadge}>09421306803</b>
+          </span>
+        </div>
+      </div>
+
+      {/* 2. Main Branding Header */}
+      <div className={styles.mainHeader}>
+        <div className={styles.brand}>
+          <div className={styles.logo}>
+            <Image
+              src="/logo.png"
+              alt="RK Vidyamandir Logo"
+              width={70}
+              height={70}
+              priority
+            />
+          </div>
+          <div className={styles.titleContainer}>
+            <h1>
+              Late Ramkali <span>Vidyamandir</span>
+            </h1>
+            <p className={styles.subtitle}>
+              Junior High School | Nurturing Excellence
             </p>
           </div>
         </div>
 
-        <div className="header-right">
-          <div className="contact-info">
-            <div className="call-section">
-              <FaPhone className="phone-icon" />
-              <div className="call-details">
-                <span className="call-label">Call Us</span>
-                <span className="call-number">+918009337704</span>
-              </div>
+        <div className={styles.headerActions}>
+          {/* Contact Widget */}
+          <div className={styles.callWidget}>
+            <div className={styles.iconCircle}>
+              <FaPhone />
+            </div>
+            <div className={styles.callText}>
+              <span>Call Helpline</span>
+              <b>+91 8009337704</b>
             </div>
           </div>
 
-          <button className="login-button">Login</button>
+          {/* Futuristic Login Button */}
+          <button className={styles.loginBtn}>
+            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <FaUserCircle /> Student Login
+            </div>
+          </button>
         </div>
       </div>
 
-      {/* Navigation Bar */}
+      {/* 3. Modern Navigation Bar */}
       <Navbar />
     </header>
   );

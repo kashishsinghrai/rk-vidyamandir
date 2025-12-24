@@ -1,0 +1,149 @@
+.footer {
+  background-color: #0f172a; /* Deep Navy Blue */
+  color: #94a3b8; /* Soft Slate for readability */
+  padding: 80px 5% 40px;
+  position: relative;
+  border-top: 4px solid #f59e0b; /* Gold/Amber line at top */
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+/* Brand Section */
+.brandInfo h2 {
+  color: #ffffff;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.brandInfo h2 span {
+  color: #f59e0b; /* Gold accent */
+}
+
+.brandInfo p {
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+/* Column Headings */
+.column h3 {
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.column h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 40px;
+  height: 3px;
+  background-color: #f59e0b;
+}
+
+/* Links List */
+.linksList {
+  list-style: none;
+  padding: 0;
+}
+
+.linksList li {
+  margin-bottom: 15px;
+}
+
+.linksList a {
+  color: #94a3b8;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.linksList a:hover {
+  color: #f59e0b;
+  transform: translateX(8px);
+}
+
+/* Contact Items */
+.contactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.iconCircle {
+  background: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  flex-shrink: 0;
+}
+
+/* School Hours */
+.hourRow {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+}
+
+.highlight {
+  color: #f59e0b;
+  font-weight: 700;
+}
+
+/* Bottom Bar */
+.bottomBar {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 40px;
+  text-align: center;
+}
+
+.copyright {
+  font-size: 0.95rem;
+  color: #64748b;
+}
+
+.poweredBy {
+  margin-top: 15px;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .mainGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+  }
+}
+
+@media (max-width: 640px) {
+  .mainGrid {
+    grid-template-columns: 1fr;
+  }
+  .footer {
+    padding: 60px 8% 30px;
+  }
+}

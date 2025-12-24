@@ -6,172 +6,167 @@ import styles from "./page.module.css";
 export default function HomePage() {
   return (
     <main className={styles.main}>
-      {/* --- ULTRA MODERN HERO --- */}
+      {/* --- HERO SECTION --- */}
       <section className={styles.hero}>
         <div className={styles.heroContent}>
-          <span className={styles.heroBadge}>Excellence Redefined</span>
+          <span className={styles.heroBadge}>Admission Open 2025-26</span>
           <h1 className={styles.heroTitle}>
-            Designing the <span>Future</span> of Education.
+            Empowering Minds <span>Shaping</span> Success.
           </h1>
           <p className={styles.heroDesc}>
-            Late R.K. Vidyamandir School merges traditional values with next-gen
-            technology to nurture the leaders of tomorrow.
+            Late R.K. Vidyamandir School combines academic rigor with character
+            building to prepare students for a global future.
           </p>
           <div className={styles.heroButtons}>
             <Link href="/admission" className={styles.btnGlow}>
-              Apply for Admission 2025
+              Start Your Journey Today
             </Link>
           </div>
         </div>
 
-        {/* Background Image Element */}
-        <div className={styles.heroImageContainer}>
+        <div
+          style={{
+            position: "absolute",
+            right: 0,
+            top: 0,
+            width: "50%",
+            height: "100%",
+            opacity: 0.15,
+          }}
+        >
           <Image
             src="/school-banner.jpg"
-            alt="Future Education"
+            alt="School Banner"
             fill
-            className={styles.heroImage}
-            style={{ opacity: 0.2, objectFit: "cover" }}
+            style={{ objectFit: "cover" }}
           />
         </div>
       </section>
 
-      {/* --- GLASS STATS --- */}
+      {/* --- STATS SECTION --- */}
       <section className={styles.statsSection}>
         <div className={styles.statGlassCard}>
           <span className={styles.statNumber}>25+</span>
-          <p>Years of Legacy</p>
+          <p>Years of Excellence</p>
         </div>
         <div className={styles.statGlassCard}>
           <span className={styles.statNumber}>100%</span>
-          <p>Digital Campus</p>
+          <p>Result Oriented</p>
         </div>
         <div className={styles.statGlassCard}>
           <span className={styles.statNumber}>50+</span>
-          <p>Expert Mentors</p>
+          <p>Qualified Mentors</p>
         </div>
       </section>
 
       {/* --- CORE PILLARS --- */}
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>The Three Pillars</h2>
+        <h2 className={styles.sectionTitle}>Our Educational Pillars</h2>
         <div className={styles.grid}>
           <div className={styles.card}>
-            <span className={styles.cardIcon}>🚀</span>
-            <h3>Innovation</h3>
+            <span className={styles.cardIcon}>🔬</span>
+            <h3>Modern Science</h3>
             <p>
-              Coding, Robotics, and AI-driven learning modules integrated into
-              the curriculum.
+              Advanced lab facilities and STEM-focused learning to spark
+              curiosity and innovation.
             </p>
           </div>
           <div className={styles.card}>
-            <span className={styles.cardIcon}>🌿</span>
-            <h3>Value System</h3>
+            <span className={styles.cardIcon}>⚖️</span>
+            <h3>Moral Values</h3>
             <p>
-              Strong moral foundation based on respect, discipline, and cultural
-              heritage.
+              Instilling discipline, integrity, and respect through our
+              deep-rooted value system.
             </p>
           </div>
           <div className={styles.card}>
-            <span className={styles.cardIcon}>🏟️</span>
-            <h3>Elite Sports</h3>
+            <span className={styles.cardIcon}>🎨</span>
+            <h3>Creative Arts</h3>
             <p>
-              Professional coaching for indoor and outdoor sports with
-              world-class equipment.
+              Encouraging students to explore music, dance, and fine arts for
+              holistic growth.
             </p>
           </div>
         </div>
       </section>
 
-      {/* --- MANAGEMENT LEADERSHIP --- */}
+      {/* --- PRINCIPAL SECTION --- */}
       <section className={styles.section}>
         <div className={styles.principalContainer}>
           <div className={styles.imageWrapper}>
             <Image
               src="/teacher1.jpg"
               alt="Principal"
-              width={350}
-              height={450}
+              width={300}
+              height={380}
               className={styles.principalImg}
             />
           </div>
           <div className={styles.principalText}>
-            <h2 style={{ fontSize: "2.5rem", marginBottom: "20px" }}>
-              Visionary Leadership
-            </h2>
+            <h2>Message from the Principal</h2>
             <p
               style={{
-                fontSize: "1.2rem",
-                color: "#94a3b8",
+                fontSize: "1.25rem",
                 fontStyle: "italic",
-                marginBottom: "30px",
+                marginBottom: "25px",
               }}
             >
-              "Our mission is to create a learning ecosystem where every student
-              doesn't just learn, but thrives in a rapidly changing world. We
-              are building creators, not consumers."
+              "Education is the most powerful weapon which you can use to change
+              the world. At RK Vidyamandir, we don't just teach books, we build
+              futures."
             </p>
             <p>
               <strong>Mr. Anshuman Singh</strong>
               <br />
-              Director & Principal
+              <span style={{ color: "#f59e0b" }}>M.A, B.Ed | Principal</span>
             </p>
           </div>
         </div>
       </section>
 
-      {/* --- NEWS HUB --- */}
+      {/* --- NEWS & CAMPUS --- */}
       <section className={`${styles.section} ${styles.newsHub}`}>
+        <h2 className={styles.sectionTitle}>Campus Highlights</h2>
         <div className={styles.grid}>
           <div style={{ gridColumn: "span 2" }}>
-            <h2 className={styles.sectionTitle} style={{ textAlign: "left" }}>
-              Live Updates
-            </h2>
-            <div className={styles.card} style={{ marginBottom: "15px" }}>
-              <p style={{ color: "#f97316" }}>
-                • Admission Open for Batch 2025-26
+            <div className={styles.newsCard}>
+              <h4 style={{ color: "#1e1b4b", marginBottom: "5px" }}>
+                Admission Notice
+              </h4>
+              <p style={{ color: "#64748b" }}>
+                Registrations for the new academic session are now open for KG
+                to Class XII.
               </p>
             </div>
-            <div className={styles.card}>
-              <p style={{ color: "#f97316" }}>
-                • Annual Tech Fest coming up in February
+            <div className={styles.newsCard}>
+              <h4 style={{ color: "#1e1b4b", marginBottom: "5px" }}>
+                Sports Meet 2025
+              </h4>
+              <p style={{ color: "#64748b" }}>
+                Our annual sports meet is scheduled for the last week of
+                January. Get ready!
               </p>
             </div>
           </div>
-          <div className={styles.statGlassCard}>
-            <h3>Visit Campus</h3>
-            <p>Experience the future of schooling today.</p>
+          <div
+            className={styles.statGlassCard}
+            style={{ background: "#1e1b4b", color: "white" }}
+          >
+            <h3 style={{ color: "#f59e0b" }}>Visit Us</h3>
+            <p style={{ color: "#cbd5e1" }}>
+              Take a walk through our hi-tech campus facilities.
+            </p>
             <br />
-            <Link href="/contact" className={styles.btnGlow}>
-              Book a Tour
+            <Link
+              href="/contact"
+              className={styles.btnGlow}
+              style={{ width: "100%" }}
+            >
+              Book a Visit
             </Link>
           </div>
         </div>
       </section>
-
-      {/* --- FOOTER --- */}
-      <footer
-        className={styles.section}
-        style={{
-          background: "#020617",
-          borderTop: "1px solid rgba(255,255,255,0.05)",
-        }}
-      >
-        <div className={styles.grid}>
-          <div>
-            <h3>RK Vidyamandir</h3>
-            <p>The Future of Learning.</p>
-          </div>
-          <div>
-            <h4>Contact</h4>
-            <p>123 Galaxy Avenue, Education City</p>
-          </div>
-          <div>
-            <h4>Socials</h4>
-            <p>Instagram | LinkedIn | Facebook</p>
-          </div>
-        </div>
-      </footer>
     </main>
   );
 }

@@ -1,60 +1,156 @@
-.contact-container {
-  max-width: 800px;
-  margin: 50px auto;
-  padding: 40px;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  font-family: 'Segoe UI', sans-serif;
+.main {
+  background-color: #f8fafc;
+  font-family: 'Poppins', sans-serif;
+  color: #1e1b4b;
 }
 
-.contact-container h2 {
-  font-size: 28px;
-  margin-bottom: 20px;
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+  padding: 80px 5%;
   text-align: center;
-  color: #333;
+  color: white;
 }
 
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 10px;
 }
 
-.contact-form label {
+.hero h1 span { color: #f59e0b; }
+
+.hero p {
+  opacity: 0.8;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Primary Contact Grid */
+.contactGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 50px 8%;
+  margin-top: -50px;
+}
+
+.contactCard {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border-bottom: 4px solid #f59e0b;
+}
+
+.iconWrapper {
+  font-size: 2.5rem;
+  color: #f59e0b;
+  margin-bottom: 20px;
+}
+
+/* Form & Map Section */
+.actionSection {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  padding: 50px 8%;
+}
+
+.formWrapper {
+  background: white;
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+}
+
+.inputGroup {
+  margin-bottom: 20px;
+}
+
+.inputGroup label {
+  display: block;
   font-weight: 600;
-  color: #333;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
 }
 
-.contact-form input,
-.contact-form textarea {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
+.inputGroup input, .inputGroup select, .inputGroup textarea {
   width: 100%;
-  resize: vertical;
-  transition: border-color 0.3s;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  border-color: #0070f3;
+  padding: 12px 15px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
   outline: none;
+  transition: 0.3s;
 }
 
-.contact-form button {
-  padding: 12px 20px;
-  background-color: #0070f3;
-  color: #fff;
+.inputGroup input:focus { border-color: #f59e0b; }
+
+.submitBtn {
+  background: #1e1b4b;
+  color: white;
+  padding: 15px 40px;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: 0.3s;
 }
 
-.contact-form button:hover {
-  background-color: #005bb5;
+.submitBtn:hover { background: #f59e0b; color: #1e1b4b; }
+
+/* Map Area */
+.mapFrame {
+  border-radius: 24px;
+  overflow: hidden;
+  height: 100%;
+  min-height: 400px;
+  background: #e2e8f0;
+}
+
+/* Office Hours & Emergency */
+.infoSection { padding: 50px 8%; background: #fff; }
+
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.hourCard {
+  background: #f1f5f9;
+  padding: 30px;
+  border-radius: 15px;
+}
+
+.emergencyCard {
+  background: #fef2f2;
+  border-left: 5px solid #ef4444;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Social Connect */
+.socialGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 50px 8%;
+}
+
+.socialBox {
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  transition: 0.3s;
+}
+
+.socialBox:hover { transform: translateY(-5px); opacity: 0.9; }
+
+@media (max-width: 968px) {
+  .contactGrid, .actionSection, .grid2, .socialGrid {
+    grid-template-columns: 1fr;
+  }
 }

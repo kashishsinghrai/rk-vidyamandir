@@ -1,0 +1,158 @@
+.main {
+  background-color: #ffffff;
+  color: #1e293b;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Page Header */
+.aboutHero {
+  background: linear-gradient(rgba(30, 27, 75, 0.9), rgba(30, 27, 75, 0.9)), url('/school-banner.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 100px 5%;
+  text-align: center;
+  color: white;
+}
+
+.aboutHero h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.aboutHero h1 span {
+  color: #f59e0b;
+}
+
+/* History & Founder Section */
+.storySection {
+  padding: 80px 8%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.infoCard h3 {
+  color: #1e1b4b;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.infoCard h3::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 4px;
+  background: #f59e0b;
+  margin-top: 10px;
+}
+
+.infoCard p {
+  line-height: 1.8;
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+/* Philosophy Section */
+.philosophyBg {
+  background-color: #f8fafc;
+  padding: 100px 8%;
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #1e1b4b;
+  margin-bottom: 60px;
+}
+
+.philosophyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.pCard {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border-top: 5px solid #f59e0b;
+  transition: 0.3s;
+}
+
+.pCard:hover {
+  transform: translateY(-10px);
+}
+
+.pIcon {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  display: block;
+}
+
+/* Achievements */
+.achievementSection {
+  padding: 100px 8%;
+}
+
+.achievementList {
+  list-style: none;
+  padding: 0;
+}
+
+.achievementList li {
+  padding: 12px 0;
+  padding-left: 30px;
+  position: relative;
+  color: #475569;
+}
+
+.achievementList li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #f59e0b;
+  font-weight: bold;
+}
+
+/* Commitment Quote */
+.commitmentBox {
+  background: #1e1b4b;
+  color: white;
+  padding: 80px 10%;
+  text-align: center;
+  border-radius: 40px;
+  margin: 80px 8%;
+  position: relative;
+  overflow: hidden;
+}
+
+.commitmentBox blockquote {
+  font-size: 1.5rem;
+  font-style: italic;
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
+}
+
+.author {
+  margin-top: 30px;
+  display: block;
+  color: #f59e0b;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .grid2 { grid-template-columns: 1fr; gap: 40px; }
+  .aboutHero { padding: 60px 5%; }
+}

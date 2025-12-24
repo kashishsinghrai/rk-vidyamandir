@@ -1,205 +1,233 @@
-import "./page.module.css";
+"use client";
+import styles from "./page.module.css";
+import {
+  FaClipboardCheck,
+  FaFileUpload,
+  FaPenNib,
+  FaUserFriends,
+} from "react-icons/fa";
 
 export default function AdmissionPage() {
   return (
-    <div className="admission-container">
-      {/* Hero Section */}
-      <section className="hero-section">
-        <div className="hero-content">
-          <h1 className="hero-title">School Admission 2025-26</h1>
-          <p className="hero-subtitle">
-            Join our community of excellence and shape your future
-          </p>
-        </div>
+    <div className={styles.main}>
+      {/* 1. Header Hero */}
+      <section className={styles.hero}>
+        <h1>
+          Admission <span>2025-26</span>
+        </h1>
+        <p>
+          Your journey towards a brighter future begins here. Join Late R.K.
+          Vidyamandir for a world-class educational experience.
+        </p>
       </section>
 
-      {/* Admission Process */}
-      <section className="process-section">
-        <div className="container">
-          <h2 className="section-title">Admission Process</h2>
-          <div className="process-grid">
-            <div className="process-card">
-              <div className="process-number">1</div>
-              <h3>Application Form</h3>
-              <p>
-                Fill out the online application form with all required details
+      {/* 2. Admission Journey */}
+      <section className={styles.processSection}>
+        <div className={styles.processGrid}>
+          {[
+            {
+              id: "01",
+              title: "Apply",
+              icon: <FaPenNib />,
+              desc: "Fill the digital application form below",
+            },
+            {
+              id: "02",
+              title: "Verify",
+              icon: <FaFileUpload />,
+              desc: "Submit and verify your documents",
+            },
+            {
+              id: "03",
+              title: "Assessment",
+              icon: <FaClipboardCheck />,
+              desc: "A simple aptitude test for the student",
+            },
+            {
+              id: "04",
+              title: "Meet Us",
+              icon: <FaUserFriends />,
+              desc: "A warm interaction with the parents",
+            },
+          ].map((step, index) => (
+            <div key={index} className={styles.stepCard}>
+              <div className={styles.stepNum}>{step.id}</div>
+              <div
+                style={{
+                  fontSize: "1.5rem",
+                  color: "#f59e0b",
+                  marginBottom: "10px",
+                }}
+              >
+                {step.icon}
+              </div>
+              <h3>{step.title}</h3>
+              <p style={{ color: "#64748b", fontSize: "0.9rem" }}>
+                {step.desc}
               </p>
             </div>
-            <div className="process-card">
-              <div className="process-number">2</div>
-              <h3>Document Submission</h3>
-              <p>Submit all necessary documents for verification</p>
-            </div>
-            <div className="process-card">
-              <div className="process-number">3</div>
-              <h3>Entrance Test</h3>
-              <p>Appear for the entrance examination (if applicable)</p>
-            </div>
-            <div className="process-card">
-              <div className="process-number">4</div>
-              <h3>Interview</h3>
-              <p>Attend the personal interview with parents</p>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* Application Form */}
-      <section className="form-section">
-        <div className="container">
-          <h2 className="section-title">Online Application Form</h2>
-          <form className="admission-form">
-            <div className="form-grid">
-              <div className="form-group">
-                <label htmlFor="studentName">Student Name*</label>
-                <input
-                  type="text"
-                  id="studentName"
-                  name="studentName"
-                  required
-                />
+      {/* 3. The Digital Form */}
+      <section className={styles.formSection}>
+        <div className={styles.formWrapper}>
+          <h2
+            style={{
+              color: "#1e1b4b",
+              marginBottom: "40px",
+              textAlign: "center",
+            }}
+          >
+            Candidate Registration Form
+          </h2>
+
+          <form className={styles.admissionForm}>
+            <div className={styles.formGrid}>
+              {/* Student Details */}
+              <div className={styles.inputGroup}>
+                <label>Student Full Name*</label>
+                <input type="text" placeholder="John Doe" required />
               </div>
-              <div className="form-group">
-                <label htmlFor="dateOfBirth">Date of Birth*</label>
-                <input
-                  type="date"
-                  id="dateOfBirth"
-                  name="dateOfBirth"
-                  required
-                />
+              <div className={styles.inputGroup}>
+                <label>Date of Birth*</label>
+                <input type="date" required />
               </div>
-              <div className="form-group">
-                <label htmlFor="gender">Gender*</label>
-                <select id="gender" name="gender" required>
+              <div className={styles.inputGroup}>
+                <label>Gender*</label>
+                <select required>
                   <option value="">Select Gender</option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
-                  <option value="other">Other</option>
                 </select>
               </div>
-              <div className="form-group">
-                <label htmlFor="class">Class Applying For*</label>
-                <select id="class" name="class" required>
+              <div className={styles.inputGroup}>
+                <label>Class Applying For*</label>
+                <select required>
                   <option value="">Select Class</option>
                   <option value="nursery">Nursery</option>
-                  <option value="lkg">LKG</option>
-                  <option value="ukg">UKG</option>
-                  <option value="1">Class 1</option>
-                  <option value="2">Class 2</option>
-                  <option value="3">Class 3</option>
-                  <option value="4">Class 4</option>
-                  <option value="5">Class 5</option>
-                  <option value="6">Class 6</option>
-                  <option value="7">Class 7</option>
-                  <option value="8">Class 8</option>
+                  {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+                    <option key={n} value={n}>
+                      Class {n}
+                    </option>
+                  ))}
                 </select>
               </div>
-              <div className="form-group">
-                <label htmlFor="fatherName">Father&apos;s Name*</label>
-                <input type="text" id="fatherName" name="fatherName" required />
+
+              {/* Parent Details */}
+              <div className={styles.inputGroup}>
+                <label>Father's Name*</label>
+                <input type="text" required />
               </div>
-              <div className="form-group">
-                <label htmlFor="motherName">Mother&apos;s Name*</label>
-                <input type="text" id="motherName" name="motherName" required />
+              <div className={styles.inputGroup}>
+                <label>Mother's Name*</label>
+                <input type="text" required />
               </div>
-              <div className="form-group">
-                <label htmlFor="phone">Phone Number*</label>
-                <input type="tel" id="phone" name="phone" required />
+              <div className={styles.inputGroup}>
+                <label>Phone Number*</label>
+                <input type="tel" placeholder="+91" required />
               </div>
-              <div className="form-group">
-                <label htmlFor="email">Email Address*</label>
-                <input type="email" id="email" name="email" required />
+              <div className={styles.inputGroup}>
+                <label>Email Address</label>
+                <input type="email" placeholder="email@example.com" />
+              </div>
+
+              <div className={`${styles.inputGroup} ${styles.fullWidth}`}>
+                <label>Residential Address*</label>
+                <textarea
+                  rows="3"
+                  placeholder="Enter complete address..."
+                ></textarea>
+              </div>
+
+              <div className={`${styles.inputGroup} ${styles.fullWidth}`}>
+                <label>Previous School Attended (If any)</label>
+                <input type="text" />
               </div>
             </div>
-            <div className="form-group full-width">
-              <label htmlFor="address">Complete Address*</label>
-              <textarea
-                id="address"
-                name="address"
-                rows="3"
-                required
-              ></textarea>
-            </div>
-            <div className="form-group full-width">
-              <label htmlFor="previousSchool">Previous School (if any)</label>
-              <input type="text" id="previousSchool" name="previousSchool" />
-            </div>
-            <div className="form-actions">
-              <button type="submit" className="submit-btn">
-                Submit Application
-              </button>
-              <button type="reset" className="reset-btn">
-                Reset Form
+
+            <div style={{ textAlign: "center" }}>
+              <button type="submit" className={styles.submitBtn}>
+                Submit Registration
               </button>
             </div>
           </form>
         </div>
       </section>
 
-      {/* Important Information */}
-      <section className="info-section">
-        <div className="container">
-          <div className="info-grid">
-            <div className="info-card">
-              <h3>Required Documents</h3>
-              <ul>
-                <li>Previous School TC</li>
-                <li>Aadhar Card Copy</li>
-                <li>Passport Size Photos</li>
-              </ul>
-            </div>
-            <div className="info-card">
-              <h3>Important Dates</h3>
-              <ul>
-                <li>
-                  <strong>Application Start:</strong> December 1, 2024
-                </li>
-                <li>
-                  <strong>Application End:</strong> February 28, 2025
-                </li>
-                <li>
-                  <strong>Entrance Test:</strong> March 15, 2025
-                </li>
-                <li>
-                  <strong>Result Declaration:</strong> March 30, 2025
-                </li>
-              </ul>
-            </div>
-            <div className="info-card">
-              <h3>Fee Structure</h3>
-              <ul>
-                <li>
-                  <strong>Application Fee:</strong> ₹500
-                </li>
-                <li>
-                  <strong>Admission Fee:</strong> ₹10,000
-                </li>
-                <li>
-                  <strong>Tuition Fee:</strong> Varies by class
-                </li>
-                <li>
-                  <strong>Development Fee:</strong> ₹5,000
-                </li>
-              </ul>
-            </div>
+      {/* 4. Information Hub */}
+      <section className={styles.infoSection}>
+        <div className={styles.infoGrid}>
+          <div className={styles.infoCard}>
+            <h3>Necessary Papers</h3>
+            <ul>
+              <li>• Original Transfer Certificate</li>
+              <li>• Copy of Birth Certificate</li>
+              <li>• 4 Passport Size Photographs</li>
+              <li>• Student & Parent Aadhar Card</li>
+            </ul>
+          </div>
+          <div className={styles.infoCard}>
+            <h3>Key Dates</h3>
+            <ul>
+              <li>
+                • <strong>Dec 01:</strong> Portal Opens
+              </li>
+              <li>
+                • <strong>Feb 28:</strong> Deadline for Phase 1
+              </li>
+              <li>
+                • <strong>Mar 15:</strong> Entrance Evaluation
+              </li>
+              <li>
+                • <strong>Mar 30:</strong> Result Publishing
+              </li>
+            </ul>
+          </div>
+          <div className={styles.infoCard}>
+            <h3>Fee Structure</h3>
+            <ul>
+              <li>• Registration: ₹500</li>
+              <li>• Admission: ₹10,000</li>
+              <li>• Monthly: Depends on Class</li>
+              <li>
+                • <strong>Scholarships available</strong> for top performers.
+              </li>
+            </ul>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="contact-section">
-        <div className="container">
-          <h2 className="section-title">Contact Admission Office</h2>
-          <div className="contact-info">
-            <div className="contact-item">
-              <strong>Phone:</strong> +91-8009337704
-            </div>
-            <div className="contact-item">
-              <strong>Email:</strong> lateramkalivi@gmail.com
-            </div>
-            <div className="contact-item">
-              <strong>Office Hours:</strong> Monday to Friday, 9:00 AM - 4:00 PM
-            </div>
+      {/* 5. Support Section */}
+      <section
+        style={{
+          padding: "60px 8%",
+          textAlign: "center",
+          background: "#1e1b4b",
+          color: "white",
+        }}
+      >
+        <h2>Need Help with Admission?</h2>
+        <p style={{ margin: "10px 0 30px", opacity: 0.8 }}>
+          Our admission counselors are here to help you through every step.
+        </p>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "40px",
+            flexWrap: "wrap",
+          }}
+        >
+          <div>
+            📞 <b>+91 8009337704</b>
+          </div>
+          <div>
+            ✉️ <b>lateramkalivi@gmail.com</b>
+          </div>
+          <div>
+            📍 <b>Office Hours: 9 AM - 4 PM</b>
           </div>
         </div>
       </section>
