@@ -21,7 +21,7 @@ export default function AcademicsPage() {
     { name: "Science", icon: <FaAtom />, desc: "Physics & Chemistry" },
     { name: "English", icon: <FaLanguage />, desc: "Literature & Grammar" },
     { name: "Biology", icon: <FaMicroscope />, desc: "Life Sciences" },
-    { name: "IT & Coding", icon: <FaLaptopCode />, desc: "Digital Literacy" },
+    // { name: "IT & Coding", icon: <FaLaptopCode />, desc: "Digital Literacy" },
     { name: "Geography", icon: <FaGlobeAmericas />, desc: "Earth & Beyond" },
     {
       name: "Art &amp; Craft",
