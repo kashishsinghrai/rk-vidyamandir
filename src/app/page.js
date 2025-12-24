@@ -1,206 +1,177 @@
 "use client";
 import Image from "next/image";
-import "./page.module.css";
+import Link from "next/link";
+import styles from "./page.module.css";
 
 export default function HomePage() {
   return (
-    <div className="hero-container">
-      {/* Hero Section */}
-      <div className="hero">
-        <Image
-          src="/school-banner.jpg"
-          alt="Late R.K. Vidyamandir School"
-          className="banner"
-          width={1200}
-          height={400}
-        />
-      </div>
+    <main className={styles.main}>
+      {/* --- ULTRA MODERN HERO --- */}
+      <section className={styles.hero}>
+        <div className={styles.heroContent}>
+          <span className={styles.heroBadge}>Excellence Redefined</span>
+          <h1 className={styles.heroTitle}>
+            Designing the <span>Future</span> of Education.
+          </h1>
+          <p className={styles.heroDesc}>
+            Late R.K. Vidyamandir School merges traditional values with next-gen
+            technology to nurture the leaders of tomorrow.
+          </p>
+          <div className={styles.heroButtons}>
+            <Link href="/admission" className={styles.btnGlow}>
+              Apply for Admission 2025
+            </Link>
+          </div>
+        </div>
 
-      {/* Features Section */}
-      <div className="features">
-        <div className="card">
-          <h3>Quality Education</h3>
-          <p>
-            Providing excellent education with modern teaching methods and
-            experienced faculty members dedicated to student success.
-          </p>
+        {/* Background Image Element */}
+        <div className={styles.heroImageContainer}>
+          <Image
+            src="/school-banner.jpg"
+            alt="Future Education"
+            fill
+            className={styles.heroImage}
+            style={{ opacity: 0.2, objectFit: "cover" }}
+          />
         </div>
-        <div className="card">
-          <h3>Holistic Development</h3>
-          <p>
-            Focus on overall personality development including academics,
-            sports, cultural activities, and moral values.
-          </p>
-        </div>
-        <div className="card">
-          <h3>Modern Facilities</h3>
-          <p>
-            Well-equipped classrooms, library, computer lab, playground, and
-            other facilities for comprehensive learning.
-          </p>
-        </div>
-      </div>
+      </section>
 
-      {/* Welcome Section */}
-      <section className="section">
-        <h2>Welcome to Our School</h2>
-        <div className="grid grid-2">
-          <div className="info-card">
-            <h3>Our Vision</h3>
+      {/* --- GLASS STATS --- */}
+      <section className={styles.statsSection}>
+        <div className={styles.statGlassCard}>
+          <span className={styles.statNumber}>25+</span>
+          <p>Years of Legacy</p>
+        </div>
+        <div className={styles.statGlassCard}>
+          <span className={styles.statNumber}>100%</span>
+          <p>Digital Campus</p>
+        </div>
+        <div className={styles.statGlassCard}>
+          <span className={styles.statNumber}>50+</span>
+          <p>Expert Mentors</p>
+        </div>
+      </section>
+
+      {/* --- CORE PILLARS --- */}
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>The Three Pillars</h2>
+        <div className={styles.grid}>
+          <div className={styles.card}>
+            <span className={styles.cardIcon}>🚀</span>
+            <h3>Innovation</h3>
             <p>
-              To nurture young minds and develop them into responsible citizens
-              who will contribute positively to society. We believe in providing
-              quality education that combines academic excellence with moral
-              values and practical skills.
+              Coding, Robotics, and AI-driven learning modules integrated into
+              the curriculum.
             </p>
           </div>
-          <div className="info-card">
-            <h3>Our Mission</h3>
+          <div className={styles.card}>
+            <span className={styles.cardIcon}>🌿</span>
+            <h3>Value System</h3>
             <p>
-              Founded in 2000 by the visionary educator Chand Sir, our school
-              has been committed to educational excellence for over two decades.
-              We strive to create an environment where every student can reach
-              their full potential.
+              Strong moral foundation based on respect, discipline, and cultural
+              heritage.
+            </p>
+          </div>
+          <div className={styles.card}>
+            <span className={styles.cardIcon}>🏟️</span>
+            <h3>Elite Sports</h3>
+            <p>
+              Professional coaching for indoor and outdoor sports with
+              world-class equipment.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Director/Manager Note Section */}
-      <section className="section manager-note">
-        <h2>From the Desk of Our Management</h2>
-        <div className="grid grid-2" style={{ alignItems: "center" }}>
-          <div className="manager-photo">
+      {/* --- MANAGEMENT LEADERSHIP --- */}
+      <section className={styles.section}>
+        <div className={styles.principalContainer}>
+          <div className={styles.imageWrapper}>
             <Image
               src="/teacher1.jpg"
-              alt="Manager Sir"
-              className="sketch-photo"
-              width={300}
-              height={300}
+              alt="Principal"
+              width={350}
+              height={450}
+              className={styles.principalImg}
             />
+          </div>
+          <div className={styles.principalText}>
+            <h2 style={{ fontSize: "2.5rem", marginBottom: "20px" }}>
+              Visionary Leadership
+            </h2>
+            <p
+              style={{
+                fontSize: "1.2rem",
+                color: "#94a3b8",
+                fontStyle: "italic",
+                marginBottom: "30px",
+              }}
+            >
+              "Our mission is to create a learning ecosystem where every student
+              doesn't just learn, but thrives in a rapidly changing world. We
+              are building creators, not consumers."
+            </p>
             <p>
               <strong>Mr. Anshuman Singh</strong>
               <br />
-              School Principal
-            </p>
-          </div>
-          <div className="info-card">
-            <p>
-              &ldquo;Education is not just about learning facts, but about
-              nurturing curiosity and building character. At RK Vidyamandir, we
-              strive to prepare our students for the real world through a blend
-              of discipline, knowledge, and human values.&rdquo;
-            </p>
-            <p>
-              We&apos;re proud of our team of educators and our strong
-              connection with students and parents alike.
+              Director & Principal
             </p>
           </div>
         </div>
       </section>
 
-      {/* Newsletter or School Gallery Section */}
-      <section className="section school-updates">
-        <h2>What&apos;s Happening</h2>
-        <div className="grid grid-2">
-          <div className="info-card">
-            <h3>📢 Daily Bulletin</h3>
-            <p>
-              Stay updated with our latest notices, student achievements, and
-              classroom highlights. From exam schedules to event celebrations,
-              you&apos;ll find it here.
-            </p>
-            <ul>
-              <li>Science Exhibition – Aug 12</li>
-              <li>PTM – Aug 5</li>
-              <li>Mid-Term Exam starts – Sept 1</li>
-            </ul>
+      {/* --- NEWS HUB --- */}
+      <section className={`${styles.section} ${styles.newsHub}`}>
+        <div className={styles.grid}>
+          <div style={{ gridColumn: "span 2" }}>
+            <h2 className={styles.sectionTitle} style={{ textAlign: "left" }}>
+              Live Updates
+            </h2>
+            <div className={styles.card} style={{ marginBottom: "15px" }}>
+              <p style={{ color: "#f97316" }}>
+                • Admission Open for Batch 2025-26
+              </p>
+            </div>
+            <div className={styles.card}>
+              <p style={{ color: "#f97316" }}>
+                • Annual Tech Fest coming up in February
+              </p>
+            </div>
           </div>
-          <div className="school-photos">
-            <Image
-              src="/school-campus.jpg"
-              alt="School Campus"
-              width={400}
-              height={300}
-            />
-            <Image
-              src="/teacher3.jpg"
-              alt="School Event"
-              width={400}
-              height={300}
-            />
+          <div className={styles.statGlassCard}>
+            <h3>Visit Campus</h3>
+            <p>Experience the future of schooling today.</p>
+            <br />
+            <Link href="/contact" className={styles.btnGlow}>
+              Book a Tour
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Quick Access Section */}
-      <section className="section quick-access">
-        <h2>Quick Access</h2>
-        <div className="grid grid-2">
-          <div className="info-card text-center">
-            <h3>📚 Academics</h3>
-            <p>
-              Explore our curriculum, academic calendar, and educational
-              programs.
-            </p>
-            <a href="/about" className="btn">
-              Learn More
-            </a>
+      {/* --- FOOTER --- */}
+      <footer
+        className={styles.section}
+        style={{
+          background: "#020617",
+          borderTop: "1px solid rgba(255,255,255,0.05)",
+        }}
+      >
+        <div className={styles.grid}>
+          <div>
+            <h3>RK Vidyamandir</h3>
+            <p>The Future of Learning.</p>
           </div>
-          <div className="info-card text-center">
-            <h3>👨‍🏫 Teachers</h3>
-            <p>Meet our dedicated and experienced faculty members.</p>
-            <a href="/teachers" className="btn">
-              View Teachers
-            </a>
+          <div>
+            <h4>Contact</h4>
+            <p>123 Galaxy Avenue, Education City</p>
           </div>
-          <div className="info-card text-center">
-            <h3>🏫 Facilities</h3>
-            <p>Discover our modern infrastructure and learning facilities.</p>
-            <a href="/facilities" className="btn">
-              Explore
-            </a>
-          </div>
-          <div className="info-card text-center">
-            <h3>📋 Admission</h3>
-            <p>Information about admission process and requirements.</p>
-            <a href="/admission" className="btn">
-              Apply Now
-            </a>
+          <div>
+            <h4>Socials</h4>
+            <p>Instagram | LinkedIn | Facebook</p>
           </div>
         </div>
-      </section>
-
-      {/* Recent News Section */}
-      <section className="section">
-        <h2>Latest Updates</h2>
-        <div className="grid grid-3">
-          <div className="notice-item">
-            <span className="notice-date">Jan 15, 2025</span>
-            <h3>New Session Admission Open</h3>
-            <p>
-              Admissions are now open for the academic year 2025-26. Limited
-              seats available.
-            </p>
-          </div>
-          <div className="notice-item">
-            <span className="notice-date">Jan 10, 2025</span>
-            <h3>Annual Sports Day</h3>
-            <p>
-              Our annual sports day will be held on January 25th, 2025. All
-              parents are invited.
-            </p>
-          </div>
-          <div className="notice-item">
-            <span className="notice-date">Jan 05, 2025</span>
-            <h3>Academic Excellence Awards</h3>
-            <p>
-              Students who performed exceptionally well in the last academic
-              year will be honored.
-            </p>
-          </div>
-        </div>
-      </section>
-    </div>
+      </footer>
+    </main>
   );
 }
