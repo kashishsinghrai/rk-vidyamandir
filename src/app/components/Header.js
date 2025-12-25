@@ -7,20 +7,21 @@ import styles from "./Header.module.css";
 export default function Header() {
   return (
     <header className={styles.headerWrapper}>
-      {/* 1. Top Mini-Header */}
+      {/* 1. Top Mini-Header: Mobile par CSS isse hide kar degi space bachane ke liye */}
       <div className={styles.topBar}>
         <div className={styles.topBarInfo}>
           <span>📍 Ruhellapur, Khaga, Fatehpur</span>
-          <span>🗓 Estd. 2000 by Chand Sir</span>
+          {/* Ye span tablet par hide ho jayega (CSS media query se) */}
+          <span className={styles.hideOnTablet}>🗓 Estd. 2000 by Chand Sir</span>
         </div>
         <div className={styles.topBarInfo}>
           <span>
-            UDISE Code: <b className={styles.udiseBadge}>09421306803</b>
+            UDISE: <b className={styles.udiseBadge}>09421306803</b>
           </span>
         </div>
       </div>
 
-      {/* 2. Main Branding Header */}
+      {/* 2. Main Branding Header: Flex layout jo screen ke saath adjust hoga */}
       <div className={styles.mainHeader}>
         <div className={styles.brand}>
           <div className={styles.logo}>
@@ -30,23 +31,28 @@ export default function Header() {
               width={70}
               height={70}
               priority
+              className={styles.responsiveLogo}
             />
           </div>
           <div className={styles.titleContainer}>
             <h1>
               Late Ramkali <span>Vidyamandir</span>
             </h1>
+            {/* Subtitle mobile par hide rehta hai clean look ke liye */}
             <p className={styles.subtitle}>
               Junior High School | Nurturing Excellence
             </p>
           </div>
         </div>
 
+        {/* Header Actions: Call aur Login buttons */}
         <div className={styles.headerActions}>
-          {/* Contact Widget */}
+          {/* Contact Widget: Tablet/Mobile par sirf icon dikhega ya hide ho jayega */}
           <div className={styles.callWidget}>
             <div className={styles.iconCircle}>
-              <FaPhone />
+              <a href="tel:+918009337704" aria-label="Call Us">
+                <FaPhone />
+              </a>
             </div>
             <div className={styles.callText}>
               <span>Call Helpline</span>
@@ -54,10 +60,11 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Futuristic Login Button */}
-          <button className={styles.loginBtn}>
+          {/* Login Button: Sabse important action */}
+          <button className={styles.loginBtn} aria-label="Student Login">
             <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <FaUserCircle /> Student Login
+              <FaUserCircle className={styles.loginIcon} />
+              <span>Student Login</span>
             </div>
           </button>
         </div>

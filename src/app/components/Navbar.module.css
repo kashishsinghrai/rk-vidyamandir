@@ -1,11 +1,19 @@
+/* Navbar.module.css */
+
 .navbar {
-  background-color: #1e1b4b; /* Solid Navy for Desktop */
+  background-color: #1e1b4b;
   width: 100%;
   position: sticky;
   top: 0;
-  z-index: 999;
-  border-bottom: 2px solid #f59e0b; /* Gold line indicator */
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  z-index: 1000; /* Header se sync */
+  border-bottom: 2px solid #f59e0b;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+/* Jab page scroll ho tab navbar ko thoda patla kar sakte hain (Optional JS logic ke liye) */
+.navbarScrolled {
+  height: 50px;
 }
 
 .navContainer {
@@ -14,28 +22,33 @@
   padding: 0 5%;
   display: flex;
   align-items: center;
-  height: 60px;
+  justify-content: space-between; /* Space balance ke liye */
+  height: 65px; /* Thodi height badhayi hai */
 }
 
-/* Desktop Links */
+/* --- Desktop Links --- */
 .desktopNav {
   display: flex;
   list-style: none;
-  gap: 25px;
+  /* Gap ko flexible banaya hai: Screen choti hogi gap bhi chota hoga */
+  gap: clamp(10px, 1.8vw, 25px); 
   width: 100%;
   justify-content: center;
+  flex-wrap: nowrap; /* Wrap hone se bachayein */
 }
 
 .navLink {
   color: #e2e8f0;
   text-decoration: none;
-  font-size: 0.85rem;
+  /* Font size ko screen ke hisaab se scale kiya */
+  font-size: clamp(0.7rem, 0.9vw, 0.85rem); 
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
-  padding: 20px 0;
+  padding: 10px 0;
   position: relative;
+  white-space: nowrap; /* Link ek hi line mein rahega */
 }
 
 .navLink:hover {
@@ -46,7 +59,7 @@
 .navLink::after {
   content: '';
   position: absolute;
-  bottom: 12px;
+  bottom: 0;
   left: 0;
   width: 0;
   height: 2px;
@@ -58,90 +71,149 @@
   width: 100%;
 }
 
-/* Mobile Toggle */
+/* --- Mobile Toggle Button --- */
 .mobileMenuBtn {
-  background: transparent;
-  border: none;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(245, 158, 11, 0.3);
   color: #f59e0b;
-  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
   cursor: pointer;
-  display: none;
+  display: none; /* Desktop par hide */
+  transition: 0.3s;
 }
 
-/* Mobile Sidebar */
+.mobileMenuBtn:hover {
+  background: #f59e0b;
+  color: #1e1b4b;
+}
+
+/* --- Mobile Sidebar --- */
 .mobileSidebar {
   position: fixed;
   top: 0;
   left: -100%;
-  width: 80%;
-  max-width: 300px;
+  width: 280px; /* Tablet/Phone dono ke liye perfect width */
   height: 100vh;
   background: #0f172a;
-  z-index: 1001;
-  transition: all 0.4s cubic-bezier(0.77,0.2,0.05,1.0);
-  padding: 30px;
-  box-shadow: 10px 0 30px rgba(0,0,0,0.5);
+  z-index: 2000;
+  transition: transform 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+  padding: 30px 25px;
+  box-shadow: 15px 0 40px rgba(0,0,0,0.5);
+  overflow-y: auto; /* Agar menu items zyada ho toh scroll ho sake */
+  display: flex;
+  flex-direction: column;
 }
 
 .mobileSidebarOpen {
-  left: 0;
+  transform: translateX(100%); /* Smooth slide animation */
 }
 
 .sidebarHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 40px;
-  border-bottom: 1px solid rgba(245, 158, 11, 0.2);
-  padding-bottom: 15px;
+  margin-bottom: 35px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 20px;
 }
 
 .sidebarHeader h3 {
   color: #f59e0b;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .closeBtn {
   background: none;
   border: none;
-  color: white;
-  font-size: 1.5rem;
+  color: #cbd5e1;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closeBtn:hover {
+  color: #ef4444; /* Close ke liye danger color touch */
 }
 
 .mobileNavLinks {
   list-style: none;
   padding: 0;
-}
-
-.mobileNavLinks li {
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .mobileNavLink {
   color: #cbd5e1;
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  font-weight: 500;
   display: block;
+  padding: 12px 15px;
+  border-radius: 8px;
   transition: 0.3s;
 }
 
 .mobileNavLink:hover {
+  background: rgba(245, 158, 11, 0.1);
   color: #f59e0b;
-  padding-left: 10px;
+  padding-left: 20px;
 }
 
+/* --- Overlay --- */
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0,0,0,0.7);
+  width: 100%;
+  height: 100%;
+  background: rgba(2, 6, 23, 0.8);
   backdrop-filter: blur(4px);
-  z-index: 1000;
+  z-index: 1500;
+  animation: fadeIn 0.3s ease;
 }
 
-@media (max-width: 1024px) {
-  .mobileMenuBtn { display: block; }
-  .desktopNav { display: none; }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* --- Responsive Adjustments --- */
+
+/* Laptops jinki screen choti hai (Small Laptops) */
+@media (max-width: 1280px) {
+  .navContainer {
+    padding: 0 3%;
+  }
+}
+
+/* Breakpoint for Tablets & Small Screens */
+@media (max-width: 1100px) {
+  .mobileMenuBtn {
+    display: flex;
+  }
+  .desktopNav {
+    display: none;
+  }
+  .navContainer {
+    justify-content: flex-start; /* Menu button ko left par lane ke liye */
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  .mobileSidebar {
+    width: 85%; /* Chote phone par poora coverage */
+  }
+  .navContainer {
+    height: 55px;
+  }
 }

@@ -1,3 +1,5 @@
+/* Header.module.css */
+
 .headerWrapper {
   width: 100%;
   position: relative;
@@ -5,59 +7,64 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* Top Bar: Contact & Info */
+/* --- 1. Top Bar (Navy Blue) --- */
 .topBar {
-  background-color: #0f172a; /* Deep Navy */
+  background-color: #1e1b4b;
   color: #cbd5e1;
   padding: 8px 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.8rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.topBarInfo span {
-  margin-right: 20px;
-  letter-spacing: 0.5px;
+.topBarInfo {
+  display: flex;
+  gap: 20px;
 }
 
 .udiseBadge {
-  background: rgba(245, 158, 11, 0.15);
+  background: rgba(245, 158, 11, 0.2);
   color: #f59e0b;
-  padding: 2px 10px;
+  padding: 2px 8px;
   border-radius: 4px;
   font-weight: 600;
 }
 
-/* Main Header Section */
+/* --- 2. Main Header (The Overlap Fix) --- */
 .mainHeader {
-  background-color: #ffffff;
-  padding: 15px 5%;
+  /* Logo ke background color se match kiya gaya color */
+  background-color: #f5f1e4; 
+  padding: 10px 5%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Logo left, Button right */
   align-items: center;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  gap: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 12px;
+  min-width: 0; /* Text wrapping allow karta hai */
+  flex: 1; /* Jitni jagah hai le lega */
 }
 
 .logo {
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
-  transition: transform 0.3s ease;
+  flex-shrink: 0; /* Logo ko overlap hone se rokta hai */
+  width: 60px; /* Desktop size */
+  height: auto;
 }
 
-.logo:hover {
-  transform: scale(1.05);
+.titleContainer {
+  min-width: 0;
 }
 
 .titleContainer h1 {
-  font-size: 1.6rem;
-  color: #1e1b4b; /* Navy Blue */
+  font-size: clamp(0.85rem, 2.5vw, 1.5rem); /* Fluid font size */
+  color: #1e1b4b;
   font-weight: 800;
   line-height: 1.2;
   margin: 0;
@@ -65,77 +72,110 @@
 }
 
 .titleContainer h1 span {
-  color: #f59e0b; /* Gold accent */
+  color: #f59e0b;
 }
 
 .subtitle {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   color: #64748b;
-  margin-top: 4px;
+  margin-top: 2px;
   font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Right Section Actions */
+/* --- 3. Actions (Login & Call) --- */
 .headerActions {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
+  flex-shrink: 0; /* Buttons ko pichakne se rokta hai */
 }
 
 .callWidget {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .iconCircle {
-  background: #f1f5f9;
-  width: 45px;
-  height: 45px;
+  background: #fff;
+  width: 38px;
+  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   color: #1e1b4b;
-  font-size: 1.1rem;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #ddd;
 }
 
-.callText span {
-  display: block;
-  font-size: 0.75rem;
-  color: #64748b;
-  text-transform: uppercase;
-  font-weight: 600;
+.callText {
+  display: flex;
+  flex-direction: column;
 }
 
-.callText b {
-  color: #1e1b4b;
-  font-size: 1rem;
-}
+.callText span { font-size: 0.65rem; color: #64748b; }
+.callText b { font-size: 0.85rem; color: #1e1b4b; }
 
 .loginBtn {
   background: #1e1b4b;
   color: white;
-  padding: 12px 28px;
+  padding: 10px 20px;
   border-radius: 8px;
   font-weight: 600;
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(30, 27, 75, 0.2);
+  transition: 0.3s;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .loginBtn:hover {
   background: #f59e0b;
-  color: #1e1b4b;
   transform: translateY(-2px);
 }
 
-/* Responsive */
+/* --- 4. RESPONSIVE FIXES --- */
+
 @media (max-width: 1024px) {
-  .topBar { display: none; }
-  .subtitle { display: none; }
-  .callWidget { display: none; }
-  .titleContainer h1 { font-size: 1.2rem; }
+  .callWidget { display: none; } /* Tablet par phone number hide */
+}
+
+@media (max-width: 768px) {
+  .topBar { display: none; } /* Mobile par top bar hide */
+  .subtitle { display: none; } /* Subtitle hide */
+  
+  .mainHeader {
+    padding: 8px 12px;
+  }
+  
+  .logo {
+    width: 50px; /* Mobile par logo chota */
+  }
+
+  .loginBtn {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Bahut chote phones par sirf Login likhein taaki jagah bache */
+  .loginBtn span {
+    display: none; 
+  }
+  
+  .loginBtn::after {
+    content: 'Login'; /* Student word hata diya */
+  }
+
+  .titleContainer h1 {
+    font-size: 0.8rem;
+    max-width: 150px; /* Text ko wrap hone ke liye force karein */
+  }
 }
