@@ -113,8 +113,7 @@ export default function AcademicsPage() {
               real-world projects.
             </li>
             <li style={{ marginBottom: "10px" }}>
-              ✅ <b>Digital Integration:</b> Use of smart-boards and e-learning
-              resources.
+              ✅ <b>Digital Integration:</b> Research based learning .
             </li>
             <li style={{ marginBottom: "10px" }}>
               ✅ <b>Personalized Attention:</b> Small batch sizes to ensure no
@@ -124,7 +123,7 @@ export default function AcademicsPage() {
         </div>
         <div className={styles.methodImage}>
           <Image
-            src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800"
+            src="/academic.png"
             alt="Students Learning"
             fill
             style={{ objectFit: "cover" }}

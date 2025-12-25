@@ -1,221 +1,214 @@
 "use client";
-
-import "./facilities.css";
+import styles from "./page.module.css";
 import Image from "next/image";
+import {
+  FaBuilding,
+  FaTree,
+  FaFutbol,
+  FaUsers,
+  FaGlassWhiskey,
+  FaBolt,
+  FaUserShield,
+  FaSun,
+} from "react-icons/fa";
 
-export default function FacilitiesPage() {
-  const facilities = [
+export default function CampusLife() {
+  const schoolHighlights = [
     {
-      title: "Smart Classrooms",
-      description:
-        "Modern classrooms equipped with projectors, smart boards, and audio-visual aids for interactive learning.",
+      title: "Iconic Two-Story Building",
+      desc: "Our grand school building is designed with multiple spacious floors, wide corridors, and easy access, providing a secure and organized environment for all classes.",
+      image: "/school-building.jpg", // Photos mein jo badi yellow building hai
+      icon: <FaBuilding />,
+    },
+    {
+      title: "Expansive Playground",
+      desc: "A massive open ground as seen in our campus, perfect for morning assemblies, annual sports events, and daily outdoor activities for physical growth.",
+      image: "/sport-club.jpg", // Photos mein jo bada khula maidan hai
+      icon: <FaFutbol />,
+    },
+    {
+      title: "Nature-Rich Environment",
+      desc: "Located in a peaceful rural setting with plenty of fresh air and greenery, away from the dust and noise of city traffic.",
+      image: "/campus-view.jpg", // Rural/Greenery view
+      icon: <FaTree />,
+    },
+    {
+      title: "Spacious Classrooms",
+      desc: "Our classrooms are built with high ceilings and large windows to ensure natural ventilation and a bright atmosphere for learning.",
       image: "/classroom.jpg",
-      features: [
-        "Digital projectors",
-        "Interactive whiteboards",
-        "Air conditioning",
-        "Comfortable seating",
-      ],
-    },
-    {
-      title: "Computer Laboratory",
-      description:
-        "Well-equipped computer lab with latest hardware and software for digital literacy and programming.",
-      image: "/computer-lab.jpg",
-      features: [
-        "20+ computers",
-        "High-speed internet",
-        "Latest software",
-        "Individual workstations",
-      ],
-    },
-    {
-      title: "Science Laboratory",
-      description:
-        "Fully equipped science lab for practical experiments in Physics, Chemistry, and Biology.",
-      image: "/science-lab.jpg",
-      features: [
-        "Modern equipment",
-        "Safety protocols",
-        "Experimental materials",
-        "Teacher supervision",
-      ],
-    },
-    {
-      title: "Library",
-      description:
-        "Extensive collection of books, journals, and digital resources to support learning and research.",
-      image: "/library.jpg",
-      features: [
-        "5000+ books",
-        "Reference section",
-        "Reading area",
-        "Digital resources",
-      ],
-    },
-    {
-      title: "Sports Ground",
-      description:
-        "Large playground for various sports activities including cricket, football, volleyball, and athletics.",
-      image: "/playground.jpg",
-      features: [
-        "Cricket pitch",
-        "Football ground",
-        "Volleyball court",
-        "Athletic track",
-      ],
-    },
-    {
-      title: "Art & Craft Room",
-      description:
-        "Dedicated space for creative activities, art, craft, and skill development programs.",
-      image: "/art-room.jpg",
-      features: [
-        "Art supplies",
-        "Craft materials",
-        "Display boards",
-        "Creative workspace",
-      ],
+      icon: <FaUsers />,
     },
   ];
 
   return (
-    <div className="facilities-container">
-      <section className="section">
-        <h2>Our Modern Facilities</h2>
-        <p className="section-intro">
-          Late R. K. Vidyamandir is equipped with modern facilities and
-          infrastructure that provide an ideal environment for learning, growth,
-          and overall development of our students.
+    <main className={styles.main}>
+      {/* 1. Hero Section */}
+      <section className={styles.hero}>
+        <h1>
+          Experience <span>Our Campus</span>
+        </h1>
+        <p>
+          Take a look at the infrastructure and peaceful environment of Late
+          R.K. Vidyamandir, Ruhellapur.
         </p>
       </section>
 
-      <section className="section">
-        <div className="grid grid-2">
-          {facilities.map((facility, index) => (
-            <div key={index} className="info-card">
-              <Image
-                src={facility.image}
-                alt={facility.title}
-                className="facility-image"
-                width={400}
-                height={300}
-              />
-              <h3>{facility.title}</h3>
-              <p>{facility.description}</p>
-              <h4 className="features-heading">Key Features:</h4>
-              <ul className="features-list">
-                {facility.features.map((feature, idx) => (
-                  <li key={idx}>✓ {feature}</li>
-                ))}
-              </ul>
+      {/* 2. Facility Cards - Real Descriptions */}
+      <section className={styles.facilitySection}>
+        <div className={styles.facilityGrid}>
+          {schoolHighlights.map((item, i) => (
+            <div key={i} className={styles.facilityCard}>
+              <div className={styles.imgWrapper}>
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+              <div className={styles.cardBody}>
+                <div
+                  style={{
+                    color: "#f59e0b",
+                    fontSize: "1.5rem",
+                    marginBottom: "10px",
+                  }}
+                >
+                  {item.icon}
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+              </div>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="section white-bg">
-        <h2>Infrastructure Highlights</h2>
-        <div className="grid grid-4 center-text">
-          <div className="info-card highlight">
-            <h3 className="highlight-number blue">9+</h3>
-            <p>
-              <strong>Classrooms</strong>
-            </p>
-            <p>Spacious and well-ventilated</p>
+      {/* 3. Infrastructure Statistics */}
+      <section className={styles.highlightSection}>
+        <h2>
+          Campus <span>At A Glance</span>
+        </h2>
+        <div className={styles.statGrid}>
+          <div className={styles.statCard}>
+            <h2>20+</h2>
+            <p>Total Rooms</p>
           </div>
-          <div className="info-card highlight">
-            <h3 className="highlight-number red">1</h3>
-            <p>
-              <strong>Laboratories</strong>
-            </p>
-            <p>Science, Computer &amp; Language</p>
+          <div className={styles.statCard}>
+            <h2>1</h2>
+            <p>Grand Playground</p>
           </div>
-          <div className="info-card highlight">
-            <h3 className="highlight-number orange">2</h3>
-            <p>
-              <strong>Playgrounds</strong>
-            </p>
-            <p>For various sports activities</p>
+          <div className={styles.statCard}>
+            <h2>2</h2>
+            <p>Floors</p>
           </div>
-          <div className="info-card highlight">
-            <h3 className="highlight-number green">1</h3>
-            <p>
-              <strong> Open-Auditorium</strong>
-            </p>
-            <p>For events and assemblies</p>
+          <div className={styles.statCard}>
+            <h2>100%</h2>
+            <p>Safe Environment</p>
           </div>
         </div>
       </section>
 
-      <section className="section">
-        <h2>Additional Amenities</h2>
-        <div className="grid grid-3">
+      {/* 4. Essential Services */}
+      <section style={{ padding: "80px 8%", background: "#f8fafc" }}>
+        <h2 style={{ textAlign: "center", marginBottom: "50px" }}>
+          Essential <span>Daily Services</span>
+        </h2>
+        <div className={styles.facilityGrid}>
           {[
             {
-              title: "🚌 Transportation",
-              text: "Safe and reliable bus service covering various routes in and around Ruhellapur.",
+              icon: <FaGlassWhiskey />,
+              title: "Pure Drinking Water",
+              text: "Purified RO water facility is provided to ensure the health of our students.",
             },
             {
-              title: "🍽️ Canteen",
-              text: "Hygienic canteen serving nutritious snacks and meals.",
+              icon: <FaBolt />,
+              title: "Full Power Backup",
+              text: "Inverter and generator support so that learning never stops during power outages.",
             },
             {
-              title: "🏥 Health Care",
-              text: "First aid with trained staff and regular health check-ups.",
+              icon: <FaUserShield />,
+              title: "Dedicated Security",
+              text: "Safe entry and exit points with continuous supervision by our disciplined staff.",
             },
             {
-              title: "🔒 Security",
-              text: "24/7 security with CCTV surveillance and trained guards.",
+              icon: <FaSun />,
+              title: "Open Assembly Area",
+              text: "A spacious courtyard for daily prayers, yoga, and cultural performances.",
             },
-            {
-              title: "💧 Clean Water",
-              text: "RO water purification throughout the campus.",
-            },
-            {
-              title: "⚡ Power Backup",
-              text: "Uninterrupted power supply with generator backup.",
-            },
-          ].map((item, idx) => (
-            <div key={idx} className="info-card">
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
+          ].map((service, idx) => (
+            <div
+              key={idx}
+              style={{
+                background: "#fff",
+                padding: "30px",
+                borderRadius: "20px",
+                border: "1px solid #e2e8f0",
+              }}
+            >
+              <div
+                style={{
+                  color: "#f59e0b",
+                  fontSize: "2rem",
+                  marginBottom: "15px",
+                }}
+              >
+                {service.icon}
+              </div>
+              <h4>{service.title}</h4>
+              <p
+                style={{
+                  fontSize: "0.9rem",
+                  color: "#64748b",
+                  marginTop: "10px",
+                }}
+              >
+                {service.text}
+              </p>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="section white-bg">
-        <h2>Future Developments</h2>
-        <div className="info-card future-box">
-          <h3>Expansion Plans</h3>
-          <p>
-            We are continuously working to enhance our facilities and provide
-            even better learning environments. Our upcoming projects include:
+      {/* 5. Direct Visit CTA */}
+      <section style={{ padding: "80px 8%", textAlign: "center" }}>
+        <div
+          style={{
+            background: "#1e1b4b",
+            color: "white",
+            padding: "60px",
+            borderRadius: "40px",
+          }}
+        >
+          <h2 style={{ color: "#f59e0b" }}>Visit Our Campus Today</h2>
+          <p
+            style={{
+              margin: "20px auto 35px",
+              maxWidth: "600px",
+              opacity: 0.9,
+            }}
+          >
+            Nothing beats a personal visit. We invite you to Ruhellapur to see
+            our grand building and meet our dedicated faculty.
           </p>
-          <ul className="features-list">
-            <li>Construction of new academic block</li>
-            <li>Upgrade of existing computer lab</li>
-            <li>Installation of solar power system</li>
-            <li>Development of botanical garden</li>
-            <li>Construction of multi-purpose auditorium</li>
-            <li>Enhancement of sports facilities</li>
-          </ul>
-        </div>
-      </section>
-
-      <section className="section">
-        <h2>Visit Our Campus</h2>
-        <div className="info-card visit-box">
-          <p>
-            We invite parents and students to visit our campus and experience
-            our facilities firsthand. Schedule a campus tour today.
-          </p>
-          <a href="/contact" className="btn">
-            Schedule a Visit
+          <a
+            href="https://maps.app.goo.gl/6jMwe3Np8MmamvoN8"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              background: "#f59e0b",
+              color: "#1e1b4b",
+              padding: "15px 40px",
+              borderRadius: "12px",
+              textDecoration: "none",
+              fontWeight: "700",
+              display: "inline-block",
+            }}
+          >
+            Get Location on Maps
           </a>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

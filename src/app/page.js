@@ -95,7 +95,7 @@ export default function HomePage() {
         <div className={styles.principalContainer}>
           <div className={styles.imageWrapper}>
             <Image
-              src="/teacher1.jpg"
+              src="/principal.jpg"
               alt="Principal"
               width={300}
               height={380}

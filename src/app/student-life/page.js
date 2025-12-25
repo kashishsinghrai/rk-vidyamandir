@@ -4,31 +4,57 @@ import Image from "next/image";
 import { FaFutbol, FaMicroscope, FaPalette, FaMusic } from "react-icons/fa";
 
 export default function StudentLife() {
+  // 1. Houses mein image add ki
   const houses = [
-    { name: "Agni", color: "#ef4444", motto: "Power & Courage" },
-    { name: "Trishul", color: "#3b82f6", motto: "Strength & Unity" },
-    { name: "Prithvi", color: "#22c55e", motto: "Peace & Growth" },
-    { name: "Akash", color: "#f59e0b", motto: "Vision & Wisdom" },
+    {
+      name: "Agni",
+      color: "#ef4444",
+      motto: "Power & Courage",
+      image: "/house-agni.png",
+    },
+    {
+      name: "Trishul",
+      color: "#3b82f6",
+      motto: "Strength & Unity",
+      image: "/house-trishul.png",
+    },
+    {
+      name: "Prithvi",
+      color: "#22c55e",
+      motto: "Peace & Growth",
+      image: "/house-prithvi.png",
+    },
+    {
+      name: "Akash",
+      color: "#f59e0b",
+      motto: "Vision & Wisdom",
+      image: "/house-akash.png",
+    },
   ];
 
+  // 2. Clubs mein alag-alag image paths add kiye
   const clubs = [
     {
-      name: "Science & Robotics",
+      name: "Science & Mathematic",
+      image: "/science-club.png", // Alag image
       icon: <FaMicroscope />,
       desc: "Exploring the wonders of technology and innovation.",
     },
     {
       name: "Sports Academy",
+      image: "/sport-club.jpg", // Alag image
       icon: <FaFutbol />,
       desc: "Building champions on and off the field.",
     },
     {
       name: "Arts & Creativity",
+      image: "/arts-club.png", // Alag image
       icon: <FaPalette />,
       desc: "Expressing imagination through colors and craft.",
     },
     {
       name: "Music & Dance",
+      image: "/music-club.jpg", // Alag image
       icon: <FaMusic />,
       desc: "Finding the rhythm of life through performance.",
     },
@@ -82,14 +108,15 @@ export default function StudentLife() {
             color: "#1e1b4b",
           }}
         >
-          Clubs &amp; Societies {/* & badal kar &amp; kiya */}
+          Clubs &amp; Societies
         </h2>
         <div className={styles.clubGrid}>
           {clubs.map((club, i) => (
             <div key={i} className={styles.clubCard}>
               <div className={styles.clubImg}>
+                {/* 3. Yahan club.image use kiya jo upar array se aa raha hai */}
                 <Image
-                  src={`https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=400`}
+                  src={club.image}
                   alt={club.name}
                   fill
                   style={{ objectFit: "cover" }}
@@ -121,7 +148,7 @@ export default function StudentLife() {
         </div>
       </section>
 
-      {/* Daily Routine Preview - FIXED QUOTES HERE */}
+      {/* Daily Routine Preview */}
       <section
         className={styles.section}
         style={{

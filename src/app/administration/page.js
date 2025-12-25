@@ -56,7 +56,7 @@ export default function AdministrationPage() {
           <div className={styles.leaderCard}>
             <div className={styles.imageWrapper}>
               <Image
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=800"
+                src="/director.jpg"
                 alt="Manager Sir"
                 fill
                 style={{ objectFit: "cover" }}
@@ -82,7 +82,7 @@ export default function AdministrationPage() {
           <div className={styles.leaderCard}>
             <div className={styles.imageWrapper}>
               <Image
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800"
+                src="/principal.jpg"
                 alt="Principal"
                 fill
                 style={{ objectFit: "cover" }}
@@ -195,7 +195,7 @@ export default function AdministrationPage() {
                 marginBottom: "10px",
               }}
             />
-            <h3>50+ Team</h3>
+            <h3>15+ Team</h3>
             <p style={{ color: "#64748b" }}>Dedicated Staff</p>
           </div>
           <div>

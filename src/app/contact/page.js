@@ -71,7 +71,7 @@ export default function ContactPage() {
             <FaEnvelope />
           </div>
           <h3>Email Us</h3>
-          <p>kashishsingh124356@gmail.com</p>
+          <p>rkvjhighschool@gmail.com</p>
           <p>info@rkvidyamandir.edu</p>
         </div>
       </section>
@@ -163,7 +163,7 @@ export default function ContactPage() {
 
         <div className={styles.mapFrame}>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3593.635814524451!2d81.1082604!3d25.7533668!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDQ1JzEyLjEiTiA4McKwMDYnMjkuNyJF!5e0!3m2!1sen!2sin!4v1700000000000"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1797.9301693008695!2d81.1480327!3d25.675924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399b47da04515993%3A0x2fe45550db56a10e!2z4KS44KWN4KS1LuCksOCkvuCkruCkleCksuClgCDgpLXgpL_gpKbgpY3gpK_gpL4g4KSu4KSC4KSm4KS_4KSwIOCknOClguCkqOCkv-Ckr-CksCDgpLngpL7gpIjgpLjgpY3gpJXgpYLgpLIsIOCksOClgeCkueClh-CksuCljeCksuCkvuCkquClgeCksA!5e0!3m2!1sen!2sin!4v1766624628899!5m2!1sen!2sin"
             width="100%"
             height="100%"
             style={{ border: 0 }}

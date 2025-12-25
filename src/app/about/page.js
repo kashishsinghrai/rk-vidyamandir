@@ -41,7 +41,7 @@ export default function AboutPage() {
               }}
             >
               <Image
-                src="/teacher1.jpg"
+                src="/founder.jpg"
                 alt="Chand Sir"
                 fill
                 style={{ objectFit: "cover" }}
@@ -134,7 +134,7 @@ export default function AboutPage() {
             <ul className={styles.achievementList}>
               <li>Consistent 95%+ pass rates in board examinations</li>
               <li>Multiple district and state-level academic achievers</li>
-              <li>Strong alumni network in engineering and medicine</li>
+              <li>Strong alumni network in multiple fields</li>
               <li>Certified excellence from educational authorities</li>
             </ul>
           </div>
