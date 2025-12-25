@@ -94,126 +94,94 @@
 }
 
 /* --- Mobile Sidebar --- */
+/* --- Mobile Sidebar Fixes --- */
 .mobileSidebar {
   position: fixed;
   top: 0;
-  left: -100%;
-  width: 280px; /* Tablet/Phone dono ke liye perfect width */
+  left: 0; /* Isse 0 rakhein, animation transform se handle hoga */
+  width: 280px; /* Ek fixed standard width */
   height: 100vh;
-  background: #0f172a;
+  background-color: #0f172a; /* Deep Navy */
   z-index: 2000;
+  
+  /* Animation Fix: Use transform for smoothness */
+  transform: translateX(-100%); 
   transition: transform 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
-  padding: 30px 25px;
-  box-shadow: 15px 0 40px rgba(0,0,0,0.5);
-  overflow-y: auto; /* Agar menu items zyada ho toh scroll ho sake */
+  
+  /* IMPORTANT: Add padding taaki text cut na ho */
+  padding: 30px 25px; 
   display: flex;
   flex-direction: column;
+  box-shadow: 10px 0 30px rgba(0,0,0,0.5);
+  overflow-y: auto; /* Agar menu lamba ho toh scroll ho sake */
 }
 
+/* Jab sidebar open ho */
 .mobileSidebarOpen {
-  transform: translateX(100%); /* Smooth slide animation */
+  transform: translateX(0); /* Isse menu andar aa jayega */
 }
 
 .sidebarHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 35px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding-bottom: 20px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 15px;
 }
 
 .sidebarHeader h3 {
-  color: #f59e0b;
+  color: #f59e0b; /* Gold color */
   font-size: 1.3rem;
   font-weight: 700;
-  text-transform: uppercase;
+  margin-left: 10px; /* Thoda gap left se */
 }
 
-.closeBtn {
-  background: none;
-  border: none;
-  color: #cbd5e1;
-  font-size: 1.6rem;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.closeBtn:hover {
-  color: #ef4444; /* Close ke liye danger color touch */
-}
-
+/* Links List Fix */
 .mobileNavLinks {
   list-style: none;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  margin: 0;
+  width: 100%;
 }
 
 .mobileNavLink {
-  color: #cbd5e1;
+  color: #e2e8f0;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 500;
   display: block;
-  padding: 12px 15px;
+  padding: 12px 15px; /* Links ke beech achha gap */
+  margin-bottom: 5px;
   border-radius: 8px;
   transition: 0.3s;
+  text-align: left; /* Left align pakka karne ke liye */
 }
 
 .mobileNavLink:hover {
   background: rgba(245, 158, 11, 0.1);
   color: #f59e0b;
-  padding-left: 20px;
+  padding-left: 25px; /* Hover par thoda andar slide hoga */
 }
 
-/* --- Overlay --- */
+/* Close Button Fix */
+.closeBtn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 5px;
+}
+
+/* Overlay Fix: Taaki background blur ho aur focus menu par rahe */
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(2, 6, 23, 0.8);
-  backdrop-filter: blur(4px);
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px); /* Premium feel */
   z-index: 1500;
-  animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* --- Responsive Adjustments --- */
-
-/* Laptops jinki screen choti hai (Small Laptops) */
-@media (max-width: 1280px) {
-  .navContainer {
-    padding: 0 3%;
-  }
-}
-
-/* Breakpoint for Tablets & Small Screens */
-@media (max-width: 1100px) {
-  .mobileMenuBtn {
-    display: flex;
-  }
-  .desktopNav {
-    display: none;
-  }
-  .navContainer {
-    justify-content: flex-start; /* Menu button ko left par lane ke liye */
-  }
-}
-
-/* Phones */
-@media (max-width: 480px) {
-  .mobileSidebar {
-    width: 85%; /* Chote phone par poora coverage */
-  }
-  .navContainer {
-    height: 55px;
-  }
 }
