@@ -1,19 +1,20 @@
 /* Navbar.module.css */
 
 .navbar {
-  background-color: #1e1b4b;
+  background-color: #1e1b4b; /* Deep Navy */
   width: 100%;
   position: sticky;
   top: 0;
-  z-index: 1000; /* Header se sync */
-  border-bottom: 2px solid #f59e0b;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  z-index: 1000;
+  border-bottom: 2px solid #f59e0b; /* Gold Line */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
   transition: all 0.3s ease;
 }
 
-/* Jab page scroll ho tab navbar ko thoda patla kar sakte hain (Optional JS logic ke liye) */
+/* Jab page scroll ho tab navbar thoda compact ho jaye */
 .navbarScrolled {
-  height: 50px;
+  background-color: rgba(30, 27, 75, 0.98);
+  backdrop-filter: blur(10px);
 }
 
 .navContainer {
@@ -22,40 +23,38 @@
   padding: 0 5%;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Space balance ke liye */
-  height: 65px; /* Thodi height badhayi hai */
+  justify-content: space-between;
+  height: 65px;
 }
 
-/* --- Desktop Links --- */
+/* --- Desktop Navigation (Ab 12 links ke liye optimized) --- */
 .desktopNav {
   display: flex;
   list-style: none;
-  /* Gap ko flexible banaya hai: Screen choti hogi gap bhi chota hoga */
-  gap: clamp(10px, 1.8vw, 25px); 
+  /* Gap ko automatic adjust kiya hai taaki links screen se bahar na jayein */
+  gap: clamp(8px, 1.2vw, 20px); 
   width: 100%;
   justify-content: center;
-  flex-wrap: nowrap; /* Wrap hone se bachayein */
 }
 
 .navLink {
   color: #e2e8f0;
   text-decoration: none;
-  /* Font size ko screen ke hisaab se scale kiya */
-  font-size: clamp(0.7rem, 0.9vw, 0.85rem); 
+  /* Font size thoda chota kiya hai taaki 12 links fit aa sakein */
+  font-size: clamp(0.65rem, 0.8vw, 0.8rem);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
   padding: 10px 0;
   position: relative;
-  white-space: nowrap; /* Link ek hi line mein rahega */
+  white-space: nowrap;
 }
 
 .navLink:hover {
   color: #f59e0b;
 }
 
-/* Hover Underline Effect */
 .navLink::after {
   content: '';
   position: absolute;
@@ -71,117 +70,143 @@
   width: 100%;
 }
 
-/* --- Mobile Toggle Button --- */
+/* --- Mobile Menu Button --- */
 .mobileMenuBtn {
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  border: 1px solid rgba(245, 158, 11, 0.4);
   color: #f59e0b;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 8px;
-  display: flex;
+  display: none; /* Desktop par hidden */
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   cursor: pointer;
-  display: none; /* Desktop par hide */
   transition: 0.3s;
 }
 
-.mobileMenuBtn:hover {
-  background: #f59e0b;
-  color: #1e1b4b;
-}
-
-/* --- Mobile Sidebar --- */
-/* --- Mobile Sidebar Fixes --- */
+/* --- Mobile Sidebar (SABSE IMPORTANT FIX) --- */
 .mobileSidebar {
   position: fixed;
   top: 0;
-  left: 0; /* Isse 0 rakhein, animation transform se handle hoga */
-  width: 280px; /* Ek fixed standard width */
+  left: 0;
+  width: 280px; /* Sidebar ki fixed width */
   height: 100vh;
-  background-color: #0f172a; /* Deep Navy */
+  background-color: #0f172a; /* Solid Deep Navy */
   z-index: 2000;
   
-  /* Animation Fix: Use transform for smoothness */
+  /* Initial State: Left side se bahar */
   transform: translateX(-100%); 
   transition: transform 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
   
-  /* IMPORTANT: Add padding taaki text cut na ho */
-  padding: 30px 25px; 
+  /* Visibility Fix: Padding zaroori hai taaki text dikhe */
+  padding: 30px 20px; 
   display: flex;
   flex-direction: column;
-  box-shadow: 10px 0 30px rgba(0,0,0,0.5);
-  overflow-y: auto; /* Agar menu lamba ho toh scroll ho sake */
+  box-shadow: 15px 0 40px rgba(0,0,0,0.5);
+  overflow-y: auto; /* Agar menu lamba ho toh scroll kar sakein */
 }
 
 /* Jab sidebar open ho */
 .mobileSidebarOpen {
-  transform: translateX(0); /* Isse menu andar aa jayega */
+  transform: translateX(0);
 }
 
 .sidebarHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding-bottom: 15px;
 }
 
 .sidebarHeader h3 {
-  color: #f59e0b; /* Gold color */
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-left: 10px; /* Thoda gap left se */
-}
-
-/* Links List Fix */
-.mobileNavLinks {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-}
-
-.mobileNavLink {
-  color: #e2e8f0;
-  text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: 500;
-  display: block;
-  padding: 12px 15px; /* Links ke beech achha gap */
-  margin-bottom: 5px;
-  border-radius: 8px;
-  transition: 0.3s;
-  text-align: left; /* Left align pakka karne ke liye */
-}
-
-.mobileNavLink:hover {
-  background: rgba(245, 158, 11, 0.1);
   color: #f59e0b;
-  padding-left: 25px; /* Hover par thoda andar slide hoga */
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
 }
 
-/* Close Button Fix */
 .closeBtn {
   background: transparent;
   border: none;
   color: #ffffff;
   font-size: 1.8rem;
   cursor: pointer;
-  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Overlay Fix: Taaki background blur ho aur focus menu par rahe */
+/* Mobile Links Styles */
+.mobileNavLinks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.mobileNavLink {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 500;
+  display: block;
+  padding: 12px 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.mobileNavLink:hover {
+  background: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+  padding-left: 25px; /* Hover effect */
+}
+
+/* Background Overlay */
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(4px); /* Premium feel */
+  background: rgba(2, 6, 23, 0.8);
+  backdrop-filter: blur(5px); /* Background ko blur karega */
   z-index: 1500;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* --- RESPONSIVE BREAKPOINTS --- */
+
+/* Jab links bahut zyada ho jayein (1150px se niche mobile menu dikhayein) */
+@media (max-width: 1150px) {
+  .mobileMenuBtn {
+    display: flex;
+  }
+  .desktopNav {
+    display: none;
+  }
+  .navContainer {
+    justify-content: flex-start; /* Button ko left par rakhne ke liye */
+  }
+}
+
+@media (max-width: 480px) {
+  .mobileSidebar {
+    width: 85%; /* Chote phone par sidebar thoda aur bada */
+  }
+  .navContainer {
+    height: 60px;
+  }
 }
