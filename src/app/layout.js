@@ -16,6 +16,11 @@ export const metadata = {
     default: "Late R. K. Vidyamandir | Excellence in Education Since 2000",
     template: "%s | Late R. K. Vidyamandir",
   },
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
   description:
     "Founded by the visionary educator Chand Sir, Late R. K. Vidyamandir in Ruhellapur, Khaga, is a premier school committed to holistic development, modern facilities, and academic success.",
   keywords: [
