@@ -1,16 +1,17 @@
 "use client";
 import Link from "next/link";
 import styles from "./Footer.module.css";
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 
 export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.mainGrid}>
-          {/* Brand Column */}
+          {/* 1. Brand Column */}
           <div className={styles.brandInfo}>
             <h2>
-              R.K. <span>Vidyamandir</span>
+              Late R.K. <span>Vidyamandir</span>
             </h2>
             <p>
               Dedicated to academic excellence and character development. We
@@ -19,7 +20,7 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Quick Links Column */}
+          {/* 2. Quick Links Column */}
           <div className={styles.column}>
             <h3>Academy</h3>
             <ul className={styles.linksList}>
@@ -38,11 +39,13 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact Info Column */}
+          {/* 3. Contact Info Column */}
           <div className={styles.column}>
             <h3>Reach Us</h3>
             <div className={styles.contactItem}>
-              <span className={styles.iconCircle}>📍</span>
+              <span className={styles.iconCircle}>
+                <FaMapMarkerAlt />
+              </span>
               <p>
                 Ruhellapur, Khaga,
                 <br />
@@ -50,16 +53,20 @@ export default function Footer() {
               </p>
             </div>
             <div className={styles.contactItem}>
-              <span className={styles.iconCircle}>📞</span>
+              <span className={styles.iconCircle}>
+                <FaPhoneAlt />
+              </span>
               <p>+91 8009337704</p>
             </div>
             <div className={styles.contactItem}>
-              <span className={styles.iconCircle}>✉️</span>
+              <span className={styles.iconCircle}>
+                <FaEnvelope />
+              </span>
               <p>lateramkalivi@gmail.com</p>
             </div>
           </div>
 
-          {/* School Hours Column */}
+          {/* 4. School Hours Column */}
           <div className={styles.column}>
             <h3>School Hours</h3>
             <div className={styles.hourRow}>
@@ -72,9 +79,7 @@ export default function Footer() {
             </div>
             <div className={styles.hourRow}>
               <span>Sunday:</span>
-              <span style={{ color: "#ef4444", fontWeight: "bold" }}>
-                Closed
-              </span>
+              <span className={styles.closedText}>Closed</span>
             </div>
           </div>
         </div>
@@ -83,12 +88,12 @@ export default function Footer() {
         <div className={styles.bottomBar}>
           <p className={styles.copyright}>
             &copy; {new Date().getFullYear()}{" "}
-            <span className={styles.highlight}>Late R. K. Vidyamandir</span>.
-            All Rights Reserved.
+            <span className={styles.highlightText}>Late R. K. Vidyamandir</span>
+            . All Rights Reserved.
           </p>
           <p className={styles.poweredBy}>
             Designed with Vision by{" "}
-            <span style={{ color: "#fff", fontWeight: "600" }}>Chand Sir</span>
+            <span className={styles.founderName}>Chand Sir</span>
           </p>
         </div>
       </div>

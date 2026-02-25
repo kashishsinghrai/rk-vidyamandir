@@ -1,149 +1,181 @@
+/* src/app/components/Footer.module.css */
+
 .footer {
-  background-color: #0f172a; /* Deep Navy Blue */
-  color: #94a3b8; /* Soft Slate for readability */
-  padding: 80px 5% 40px;
-  position: relative;
-  border-top: 4px solid #f59e0b; /* Gold/Amber line at top */
+  background-color: #0f172a; /* Very dark blue/slate for premium contrast */
+  color: #cbd5e1;
+  padding: 80px 0 0 0;
   font-family: 'Poppins', sans-serif;
+  border-top: 4px solid #f59e0b; /* Gold top border */
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 5%;
 }
 
 .mainGrid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  grid-template-columns: 2fr 1fr 1.5fr 1.5fr; /* Custom widths for columns */
   gap: 40px;
   margin-bottom: 60px;
 }
 
-/* Brand Section */
+/* ================= Brand Column ================= */
 .brandInfo h2 {
-  color: #ffffff;
   font-size: 2rem;
+  color: #ffffff;
   margin-bottom: 20px;
   font-weight: 800;
+  letter-spacing: -0.5px;
 }
 
 .brandInfo h2 span {
-  color: #f59e0b; /* Gold accent */
+  color: #f59e0b;
 }
 
 .brandInfo p {
   line-height: 1.8;
   font-size: 0.95rem;
+  opacity: 0.8;
+  max-width: 90%;
 }
 
-/* Column Headings */
+/* ================= Shared Column Styles ================= */
 .column h3 {
   color: #ffffff;
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 30px;
+  font-size: 1.2rem;
+  margin-bottom: 25px;
   position: relative;
+  padding-bottom: 10px;
 }
 
 .column h3::after {
   content: '';
   position: absolute;
   left: 0;
-  bottom: -10px;
+  bottom: 0;
   width: 40px;
-  height: 3px;
+  height: 2px;
   background-color: #f59e0b;
 }
 
-/* Links List */
+/* ================= Links List ================= */
 .linksList {
   list-style: none;
   padding: 0;
-}
-
-.linksList li {
-  margin-bottom: 15px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .linksList a {
-  color: #94a3b8;
+  color: #cbd5e1;
   text-decoration: none;
   transition: all 0.3s ease;
+  font-size: 0.95rem;
   display: inline-block;
 }
 
 .linksList a:hover {
   color: #f59e0b;
-  transform: translateX(8px);
+  transform: translateX(5px); /* Slide effect on hover */
 }
 
-/* Contact Items */
+/* ================= Contact Info ================= */
 .contactItem {
   display: flex;
   align-items: flex-start;
   gap: 15px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .iconCircle {
-  background: rgba(245, 158, 11, 0.1);
   color: #f59e0b;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  border: 1px solid rgba(245, 158, 11, 0.2);
-  flex-shrink: 0;
+  font-size: 1.1rem;
+  margin-top: 4px;
 }
 
-/* School Hours */
+.contactItem p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ================= School Hours ================= */
 .hourRow {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  margin-bottom: 12px;
-  font-size: 0.9rem;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+  padding-bottom: 10px;
+}
+
+.hourRow:last-child {
+  border-bottom: none;
 }
 
 .highlight {
   color: #f59e0b;
+  font-weight: 600;
+}
+
+.closedText {
+  color: #ef4444; /* Red color */
   font-weight: 700;
-}
-
-/* Bottom Bar */
-.bottomBar {
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding-top: 40px;
-  text-align: center;
-}
-
-.copyright {
-  font-size: 0.95rem;
-  color: #64748b;
-}
-
-.poweredBy {
-  margin-top: 15px;
-  font-size: 0.85rem;
   letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
 }
 
-/* Responsive */
+/* ================= Bottom Bar ================= */
+.bottomBar {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 25px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+.highlightText {
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+.founderName {
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* ================= Responsive Queries ================= */
 @media (max-width: 1024px) {
   .mainGrid {
-    grid-template-columns: 1fr 1fr;
-    gap: 50px;
+    grid-template-columns: 1fr 1fr; /* 2 columns on tablet */
+  }
+  
+  .brandInfo p {
+    max-width: 100%;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .mainGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* 1 column on mobile */
+    gap: 40px;
   }
+  
+  .bottomBar {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+  
   .footer {
-    padding: 60px 8% 30px;
+    padding-top: 60px;
   }
 }
