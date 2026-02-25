@@ -6,11 +6,11 @@ import { FaGraduationCap, FaChalkboardTeacher, FaAward } from "react-icons/fa";
 export default function TeachersPage() {
   const teachers = [
     {
-      name: "Chand Sir",
-      subject: "Principal & Mathematics",
+      name: "Mr. Anshuman Singh",
+      subject: "Principal",
       qualification: "M.A., B.Ed.",
       experience: "25+ years",
-      image: "/teacher-principal.jpg", // Replace with actual path if different
+      image: "/principal.jpg", // Replace with actual path if different
     },
     {
       name: "Mrs. Sunita Sharma",
