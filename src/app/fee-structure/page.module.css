@@ -1,28 +1,27 @@
-/* page.module.css */
+/* src/app/fee-structure/page.module.css */
 
 .main {
   background-color: #f8fafc;
   min-height: 100vh;
   font-family: 'Poppins', sans-serif;
   color: #1e1b4b;
+  overflow-x: hidden;
 }
 
-/* --- Hero Section --- */
+/* ================= Hero Section ================= */
 .hero {
   background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
-  padding: 120px 8% 160px;
+  padding: 100px 8% 160px;
   text-align: center;
   color: white;
+  clip-path: polygon(0 0, 100% 0, 100% 88%, 0% 100%);
   position: relative;
-  /* Futuristic diagonal cut */
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
 }
 
 .hero h1 {
   font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 800;
   margin-bottom: 15px;
-  letter-spacing: -1px;
 }
 
 .hero h1 span {
@@ -31,7 +30,7 @@
 
 .hero p {
   opacity: 0.85;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   max-width: 700px;
   margin: 0 auto 30px;
 }
@@ -48,20 +47,61 @@
   align-items: center;
   gap: 10px;
   transition: all 0.3s ease;
-  text-transform: uppercase;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
 }
 
 .downloadBtn:hover {
   background: #f59e0b;
   color: #1e1b4b;
-  box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+  transform: translateY(-2px);
 }
 
-/* --- Calculator Box --- */
+/* ================= Shared Layout Classes ================= */
+.section {
+  padding: 80px 8%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.noPaddingBottom {
+  padding-bottom: 0;
+}
+
+.noPaddingTop {
+  padding-top: 0;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.sectionHeader h2 {
+  font-size: 2.2rem;
+  color: #1e1b4b;
+  font-weight: 800;
+}
+
+.bgLight {
+  background-color: #f1f5f9;
+  max-width: 100%;
+}
+
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.iconGold {
+  color: #f59e0b;
+}
+
+/* ================= Interactive Fee Estimator ================= */
 .calculatorBox {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
+  background: white;
   border: 2px dashed #cbd5e1;
   padding: 40px;
   border-radius: 30px;
@@ -70,40 +110,83 @@
   text-align: center;
   position: relative;
   z-index: 10;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.calculatorTitle {
+  font-size: 1.6rem;
+  color: #1e1b4b;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.calculatorDesc {
+  color: #64748b;
+  margin-bottom: 25px;
 }
 
 .selectPremium {
-  padding: 14px 20px;
+  padding: 15px 20px;
   border-radius: 12px;
   border: 2px solid #e2e8f0;
   width: 100%;
   max-width: 350px;
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: #1e1b4b;
   outline: none;
   cursor: pointer;
-  transition: 0.3s;
-  appearance: none;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23f59e0b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") no-repeat right 15px center;
+  transition: 0.3s ease;
+  background-color: #f8fafc;
 }
 
 .selectPremium:focus {
   border-color: #f59e0b;
-  box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.1);
+  box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.15);
 }
 
-/* --- Fee Table --- */
-.section {
-  padding: 60px 8%;
+.estimateResult {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
 }
 
+.estimateResult span {
+  font-size: 0.95rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.estimateResult h2 {
+  font-size: 3rem;
+  color: #f59e0b;
+  margin-top: 5px;
+  line-height: 1;
+}
+
+/* ================= Main Fee Table ================= */
 .tableCard {
   background: white;
   padding: 40px;
   border-radius: 24px;
   box-shadow: 0 15px 35px rgba(0,0,0,0.04);
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.tableTitle {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #1e1b4b;
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.tableResponsive {
   overflow-x: auto;
 }
 
@@ -114,47 +197,52 @@
 }
 
 .feeTable th {
-  background: #f1f5f9;
+  background: #f8fafc;
   padding: 20px;
   color: #1e1b4b;
   text-align: left;
   font-weight: 700;
   border-bottom: 3px solid #e2e8f0;
   text-transform: uppercase;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
 }
 
 .feeTable td {
   padding: 20px;
   border-bottom: 1px solid #f1f5f9;
   color: #475569;
-  font-size: 1rem;
+  font-size: 1.05rem;
+  transition: all 0.2s ease;
 }
 
-.feeTable tr:last-child td {
-  border-bottom: none;
+.feeTable tr {
+  transition: all 0.2s ease;
+}
+
+.feeTable tr:hover td {
+  background: #f8fafc;
+}
+
+.activeRow td {
+  background: rgba(245, 158, 11, 0.08) !important;
+  border-color: rgba(245, 158, 11, 0.2);
 }
 
 .amount {
-  color: #1e1b4b;
+  color: #1e1b4b !important;
   font-weight: 800;
-  font-size: 1.1rem;
+  font-size: 1.2rem !important;
 }
 
-/* --- Grid & Cards --- */
-.grid3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-}
-
+/* ================= Cards (Payment & Charges) ================= */
 .paymentCard {
   background: white;
   padding: 40px 30px;
   border-radius: 20px;
   text-align: center;
   border: 1px solid #e2e8f0;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.02);
 }
 
 .paymentCard:hover {
@@ -167,53 +255,107 @@
   font-size: 2.5rem;
   color: #f59e0b;
   margin-bottom: 20px;
-  display: inline-block;
 }
 
 .paymentCard h3, .paymentCard h4 {
   color: #1e1b4b;
   margin-bottom: 10px;
   font-size: 1.3rem;
+  font-weight: 700;
 }
 
-/* --- Alert / Scholarship Box --- */
+.paymentCard p {
+  color: #64748b;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+}
+
+.priceTag {
+  color: #1e1b4b;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.paymentDetails {
+  line-height: 1.8 !important;
+  background: #f8fafc;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 0.9rem !important;
+}
+
+/* ================= Scholarship CTA ================= */
 .alertBox {
-  background: #1e1b4b;
-  background-image: radial-gradient(circle at top right, #312e81, transparent);
+  background: linear-gradient(135deg, #1e1b4b, #312e81);
   color: white;
   padding: 50px;
   border-radius: 35px;
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 30px;
   box-shadow: 0 20px 50px rgba(30, 27, 75, 0.2);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.alertIcon {
+  font-size: 4rem;
+}
+
+.alertContent {
+  flex: 1;
+}
+
+.alertContent h3 {
+  font-size: 1.8rem;
+  color: #f59e0b;
+  margin-bottom: 10px;
+}
+
+.alertContent p {
+  font-size: 1.05rem;
+  opacity: 0.9;
+  line-height: 1.6;
 }
 
 .btnGold {
   background: #f59e0b;
   color: #1e1b4b;
-  padding: 15px 35px;
+  padding: 16px 30px;
   border-radius: 12px;
   font-weight: 700;
   text-decoration: none;
   white-space: nowrap;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
 }
 
 .btnGold:hover {
   background: #fbbf24;
-  transform: scale(1.05);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 25px rgba(245, 158, 11, 0.4);
 }
 
-/* --- FAQ Section --- */
+/* ================= FAQs ================= */
 .faqSection {
-  padding: 100px 8%;
+  padding: 80px 8%;
   background: white;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.faqTitle {
+  font-size: 2.2rem;
+  color: #1e1b4b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+  font-weight: 800;
 }
 
 .faqGrid {
-  max-width: 900px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -224,27 +366,70 @@
   border: 1px solid #e2e8f0;
   padding: 25px 30px;
   border-radius: 18px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 .faqItem:hover {
   border-color: #f59e0b;
-  background: #fff;
+  transform: translateX(5px);
+  background: white;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.03);
 }
 
 .faqItem h4 {
   color: #1e1b4b;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
+  font-weight: 700;
   margin-bottom: 10px;
+}
+
+.faqItem p {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* ================= Policy Footer ================= */
+.policySection {
+  text-align: center;
+  padding: 60px 8%;
+  background: #f1f5f9;
+  border-top: 1px solid #e2e8f0;
+}
+
+.policySection h4 {
+  color: #1e1b4b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+}
+
+.policyList {
+  list-style: none;
+  padding: 0;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.policyList li {
+  margin-bottom: 15px;
+  font-size: 1.05rem;
+  color: #475569;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
 }
 
-/* --- Responsive Queries --- */
+.policyList li span {
+  color: #f59e0b;
+  font-weight: bold;
+}
+
+/* ================= Responsive Queries ================= */
 @media (max-width: 1024px) {
   .grid3 {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -256,29 +441,43 @@
   .alertBox {
     flex-direction: column;
     text-align: center;
-    padding: 35px 25px;
+    padding: 40px 20px;
   }
 
-  .section {
-    padding: 40px 5%;
+  .section, .faqSection {
+    padding: 60px 5%;
   }
 
   .hero {
     padding: 100px 5% 120px;
+    clip-path: polygon(0 0, 100% 0, 100% 92%, 0% 100%);
   }
 
-  .tableCard {
-    padding: 20px;
+  .tableCard, .calculatorBox {
+    padding: 25px 15px;
   }
-
+  
   .calculatorBox {
-    margin: -60px 20px 40px;
-    padding: 30px 20px;
+    margin-top: -60px;
+  }
+
+  .estimateResult h2 {
+    font-size: 2.5rem;
   }
 }
 
 @media (max-width: 480px) {
   .hero h1 {
     font-size: 2.2rem;
+  }
+  
+  .downloadBtn, .btnGold {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .faqTitle {
+    font-size: 1.8rem;
+    flex-direction: column;
   }
 }

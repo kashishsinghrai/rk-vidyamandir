@@ -2,11 +2,12 @@
   background-color: #ffffff;
   color: #1e293b;
   font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
 }
 
 /* Page Header */
 .aboutHero {
-  background: linear-gradient(rgba(30, 27, 75, 0.9), rgba(30, 27, 75, 0.9)), url('/school-banner.jpg');
+  background: linear-gradient(rgba(30, 27, 75, 0.9), rgba(30, 27, 75, 0.85)), url('/school-banner.jpg');
   background-size: cover;
   background-position: center;
   padding: 100px 5%;
@@ -24,6 +25,19 @@
   color: #f59e0b;
 }
 
+.aboutHero p {
+  font-size: 1.2rem;
+  color: #cbd5e1;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Utility Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 /* History & Founder Section */
 .storySection {
   padding: 80px 8%;
@@ -38,26 +52,34 @@
   align-items: center;
 }
 
-.infoCard h3 {
+.infoCard h2, .infoCard h3 {
   color: #1e1b4b;
   font-size: 2rem;
   margin-bottom: 20px;
   position: relative;
 }
 
-.infoCard h3::after {
+.infoCard h2::after, .infoCard h3::after {
   content: '';
   display: block;
   width: 50px;
   height: 4px;
   background: #f59e0b;
   margin-top: 10px;
+  border-radius: 2px;
 }
 
 .infoCard p {
   line-height: 1.8;
   color: #64748b;
   margin-bottom: 20px;
+  font-size: 1.05rem;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
 }
 
 /* Philosophy Section */
@@ -71,6 +93,7 @@
   font-size: 2.5rem;
   color: #1e1b4b;
   margin-bottom: 60px;
+  font-weight: 800;
 }
 
 .philosophyGrid {
@@ -85,22 +108,41 @@
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
   border-top: 5px solid #f59e0b;
-  transition: 0.3s;
+  transition: 0.3s ease;
 }
 
 .pCard:hover {
   transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.pCard h3 {
+  font-size: 1.4rem;
+  color: #1e1b4b;
+  margin-bottom: 15px;
+}
+
+.pCard p {
+  color: #64748b;
+  line-height: 1.6;
 }
 
 .pIcon {
   font-size: 2.5rem;
   margin-bottom: 20px;
-  display: block;
+  display: inline-block;
 }
 
 /* Achievements */
 .achievementSection {
   padding: 100px 8%;
+}
+
+.achievementBoxTitle {
+  color: #1e1b4b;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  font-weight: 700;
 }
 
 .achievementList {
@@ -110,35 +152,64 @@
 
 .achievementList li {
   padding: 12px 0;
-  padding-left: 30px;
+  padding-left: 35px;
   position: relative;
   color: #475569;
+  font-size: 1.05rem;
+  line-height: 1.5;
 }
 
 .achievementList li::before {
   content: '✓';
   position: absolute;
   left: 0;
+  top: 12px;
   color: #f59e0b;
   font-weight: bold;
+  font-size: 1.2rem;
+  background: rgba(245, 158, 11, 0.1);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
 
 /* Commitment Quote */
+.commitmentWrapper {
+  padding: 0 5% 100px;
+}
+
 .commitmentBox {
-  background: #1e1b4b;
+  background: linear-gradient(135deg, #1e1b4b, #312e81);
   color: white;
   padding: 80px 10%;
   text-align: center;
   border-radius: 40px;
-  margin: 80px 8%;
+  max-width: 1000px;
+  margin: 0 auto;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 20px 50px rgba(30, 27, 75, 0.2);
+}
+
+.quoteMark {
+  position: absolute;
+  top: -30px;
+  left: 30px;
+  font-size: 15rem;
+  opacity: 0.05;
+  color: #f59e0b;
+  font-family: serif;
+  line-height: 1;
+  pointer-events: none;
 }
 
 .commitmentBox blockquote {
   font-size: 1.5rem;
   font-style: italic;
-  line-height: 1.6;
+  line-height: 1.8;
   position: relative;
   z-index: 2;
 }
@@ -149,10 +220,67 @@
   color: #f59e0b;
   font-weight: 700;
   font-size: 1.2rem;
+  position: relative;
+  z-index: 2;
 }
 
-/* Responsive */
+/* ================= RESPONSIVE ================= */
 @media (max-width: 968px) {
-  .grid2 { grid-template-columns: 1fr; gap: 40px; }
-  .aboutHero { padding: 60px 5%; }
+  .grid2 { 
+    grid-template-columns: 1fr; 
+    gap: 40px; 
+  }
+  
+  /* Reveres layout order on mobile for founder image */
+  .reverseGrid {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  
+  .aboutHero { 
+    padding: 80px 5%; 
+  }
+  
+  .imagePlaceholder {
+    min-height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+  
+  .storySection, .philosophyBg, .achievementSection {
+    padding: 60px 5%;
+  }
+  
+  .commitmentBox {
+    padding: 50px 8%;
+    border-radius: 25px;
+    margin: 40px auto 0;
+  }
+  
+  .commitmentBox blockquote {
+    font-size: 1.2rem;
+  }
+  
+  .infoCard h2, .infoCard h3 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutHero h1 {
+    font-size: 2.2rem;
+  }
+  
+  .aboutHero p {
+    font-size: 1rem;
+  }
+  
+  .philosophyGrid {
+    grid-template-columns: 1fr;
+  }
 }

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { FaFutbol, FaMicroscope, FaPalette, FaMusic } from "react-icons/fa";
 
 export default function StudentLife() {
-  // 1. Houses mein image add ki
+  // Using Local Authentic Images Only
   const houses = [
     {
       name: "Agni",
@@ -32,67 +32,98 @@ export default function StudentLife() {
     },
   ];
 
-  // 2. Clubs mein alag-alag image paths add kiye
   const clubs = [
     {
-      name: "Science & Mathematic",
-      image: "/science-club.png", // Alag image
+      name: "Science & Mathematics",
+      image: "/science-club.png",
       icon: <FaMicroscope />,
-      desc: "Exploring the wonders of technology and innovation.",
+      desc: "Exploring the wonders of technology, logic, and scientific innovation.",
     },
     {
       name: "Sports Academy",
-      image: "/sport-club.jpg", // Alag image
+      image: "/sport-club.jpg",
       icon: <FaFutbol />,
-      desc: "Building champions on and off the field.",
+      desc: "Building discipline, teamwork, and champions on and off the field.",
     },
     {
       name: "Arts & Creativity",
-      image: "/arts-club.png", // Alag image
+      image: "/arts-club.png",
       icon: <FaPalette />,
-      desc: "Expressing imagination through colors and craft.",
+      desc: "Expressing imagination through vibrant colors, crafts, and visual arts.",
     },
     {
       name: "Music & Dance",
-      image: "/music-club.jpg", // Alag image
+      image: "/music-club.jpg",
       icon: <FaMusic />,
-      desc: "Finding the rhythm of life through performance.",
+      desc: "Finding the rhythm of life through cultural expressions and performance.",
     },
   ];
 
+  // SEO: Structured Data for Extracurricular Activities
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Student Life & Clubs | Late Ramkali Vidya Mandir",
+    description:
+      "Discover the vibrant campus culture at Late R.K. Vidyamandir. Explore our House system (Agni, Trishul, Prithvi, Akash) and various student clubs like Science and Sports.",
+    url: "https://www.rkvmjuniorhighschool.dpdns.org/student-life",
+  };
+
   return (
     <main className={styles.main}>
+      {/* Injecting Schema Markup */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Hero Section */}
       <section className={styles.hero}>
         <h1>
           Student <span>Life</span>
         </h1>
         <p>
-          Beyond books, we nurture talents. Discover our vibrant campus culture.
+          Beyond books, we nurture character and talents. Discover our vibrant
+          and energetic campus culture.
         </p>
       </section>
 
       {/* House System */}
-      <section className={styles.section} style={{ paddingTop: 0 }}>
+      <section className={`${styles.section} ${styles.houseSection}`}>
+        <div className={styles.sectionHeader}>
+          <h2>The Four Pillars</h2>
+          <p>Our House System promotes healthy competition and unity.</p>
+        </div>
+
         <div className={styles.houseGrid}>
           {houses.map((house, i) => (
             <div
               key={i}
               className={styles.houseCard}
-              style={{ background: house.color }}
+              style={{ "--houseColor": house.color }} // Custom CSS variable for dynamic colors
             >
-              <h2 style={{ fontSize: "2rem", marginBottom: "5px" }}>
-                {house.name}
-              </h2>
-              <p style={{ fontSize: "0.8rem", opacity: 0.9 }}>HOUSE</p>
+              <div className={styles.houseImgWrapper}>
+                <Image
+                  src={house.image}
+                  alt={`${house.name} House at Late R.K. Vidyamandir`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  style={{ objectFit: "cover" }}
+                />
+                <div
+                  className={styles.houseOverlay}
+                  style={{ background: house.color }}
+                ></div>
+              </div>
               <div
-                style={{
-                  height: "2px",
-                  background: "rgba(255,255,255,0.3)",
-                  margin: "15px 0",
-                }}
-              ></div>
-              <p style={{ fontStyle: "italic" }}>{house.motto}</p>
+                className={styles.houseContent}
+                style={{ background: house.color }}
+              >
+                <h2 className={styles.houseName}>{house.name}</h2>
+                <p className={styles.houseLabel}>HOUSE</p>
+                <div className={styles.houseDivider}></div>
+                <p className={styles.houseMotto}>{house.motto}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -100,81 +131,44 @@ export default function StudentLife() {
 
       {/* Clubs & Activities */}
       <section className={styles.section}>
-        <h2
-          style={{
-            textAlign: "center",
-            marginBottom: "50px",
-            fontSize: "2.5rem",
-            color: "#1e1b4b",
-          }}
-        >
-          Clubs &amp; Societies
-        </h2>
+        <div className={styles.sectionHeader}>
+          <h2>Clubs &amp; Societies</h2>
+          <p>
+            Platforms for students to discover and hone their unique skills.
+          </p>
+        </div>
+
         <div className={styles.clubGrid}>
           {clubs.map((club, i) => (
             <div key={i} className={styles.clubCard}>
               <div className={styles.clubImg}>
-                {/* 3. Yahan club.image use kiya jo upar array se aa raha hai */}
                 <Image
                   src={club.image}
-                  alt={club.name}
+                  alt={`${club.name} at Late R.K. Vidyamandir`}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   style={{ objectFit: "cover" }}
                 />
               </div>
               <div className={styles.clubContent}>
-                <div
-                  style={{
-                    fontSize: "2.5rem",
-                    color: "#f59e0b",
-                    marginBottom: "10px",
-                  }}
-                >
-                  {club.icon}
-                </div>
+                <div className={styles.clubIcon}>{club.icon}</div>
                 <h3>{club.name}</h3>
-                <p
-                  style={{
-                    color: "#64748b",
-                    fontSize: "0.95rem",
-                    lineHeight: "1.6",
-                  }}
-                >
-                  {club.desc}
-                </p>
+                <p className={styles.clubDesc}>{club.desc}</p>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Daily Routine Preview */}
-      <section
-        className={styles.section}
-        style={{
-          background: "#1e1b4b",
-          color: "white",
-          borderRadius: "50px",
-          margin: "0 8% 80px",
-        }}
-      >
-        <div style={{ textAlign: "center" }}>
-          <h2 style={{ color: "#f59e0b", marginBottom: "20px" }}>
-            Our Daily Spirit
-          </h2>
-          <p
-            style={{
-              fontSize: "1.3rem",
-              opacity: 0.9,
-              maxWidth: "800px",
-              margin: "0 auto",
-              fontStyle: "italic",
-              lineHeight: "1.8",
-            }}
-          >
+      {/* Daily Routine Preview / Spirit */}
+      <section className={styles.spiritSection}>
+        <div className={styles.spiritBox}>
+          <h2 className={styles.spiritTitle}>Our Daily Spirit</h2>
+          <p className={styles.spiritQuote}>
             &quot;From the morning assembly prayers to the evening sports
-            practice, every minute at R.K. Vidyamandir is designed to build
-            character.&quot;
+            practice, every single minute at R.K. Vidyamandir is carefully
+            designed to build character, resilience, and lifelong
+            friendships.&quot;
           </p>
         </div>
       </section>

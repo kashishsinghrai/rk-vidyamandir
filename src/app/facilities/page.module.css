@@ -1,100 +1,341 @@
+/* src/app/facilities/page.module.css */
+
 .main {
   background-color: #f8fafc;
   min-height: 100vh;
   font-family: 'Poppins', sans-serif;
   color: #1e1b4b;
+  overflow-x: hidden;
 }
 
-/* --- Hero Section --- */
+/* ================= Hero Section ================= */
 .hero {
   background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
-  padding: 100px 8% 140px;
+  padding: 100px 8% 160px;
   text-align: center;
   color: white;
   clip-path: polygon(0 0, 100% 0, 100% 88%, 0% 100%);
+  position: relative;
 }
 
 .hero h1 {
-  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 800;
   margin-bottom: 15px;
+  letter-spacing: -1px;
 }
 
-.hero h1 span { color: #f59e0b; }
+.hero h1 span { 
+  color: #f59e0b; 
+}
 
-/* --- Facility Grid --- */
+.hero p {
+  font-size: 1.15rem;
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+/* ================= Facility Cards Grid ================= */
 .facilitySection {
-  margin-top: -100px;
+  margin-top: -100px; /* Pulls the cards up over the hero gradient */
   padding: 0 8% 80px;
+  position: relative;
+  z-index: 10;
 }
 
 .facilityGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .facilityCard {
   background: white;
   border-radius: 24px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  box-shadow: 0 15px 40px rgba(30, 27, 75, 0.08);
   border: 1px solid #e2e8f0;
-  transition: 0.3s ease;
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .facilityCard:hover {
   transform: translateY(-8px);
   border-color: #f59e0b;
+  box-shadow: 0 20px 50px rgba(30, 27, 75, 0.12);
 }
 
 .imgWrapper {
   position: relative;
   height: 260px;
   background: #f1f5f9;
+  width: 100%;
 }
 
 .cardBody {
-  padding: 25px;
+  padding: 30px 25px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-.cardBody h3 {
+.cardIcon {
+  color: #f59e0b;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.cardTitle {
   font-size: 1.4rem;
   margin-bottom: 12px;
   color: #1e1b4b;
+  font-weight: 700;
 }
 
-.cardBody p {
+.cardDesc {
   font-size: 0.95rem;
   color: #64748b;
   line-height: 1.6;
 }
 
-/* --- Stats/Highlights --- */
+/* ================= Stats/Highlights ================= */
 .highlightSection {
   background: #ffffff;
   padding: 80px 8%;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.highlightContainer {
+  max-width: 1200px;
+  margin: 0 auto;
   text-align: center;
+}
+
+.highlightTitle {
+  font-size: 2.5rem;
+  color: #1e1b4b;
+  margin-bottom: 50px;
+  font-weight: 800;
+}
+
+.highlightTitle span {
+  color: #f59e0b;
 }
 
 .statGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 30px;
-  margin-top: 40px;
 }
 
 .statCard {
-  padding: 30px;
-  background: #f1f5f9;
+  padding: 40px 20px;
+  background: #f8fafc;
   border-radius: 20px;
-  border-bottom: 4px solid #f59e0b;
+  border-bottom: 5px solid #f59e0b;
+  transition: transform 0.3s ease;
 }
 
-.statCard h2 { color: #1e1b4b; font-size: 2.5rem; }
-.statCard p { font-weight: 600; color: #64748b; }
+.statCard:hover {
+  transform: translateY(-5px);
+  background: #f1f5f9;
+}
+
+.statNumber { 
+  color: #1e1b4b; 
+  font-size: 3rem; 
+  font-weight: 800;
+  margin-bottom: 5px;
+  line-height: 1;
+}
+
+.statLabel { 
+  font-weight: 600; 
+  color: #64748b; 
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+/* ================= Essential Services ================= */
+.servicesSection {
+  padding: 100px 8%;
+  background: #f8fafc;
+}
+
+.servicesHeader {
+  text-align: center;
+  margin-bottom: 60px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.servicesHeader h2 {
+  font-size: 2.5rem;
+  color: #1e1b4b;
+  margin-bottom: 15px;
+}
+
+.servicesHeader span {
+  color: #f59e0b;
+}
+
+.servicesHeader p {
+  color: #64748b;
+  font-size: 1.1rem;
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.serviceCard {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+}
+
+.serviceCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(30, 27, 75, 0.08);
+  border-color: #cbd5e1;
+}
+
+.serviceIcon {
+  color: #f59e0b;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.serviceTitle {
+  font-size: 1.3rem;
+  color: #1e1b4b;
+  margin-bottom: 10px;
+}
+
+.serviceText {
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* ================= Direct Visit CTA ================= */
+.ctaSection {
+  padding: 80px 5%;
+  text-align: center;
+}
+
+.ctaBox {
+  background: linear-gradient(135deg, #1e1b4b, #312e81);
+  color: white;
+  padding: 80px 5%;
+  border-radius: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+  box-shadow: 0 20px 50px rgba(30, 27, 75, 0.2);
+}
+
+.ctaTitle {
+  color: #f59e0b;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.ctaDesc {
+  margin: 0 auto 40px;
+  max-width: 650px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.ctaBtn {
+  background: #f59e0b;
+  color: #1e1b4b;
+  padding: 16px 35px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 1.05rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+}
+
+.ctaBtn:hover {
+  background: #fbbf24;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 25px rgba(245, 158, 11, 0.4);
+}
+
+/* ================= Media Queries ================= */
+@media (max-width: 968px) {
+  .hero { 
+    padding: 100px 5% 120px; 
+    clip-path: polygon(0 0, 100% 0, 100% 92%, 0% 100%);
+  }
+  
+  .facilitySection { 
+    margin-top: -80px; 
+  }
+  
+  .highlightTitle, .servicesHeader h2, .ctaTitle {
+    font-size: 2rem;
+  }
+}
 
 @media (max-width: 768px) {
-  .hero { padding: 80px 5% 100px; }
-  .facilityGrid { grid-template-columns: 1fr; }
+  .facilityGrid { 
+    grid-template-columns: 1fr; 
+    max-width: 500px;
+  }
+  
+  .imgWrapper {
+    height: 220px;
+  }
+  
+  .servicesGrid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+  }
+  
+  .highlightSection, .servicesSection {
+    padding: 60px 5%;
+  }
+  
+  .ctaBox {
+    padding: 50px 20px;
+    border-radius: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { 
+    font-size: 2.2rem; 
+  }
+  
+  .statNumber {
+    font-size: 2.5rem;
+  }
+  
+  .ctaBtn {
+    width: 100%;
+  }
 }

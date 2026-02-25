@@ -1,99 +1,57 @@
+/* src/app/components/Header.module.css */
+
 .headerWrapper {
+  font-family: 'Poppins', sans-serif;
   width: 100%;
   position: relative;
   z-index: 1000;
-  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
-/* --- Top Bar --- */
+/* ================= Top Bar ================= */
 .topBar {
   background-color: #1e1b4b;
   color: #cbd5e1;
-  padding: 8px 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.75rem;
+  padding: 8px 5%;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
 }
 
 .topBarInfo {
   display: flex;
   gap: 20px;
+  align-items: center;
 }
 
 .udiseBadge {
-  background: rgba(245, 158, 11, 0.2);
   color: #f59e0b;
-  padding: 2px 8px;
-  border-radius: 4px;
 }
 
-/* --- Main Header & Overlap Fix --- */
+/* ================= Main Header ================= */
 .mainHeader {
-  background-color: #fcfaf5; /* Logo background friendly color */
-  padding: 12px 5%;
+  background-color: #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  padding: 15px 5%;
 }
 
 .brand {
   display: flex;
   align-items: center;
   gap: 15px;
-  flex: 1; /* Space management */
-  min-width: 0;
-}
-
-/* Circular Base for Logo */
-/* Circular Base for Logo */
-.logoCircle {
-  width: 70px;         /* Size aap apne hisaab se adjust kar sakte hain */
-  height: 70px;
-  background: #f5f1e4; /* Logo ke background se match karta rang */
-  border-radius: 50% !important; /* Forcefully circle banane ke liye */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;    /* Baahar nikli hui image ko kaatne ke liye */
-  border: 2px solid #f59e0b; /* Gold border */
-  flex-shrink: 0;
-  position: relative;  /* Next.js Image positioning ke liye */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.actualLogo {
-  width: 100% !important;
-  height: 100% !important;
-  border-radius: 50%;   /* Image ko khud bhi gol karega */
-  object-fit: contain;  /* Isse logo ke andar ka text/tree nahi katega */
-  padding: 2px;         /* Border aur logo ke beech thoda gap */
-  display: block;
-}
-
-/* Mobile par thoda chota logo */
-@media (max-width: 768px) {
-  .logoCircle {
-    width: 55px;
-    height: 55px;
-  }
-}
-
-.titleContainer {
-  min-width: 0;
+  text-decoration: none;
 }
 
 .titleContainer h1 {
-  /* Fluid font: Screen choti hone par naam apne aap scale hoga */
-  font-size: clamp(0.95rem, 2.2vw, 1.6rem);
+  font-size: 1.8rem;
   color: #1e1b4b;
   font-weight: 800;
-  line-height: 1.2;
   margin: 0;
-  text-transform: uppercase;
-  white-space: normal; /* Name poora dikhane ke liye wrap allow kiya */
+  line-height: 1.2;
 }
 
 .titleContainer h1 span {
@@ -101,18 +59,17 @@
 }
 
 .subtitle {
-  font-size: clamp(0.65rem, 1vw, 0.85rem);
   color: #64748b;
-  margin-top: 2px;
-  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 5px 0 0 0;
+  font-weight: 500;
 }
 
-/* --- Actions --- */
+/* ================= Header Actions ================= */
 .headerActions {
   display: flex;
   align-items: center;
-  gap: 20px;
-  flex-shrink: 0;
+  gap: 30px;
 }
 
 .callWidget {
@@ -122,21 +79,34 @@
 }
 
 .iconCircle {
-  background: #fff;
-  width: 42px;
-  height: 42px;
+  background-color: rgba(245, 158, 11, 0.1);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  color: #1e1b4b;
-  border: 1px solid #e2e8f0;
-  transition: 0.3s;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.iconCircle a {
+  color: #f59e0b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
 }
 
 .iconCircle:hover {
-  background: #f59e0b;
-  color: #fff;
+  background-color: #f59e0b;
+  transform: scale(1.1);
+}
+
+.iconCircle:hover a {
+  color: #ffffff;
 }
 
 .callText {
@@ -144,62 +114,119 @@
   flex-direction: column;
 }
 
-.callText span { font-size: 0.7rem; color: #64748b; text-transform: uppercase; }
-.callText b { font-size: 0.95rem; color: #1e1b4b; white-space: nowrap; }
+.callText span {
+  font-size: 0.8rem;
+  color: #64748b;
+}
 
+.callText b {
+  font-size: 1.05rem;
+  color: #1e1b4b;
+}
+
+/* ================= Login Button ================= */
 .loginBtn {
-  background: #1e1b4b;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 50px; /* Capsule shape */
-  font-weight: 700;
+  background-color: #f59e0b;
+  color: #1e1b4b;
   border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 700;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.btnContent {
   display: flex;
   align-items: center;
-  gap: 10px;
-  white-space: nowrap;
-  box-shadow: 0 4px 12px rgba(30, 27, 75, 0.2);
+  gap: 8px;
+}
+
+.loginIcon {
+  font-size: 1.2rem;
 }
 
 .loginBtn:hover {
-  background: #f59e0b;
+  background-color: #fbbf24;
   transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
 }
 
-/* --- Responsive Breakpoints --- */
+/* ================= Responsiveness ================= */
 
-@media (max-width: 1100px) {
-  .callWidget { display: none; } /* Space bachaane ke liye */
-}
-
-@media (max-width: 768px) {
-  .topBar { display: none; }
-  .logoCircle {
-    width: 60px;
-    height: 60px;
-  }
-  .mainHeader {
-    padding: 10px 15px;
-    gap: 10px;
-  }
-  .loginBtn {
-    padding: 10px 15px;
-    font-size: 0.8rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .loginBtn span {
-    display: none; 
-  }
-  .loginBtn {
-    padding: 10px;
-    border-radius: 50%; /* Square icon button */
+/* Tablet View */
+@media (max-width: 968px) {
+  .hideOnTablet {
+    display: none;
   }
   .titleContainer h1 {
-    font-size: 0.9rem;
-    max-width: 160px; 
+    font-size: 1.5rem;
+  }
+  .headerActions {
+    gap: 15px;
+  }
+}
+
+/* Mobile View - Maximizing space */
+@media (max-width: 768px) {
+  .topBar {
+    display: none; /* Hide top bar completely on mobile */
+  }
+  
+  .mainHeader {
+    padding: 12px 5%;
+  }
+
+  .subtitle {
+    display: none; /* Hide subtitle for clean look */
+  }
+
+  .callText {
+    display: none; /* Keep only the call icon */
+  }
+
+  .loginText {
+    display: none; /* Keep only the login icon */
+  }
+
+  .loginBtn {
+    padding: 10px;
+    border-radius: 50%; /* Make login button circular like call icon */
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .btnContent {
+    gap: 0; /* Remove gap since text is hidden */
+  }
+
+  .titleContainer h1 {
+    font-size: 1.2rem;
+  }
+
+  .brand {
+    gap: 10px;
+  }
+
+  /* Make logo slightly smaller on mobile */
+  .responsiveLogo {
+    width: 45px !important;
+    height: 45px !important;
+  }
+}
+
+/* Very Small Mobile */
+@media (max-width: 380px) {
+  .titleContainer h1 {
+    font-size: 1rem;
+  }
+  
+  .iconCircle, .loginBtn {
+    width: 38px;
+    height: 38px;
   }
 }

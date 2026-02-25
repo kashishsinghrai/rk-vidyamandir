@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import styles from "./page.module.css";
 import {
   FaClipboardCheck,
@@ -8,12 +9,25 @@ import {
 } from "react-icons/fa";
 
 export default function AdmissionPage() {
+  const [formStatus, setFormStatus] = useState(null); // 'loading', 'success', 'error'
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormStatus("loading");
+
+    // Here you would normally call your Server Action from /actions
+    // For now, we simulate a 2-second delay
+    setTimeout(() => {
+      setFormStatus("success");
+    }, 2000);
+  };
+
   return (
     <div className={styles.main}>
-      {/* 1. Header Hero */}
+      {/* 1. Header Hero - Updated for 2026 */}
       <section className={styles.hero}>
         <h1>
-          Admission <span>2025-26</span>
+          Admission <span>2026-27</span>
         </h1>
         <p>
           Your journey towards a brighter future begins here. Join Late R.K.
@@ -21,7 +35,7 @@ export default function AdmissionPage() {
         </p>
       </section>
 
-      {/* 2. Admission Journey */}
+      {/* 2. Admission Journey (Steps) */}
       <section className={styles.processSection}>
         <div className={styles.processGrid}>
           {[
@@ -80,79 +94,134 @@ export default function AdmissionPage() {
               textAlign: "center",
             }}
           >
-            Candidate Registration Form
+            Candidate Registration 2026
           </h2>
 
-          <form className={styles.admissionForm}>
-            <div className={styles.formGrid}>
-              {/* Student Details */}
-              <div className={styles.inputGroup}>
-                <label>Student Full Name*</label>
-                <input type="text" placeholder="John Doe" required />
-              </div>
-              <div className={styles.inputGroup}>
-                <label>Date of Birth*</label>
-                <input type="date" required />
-              </div>
-              <div className={styles.inputGroup}>
-                <label>Gender*</label>
-                <select required>
-                  <option value="">Select Gender</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                </select>
-              </div>
-              <div className={styles.inputGroup}>
-                <label>Class Applying For*</label>
-                <select required>
-                  <option value="">Select Class</option>
-                  <option value="nursery">Nursery</option>
-                  {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
-                    <option key={n} value={n}>
-                      Class {n}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Parent Details - FIXED APOSTROPHES */}
-              <div className={styles.inputGroup}>
-                <label>Father&apos;s Name*</label>
-                <input type="text" required />
-              </div>
-              <div className={styles.inputGroup}>
-                <label>Mother&apos;s Name*</label>
-                <input type="text" required />
-              </div>
-              <div className={styles.inputGroup}>
-                <label>Phone Number*</label>
-                <input type="tel" placeholder="+91" required />
-              </div>
-              <div className={styles.inputGroup}>
-                <label>Email Address</label>
-                <input type="email" placeholder="email@example.com" />
-              </div>
-
-              <div className={`${styles.inputGroup} ${styles.fullWidth}`}>
-                <label>Residential Address*</label>
-                <textarea
-                  rows="3"
-                  placeholder="Enter complete address..."
-                ></textarea>
-              </div>
-
-              <div className={`${styles.inputGroup} ${styles.fullWidth}`}>
-                <label>Previous School Attended (If any)</label>
-                <input type="text" />
-              </div>
-            </div>
-
-            <div style={{ textAlign: "center" }}>
-              <button type="submit" className={styles.submitBtn}>
-                Submit Registration
+          {formStatus === "success" ? (
+            <div
+              style={{
+                textAlign: "center",
+                padding: "40px",
+                background: "#dcfce7",
+                borderRadius: "10px",
+              }}
+            >
+              <h3 style={{ color: "#166534" }}>✅ Registration Submitted!</h3>
+              <p>
+                We have received your application. Our team will contact you
+                within 24-48 hours.
+              </p>
+              <button
+                onClick={() => setFormStatus(null)}
+                className={styles.submitBtn}
+                style={{ marginTop: "20px" }}
+              >
+                Fill Another Form
               </button>
             </div>
-          </form>
+          ) : (
+            <form className={styles.admissionForm} onSubmit={handleSubmit}>
+              <div className={styles.formGrid}>
+                {/* Student Details */}
+                <div className={styles.inputGroup}>
+                  <label htmlFor="studentName">Student Full Name*</label>
+                  <input
+                    id="studentName"
+                    name="studentName"
+                    type="text"
+                    placeholder="John Doe"
+                    required
+                  />
+                </div>
+                <div className={styles.inputGroup}>
+                  <label htmlFor="dob">Date of Birth*</label>
+                  <input id="dob" name="dob" type="date" required />
+                </div>
+                <div className={styles.inputGroup}>
+                  <label htmlFor="gender">Gender*</label>
+                  <select id="gender" name="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
+                </div>
+                <div className={styles.inputGroup}>
+                  <label htmlFor="class">Class Applying For*</label>
+                  <select id="class" name="class" required>
+                    <option value="">Select Class</option>
+                    <option value="nursery">Nursery</option>
+                    {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+                      <option key={n} value={n}>
+                        Class {n}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Parent Details */}
+                <div className={styles.inputGroup}>
+                  <label htmlFor="fatherName">Father&apos;s Name*</label>
+                  <input
+                    id="fatherName"
+                    name="fatherName"
+                    type="text"
+                    required
+                  />
+                </div>
+                <div className={styles.inputGroup}>
+                  <label htmlFor="motherName">Mother&apos;s Name*</label>
+                  <input
+                    id="motherName"
+                    name="motherName"
+                    type="text"
+                    required
+                  />
+                </div>
+                <div className={styles.inputGroup}>
+                  <label htmlFor="phone">Phone Number*</label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="+91"
+                    required
+                  />
+                </div>
+                <div className={styles.inputGroup}>
+                  <label htmlFor="email">Email Address</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="email@example.com"
+                  />
+                </div>
+
+                <div className={`${styles.inputGroup} ${styles.fullWidth}`}>
+                  <label htmlFor="address">Residential Address*</label>
+                  <textarea
+                    id="address"
+                    name="address"
+                    rows="3"
+                    placeholder="Enter complete address..."
+                    required
+                  ></textarea>
+                </div>
+              </div>
+
+              <div style={{ textAlign: "center" }}>
+                <button
+                  type="submit"
+                  className={styles.submitBtn}
+                  disabled={formStatus === "loading"}
+                >
+                  {formStatus === "loading"
+                    ? "Processing..."
+                    : "Submit Registration"}
+                </button>
+              </div>
+            </form>
+          )}
         </div>
       </section>
 
@@ -169,7 +238,7 @@ export default function AdmissionPage() {
             </ul>
           </div>
           <div className={styles.infoCard}>
-            <h3>Key Dates</h3>
+            <h3>Key Dates (2026)</h3>
             <ul>
               <li>
                 • <strong>Dec 01:</strong> Portal Opens
@@ -190,9 +259,9 @@ export default function AdmissionPage() {
             <ul>
               <li>• Registration: ₹500</li>
               <li>• Admission: ₹10,000</li>
-              <li>• Monthly: Depends on Class</li>
+              <li>• Monthly: Varies by class</li>
               <li>
-                • <strong>Scholarships available</strong> for top performers.
+                • <strong>Scholarships:</strong> Available for merit students.
               </li>
             </ul>
           </div>
@@ -200,7 +269,7 @@ export default function AdmissionPage() {
       </section>
 
       {/* 5. Support Section */}
-      <section
+      <footer
         style={{
           padding: "60px 8%",
           textAlign: "center",
@@ -230,7 +299,7 @@ export default function AdmissionPage() {
             📍 <b>Office Hours: 9 AM - 4 PM</b>
           </div>
         </div>
-      </section>
+      </footer>
     </div>
   );
 }

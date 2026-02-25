@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react"; // Added for Calculator logic
+
+import { useState } from "react";
 import styles from "./page.module.css";
 import {
   FaWallet,
@@ -10,6 +11,7 @@ import {
   FaDownload,
   FaQuestionCircle,
   FaInfoCircle,
+  FaQrcode,
 } from "react-icons/fa";
 
 export default function FeePage() {
@@ -22,8 +24,28 @@ export default function FeePage() {
     { class: "Class 6th - 8th", tuition: 1500, development: 400, total: 1900 },
   ];
 
+  // SEO: Structured Data
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Fee Structure | Late Ramkali Vidya Mandir",
+    description:
+      "Transparent and affordable fee modules for Nursery to Class 8th. Check tuition fees, admission charges, and payment modes.",
+    url: "https://www.rkvmjuniorhighschool.dpdns.org/fee-structure",
+    publisher: {
+      "@type": "EducationalOrganization",
+      name: "Late Ramkali Vidya Mandir Junior High School",
+    },
+  };
+
   return (
     <main className={styles.main}>
+      {/* Injecting Schema Markup */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* 1. Hero Section */}
       <section className={styles.hero}>
         <h1>
@@ -38,19 +60,20 @@ export default function FeePage() {
         </button>
       </section>
 
-      {/* 2. Interactive Fee Estimator (New) */}
-      <section className={styles.section} style={{ paddingBottom: 0 }}>
+      {/* 2. Interactive Fee Estimator */}
+      <section className={`${styles.section} ${styles.noPaddingBottom}`}>
         <div className={styles.calculatorBox}>
-          <h3 style={{ marginBottom: "15px" }}>
-            <FaInfoCircle style={{ color: "#f59e0b" }} /> Quick Fee Preview
+          <h3 className={styles.calculatorTitle}>
+            <FaInfoCircle className={styles.iconGold} /> Quick Fee Preview
           </h3>
-          <p style={{ marginBottom: "20px", color: "#64748b" }}>
-            Select your child&apos;s grade to see the monthly estimate.{" "}
-            {/* FIXED HERE */}
+          <p className={styles.calculatorDesc}>
+            Select your child&apos;s grade to see the monthly estimate.
           </p>
           <select
             className={styles.selectPremium}
-            onChange={(e) => setSelectedClass(e.target.value)}
+            onChange={(e) => setSelectedClass(Number(e.target.value))}
+            value={selectedClass}
+            aria-label="Select Class for Fee Estimate"
           >
             {feeStructure.map((item, idx) => (
               <option key={idx} value={idx}>
@@ -58,24 +81,18 @@ export default function FeePage() {
               </option>
             ))}
           </select>
-          <div style={{ marginTop: "25px" }}>
-            <span style={{ fontSize: "0.9rem", color: "#64748b" }}>
-              Estimated Monthly:
-            </span>
-            <h2 style={{ fontSize: "2.5rem", color: "#1e1b4b" }}>
-              ₹{feeStructure[selectedClass].total}
-            </h2>
+          <div className={styles.estimateResult}>
+            <span>Estimated Monthly:</span>
+            <h2>₹{feeStructure[selectedClass].total}</h2>
           </div>
         </div>
       </section>
 
       {/* 3. Main Fee Table */}
-      <section className={styles.section} style={{ paddingTop: "20px" }}>
+      <section className={`${styles.section} ${styles.tableSection}`}>
         <div className={styles.tableCard}>
-          <h2 style={{ marginBottom: "25px", color: "#1e1b4b" }}>
-            Full Grade-wise Details
-          </h2>
-          <div style={{ overflowX: "auto" }}>
+          <h2 className={styles.tableTitle}>Full Grade-wise Details</h2>
+          <div className={styles.tableResponsive}>
             <table className={styles.feeTable}>
               <thead>
                 <tr>
@@ -89,12 +106,10 @@ export default function FeePage() {
                 {feeStructure.map((item, idx) => (
                   <tr
                     key={idx}
-                    style={
-                      selectedClass == idx ? { background: "#f59e0b10" } : {}
-                    }
+                    className={selectedClass === idx ? styles.activeRow : ""}
                   >
                     <td>
-                      <b>{item.class}</b>
+                      <strong>{item.class}</strong>
                     </td>
                     <td>₹{item.tuition}</td>
                     <td>₹{item.development}</td>
@@ -108,48 +123,42 @@ export default function FeePage() {
       </section>
 
       {/* 4. One-Time & Annual Charges */}
-      <section className={styles.section} style={{ paddingTop: 0 }}>
-        <h2 style={{ textAlign: "center", marginBottom: "40px" }}>
-          One-Time & Annual Investment
-        </h2>
+      <section className={`${styles.section} ${styles.noPaddingTop}`}>
+        <div className={styles.sectionHeader}>
+          <h2>One-Time & Annual Investment</h2>
+        </div>
         <div className={styles.grid3}>
           <div className={styles.paymentCard}>
             <FaFileInvoiceDollar className={styles.iconBox} />
             <h3>Admission Fee</h3>
             <p>During new enrollment only.</p>
-            <h2 style={{ color: "#1e1b4b", marginTop: "10px" }}>₹10,000</h2>
+            <h2 className={styles.priceTag}>₹10,000</h2>
           </div>
           <div className={styles.paymentCard}>
             <FaWallet className={styles.iconBox} />
             <h3>Registration</h3>
             <p>Application form processing.</p>
-            <h2 style={{ color: "#1e1b4b", marginTop: "10px" }}>₹500</h2>
+            <h2 className={styles.priceTag}>₹500</h2>
           </div>
           <div className={styles.paymentCard}>
             <FaGift className={styles.iconBox} />
             <h3>Annual Charges</h3>
             <p>Sports, Events & Library.</p>
-            <h2 style={{ color: "#1e1b4b", marginTop: "10px" }}>₹5,000</h2>
+            <h2 className={styles.priceTag}>₹5,000</h2>
           </div>
         </div>
       </section>
 
       {/* 5. Payment Portal Info */}
-      <section className={styles.section} style={{ background: "#fff" }}>
-        <h2 style={{ textAlign: "center", marginBottom: "50px" }}>
-          Secure Payment Modes
-        </h2>
+      <section className={`${styles.section} ${styles.bgLight}`}>
+        <div className={styles.sectionHeader}>
+          <h2>Secure Payment Modes</h2>
+        </div>
         <div className={styles.grid3}>
           <div className={styles.paymentCard}>
             <FaUniversity className={styles.iconBox} />
             <h4>Online Bank Transfer</h4>
-            <p
-              style={{
-                fontSize: "0.85rem",
-                marginTop: "10px",
-                color: "#64748b",
-              }}
-            >
+            <p className={styles.paymentDetails}>
               A/C Name: R.K. Vidyamandir
               <br />
               A/C No: 1234567890
@@ -160,31 +169,19 @@ export default function FeePage() {
           <div className={styles.paymentCard}>
             <FaCreditCard className={styles.iconBox} />
             <h4>Campus Counter</h4>
-            <p
-              style={{
-                fontSize: "0.85rem",
-                marginTop: "10px",
-                color: "#64748b",
-              }}
-            >
+            <p className={styles.paymentDetails}>
               Pay via Cash/Card at the accounts desk.
               <br />
               Timings: 9:00 AM - 2:00 PM
             </p>
           </div>
           <div className={styles.paymentCard}>
-            <div className={styles.iconBox}>📱</div>
+            <FaQrcode className={styles.iconBox} />
             <h4>Digital Wallet (UPI)</h4>
-            <p
-              style={{
-                fontSize: "0.85rem",
-                marginTop: "10px",
-                color: "#64748b",
-              }}
-            >
+            <p className={styles.paymentDetails}>
               Scan the QR code at reception or pay to:
               <br />
-              <b>rkvidya@upi</b>
+              <strong>rkvidya@upi</strong>
             </p>
           </div>
         </div>
@@ -193,10 +190,10 @@ export default function FeePage() {
       {/* 6. Scholarship (High Impact CTA) */}
       <section className={styles.section}>
         <div className={styles.alertBox}>
-          <div style={{ fontSize: "3.5rem" }}>🎓</div>
-          <div style={{ flex: 1 }}>
+          <div className={styles.alertIcon}>🎓</div>
+          <div className={styles.alertContent}>
             <h3>Empowering Bright Students</h3>
-            <p style={{ opacity: 0.9 }}>
+            <p>
               Late R.K. Vidyamandir offers merit-based scholarships up to 50%
               for students with exceptional academic or sports records.
             </p>
@@ -207,30 +204,32 @@ export default function FeePage() {
         </div>
       </section>
 
-      {/* 7. FAQs (New) */}
+      {/* 7. FAQs */}
       <section className={styles.faqSection}>
-        <h2 style={{ textAlign: "center", marginBottom: "40px" }}>
-          <FaQuestionCircle style={{ color: "#f59e0b" }} /> Frequently Asked
-          Questions
-        </h2>
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.faqTitle}>
+            <FaQuestionCircle className={styles.iconGold} /> Frequently Asked
+            Questions
+          </h2>
+        </div>
         <div className={styles.faqGrid}>
           <div className={styles.faqItem}>
             <h4>Is there a discount for siblings?</h4>
-            <p style={{ fontSize: "0.9rem", color: "#64748b" }}>
+            <p>
               Yes, a 10% concession on tuition fees is provided to the younger
               sibling.
             </p>
           </div>
           <div className={styles.faqItem}>
             <h4>What is the last date for monthly payment?</h4>
-            <p style={{ fontSize: "0.9rem", color: "#64748b" }}>
+            <p>
               Fees should be cleared by the 10th of every month to avoid late
               fines.
             </p>
           </div>
           <div className={styles.faqItem}>
             <h4>Do you accept online payments?</h4>
-            <p style={{ fontSize: "0.9rem", color: "#64748b" }}>
+            <p>
               Yes, we accept UPI, NEFT, and IMPS. Please share the screenshot
               with the accounts office.
             </p>
@@ -239,42 +238,20 @@ export default function FeePage() {
       </section>
 
       {/* 8. Policy Footer */}
-      <section
-        style={{
-          textAlign: "center",
-          padding: "60px 8%",
-          background: "#f1f5f9",
-          borderTop: "1px solid #e2e8f0",
-        }}
-      >
-        <h4
-          style={{
-            color: "#1e1b4b",
-            textTransform: "uppercase",
-            letterSpacing: "1px",
-          }}
-        >
-          Important Guidelines
-        </h4>
-        <ul
-          style={{
-            listStyle: "none",
-            padding: 0,
-            marginTop: "20px",
-            fontSize: "0.95rem",
-            color: "#64748b",
-            lineHeight: "2",
-          }}
-        >
+      <section className={styles.policySection}>
+        <h4>Important Guidelines</h4>
+        <ul className={styles.policyList}>
           <li>
-            • Late fine of <b>₹50 per week</b> applies after the 10th of the
-            month.
+            <span>•</span> Late fine of <strong>₹50 per week</strong> applies
+            after the 10th of the month.
           </li>
           <li>
-            • Fees once paid are <b>non-refundable</b> and non-transferable.
+            <span>•</span> Fees once paid are <strong>non-refundable</strong>{" "}
+            and non-transferable.
           </li>
           <li>
-            • Computer and Science lab fees are charged on a termly basis.
+            <span>•</span> Computer and Science lab fees are charged on a termly
+            basis.
           </li>
         </ul>
       </section>

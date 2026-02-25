@@ -1,38 +1,55 @@
+/* src/app/administration/page.module.css */
+
 .main {
   background-color: #f8fafc;
   min-height: 100vh;
   font-family: 'Poppins', sans-serif;
   color: #1e1b4b;
+  overflow-x: hidden;
 }
 
-/* --- Hero Section --- */
+/* ================= Hero Section ================= */
 .hero {
   background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
-  padding: 100px 8% 140px;
+  padding: 100px 8% 160px;
   text-align: center;
   color: white;
   clip-path: polygon(0 0, 100% 0, 100% 88%, 0% 100%);
+  position: relative;
 }
 
 .hero h1 {
   font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 800;
   margin-bottom: 15px;
+  letter-spacing: -1px;
 }
 
-.hero h1 span { color: #f59e0b; }
+.hero h1 span { 
+  color: #f59e0b; 
+}
 
-/* --- Management Profiles --- */
+.hero p {
+  font-size: 1.15rem;
+  max-width: 750px;
+  margin: 0 auto;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+/* ================= Management Profiles ================= */
 .profileSection {
-  margin-top: -100px;
+  margin-top: -100px; /* Pulls cards over the hero gradient */
   padding: 0 8%;
+  position: relative;
+  z-index: 10;
 }
 
 .profileGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 40px;
-  max-width: 1200px;
+  max-width: 1000px; /* Kept slightly narrower for 2 cards */
   margin: 0 auto;
 }
 
@@ -43,46 +60,90 @@
   box-shadow: 0 20px 50px rgba(30, 27, 75, 0.1);
   display: flex;
   flex-direction: column;
-  transition: 0.4s;
+  transition: transform 0.4s ease, border-color 0.4s ease;
   border: 1px solid #e2e8f0;
 }
 
 .leaderCard:hover {
   transform: translateY(-10px);
   border-color: #f59e0b;
+  box-shadow: 0 25px 50px rgba(30, 27, 75, 0.15);
 }
 
 .imageWrapper {
   position: relative;
-  height: 350px;
+  height: 400px;
   width: 100%;
   background: #f1f5f9;
 }
 
 .cardContent {
-  padding: 30px;
+  padding: 40px 30px;
   text-align: center;
+  background: white;
 }
 
 .roleBadge {
-  background: rgba(245, 158, 11, 0.1);
+  background: rgba(245, 158, 11, 0.15);
   color: #f59e0b;
-  padding: 5px 15px;
+  padding: 6px 18px;
   border-radius: 50px;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
   display: inline-block;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
 }
 
-/* --- Administrative Wings --- */
-.section { padding: 100px 8%; }
+.leaderName {
+  font-size: 1.8rem;
+  color: #1e1b4b;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.leaderDesc {
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ================= Administrative Wings ================= */
+.section { 
+  padding: 100px 8%; 
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.sectionIcon {
+  font-size: 3rem;
+  color: #f59e0b;
+  margin-bottom: 15px;
+}
+
+.sectionHeader h2 {
+  font-size: 2.5rem;
+  color: #1e1b4b;
+  margin-bottom: 15px;
+}
+
+.sectionSubText {
+  color: #64748b;
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
 
 .wingsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .wingCard {
@@ -91,45 +152,214 @@
   border-radius: 20px;
   text-align: center;
   border: 1px solid #e2e8f0;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .wingCard:hover {
   background: #1e1b4b;
   color: white;
   border-color: #f59e0b;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(30, 27, 75, 0.2);
 }
 
 .iconBox {
   font-size: 2.5rem;
   color: #f59e0b;
   margin-bottom: 20px;
+  transition: transform 0.3s;
 }
 
-/* --- Vision Quote --- */
+.wingCard:hover .iconBox {
+  transform: scale(1.1);
+}
+
+.wingCard h3 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+}
+
+.wingDesc {
+  font-size: 0.9rem;
+  color: #64748b;
+  line-height: 1.6;
+  flex-grow: 1; /* Pushes contact to the bottom */
+  transition: color 0.3s;
+}
+
+.wingCard:hover .wingDesc {
+  color: #cbd5e1;
+}
+
+.wingContact {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px dashed #e2e8f0;
+  font-size: 0.9rem;
+  color: #1e1b4b;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.wingCard:hover .wingContact {
+  color: #f59e0b;
+  border-top-color: rgba(245, 158, 11, 0.3);
+}
+
+.smallIcon {
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+/* ================= Vision Quote ================= */
+.visionSection {
+  padding: 0 5%;
+}
+
 .visionBox {
-  background: #1e1b4b;
+  background: linear-gradient(135deg, #1e1b4b, #312e81);
   color: white;
   padding: 80px 10%;
-  border-radius: 50px;
+  border-radius: 40px;
   text-align: center;
-  margin: 40px 8%;
+  max-width: 1100px;
+  margin: 0 auto 80px;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 20px 50px rgba(30, 27, 75, 0.2);
 }
 
 .visionBox::before {
   content: '"';
   position: absolute;
-  top: 10px;
+  top: -20px;
   left: 40px;
   font-size: 15rem;
-  opacity: 0.1;
+  opacity: 0.05;
   color: #f59e0b;
   font-family: serif;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.visionTitle {
+  color: #f59e0b;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+.visionQuote {
+  font-size: 1.4rem;
+  font-style: italic;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+  position: relative;
+  z-index: 2;
+}
+
+.visionSign {
+  margin-top: 40px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #cbd5e1;
+  font-size: 0.9rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* ================= Stats Section ================= */
+.statsSection {
+  background: white;
+  padding: 80px 8%;
+  border-top: 1px solid #e2e8f0;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.statItem {
+  padding: 20px;
+}
+
+.statIcon {
+  font-size: 3rem;
+  color: #f59e0b;
+  margin-bottom: 15px;
+}
+
+.statItem h3 {
+  font-size: 2rem;
+  color: #1e1b4b;
+  margin-bottom: 5px;
+}
+
+.statItem p {
+  color: #64748b;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* ================= Responsive Queries ================= */
+@media (max-width: 968px) {
+  .hero {
+    clip-path: polygon(0 0, 100% 0, 100% 92%, 0% 100%);
+    padding: 100px 5% 120px;
+  }
+  .imageWrapper {
+    height: 300px;
+  }
 }
 
 @media (max-width: 768px) {
-  .profileGrid { grid-template-columns: 1fr; }
-  .visionBox { padding: 50px 20px; border-radius: 30px; }
+  .profileGrid { 
+    grid-template-columns: 1fr; 
+    max-width: 500px;
+  }
+  
+  .section {
+    padding: 60px 5%;
+  }
+
+  .visionBox { 
+    padding: 60px 20px; 
+    border-radius: 30px; 
+  }
+  
+  .visionQuote {
+    font-size: 1.1rem;
+  }
+  
+  .visionTitle {
+    font-size: 1.6rem;
+  }
+
+  .statsSection {
+    padding: 50px 5%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  .cardContent {
+    padding: 30px 20px;
+  }
+  .wingCard {
+    padding: 30px 20px;
+  }
 }

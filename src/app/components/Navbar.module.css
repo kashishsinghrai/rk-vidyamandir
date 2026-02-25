@@ -1,4 +1,4 @@
-/* Navbar.module.css */
+/* src/app/components/Navbar.module.css */
 
 .navbar {
   background-color: #1e1b4b; /* Deep Navy */
@@ -14,7 +14,7 @@
 .navbarScrolled {
   background-color: rgba(30, 27, 75, 0.98);
   backdrop-filter: blur(10px);
-  height: 60px; /* स्क्रॉल होने पर थोड़ा छोटा */
+  height: 60px; 
 }
 
 .navContainer {
@@ -23,7 +23,7 @@
   padding: 0 5%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   height: 65px;
 }
 
@@ -31,22 +31,34 @@
 .desktopNav {
   display: flex;
   list-style: none;
-  gap: clamp(8px, 1.2vw, 20px); 
-  width: 100%;
-  justify-content: center;
+  gap: clamp(10px, 1.2vw, 25px); 
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.navItem {
+  position: relative; /* Dropdown positioning ke liye zaroori hai */
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
 .navLink {
   color: #e2e8f0;
   text-decoration: none;
-  font-size: clamp(0.65rem, 0.8vw, 0.8rem);
+  font-size: clamp(0.7rem, 0.8vw, 0.9rem);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
-  padding: 10px 0;
+  padding: 20px 0; /* Increased padding for better hover area */
   position: relative;
   white-space: nowrap;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .navLink:hover {
@@ -56,7 +68,7 @@
 .navLink::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: 12px;
   left: 0;
   width: 0;
   height: 2px;
@@ -68,58 +80,113 @@
   width: 100%;
 }
 
+/* --- Dropdown Specific Styles --- */
+.dropdownBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.chevron {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.navItem:hover .chevron {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 65px; /* Navbar ke theek neeche */
+  right: 0;
+  background-color: white;
+  min-width: 220px;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  
+  /* Hidden by default with animation */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid #e2e8f0;
+}
+
+.showDropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdownLink {
+  color: #1e1b4b;
+  text-decoration: none;
+  padding: 12px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.dropdownLink:hover {
+  background-color: #f8fafc;
+  color: #f59e0b;
+  border-left-color: #f59e0b;
+  padding-left: 25px; /* Slide effect */
+}
+
 /* --- Mobile Menu Button --- */
 .mobileMenuBtn {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(245, 158, 11, 0.1);
   border: 1px solid rgba(245, 158, 11, 0.4);
   color: #f59e0b;
-  width: 42px;
-  height: 42px;
+  padding: 8px 15px;
   border-radius: 8px;
   display: none; 
   align-items: center;
-  justify-content: center;
-  font-size: 1.4rem;
+  gap: 10px;
+  font-size: 1.2rem;
   cursor: pointer;
   transition: 0.3s;
 }
 
-/* --- Mobile Sidebar (Ultra Fix for UX) --- */
+.menuText {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* --- Mobile Sidebar --- */
 .mobileSidebar {
   position: fixed;
   top: 0;
   left: 0;
   width: 300px; 
-  height: 100vh; /* पूरी स्क्रीन की हाइट */
+  height: 100vh;
   background-color: #0f172a; 
   z-index: 2000;
-  
-  /* Initial State */
   transform: translateX(-100%); 
   transition: transform 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
-  
   display: flex;
   flex-direction: column;
   box-shadow: 15px 0 40px rgba(0,0,0,0.5);
-  
-  /* Sidebar के अंदर स्क्रॉलिंग */
   overflow-y: auto; 
-  scrollbar-width: none; /* Firefox के लिए स्क्रॉलबार हटाओ */
+  scrollbar-width: none;
 }
 
-.mobileSidebar::-webkit-scrollbar {
-  display: none; /* Chrome/Safari के लिए स्क्रॉलबार हटाओ */
-}
+.mobileSidebar::-webkit-scrollbar { display: none; }
+.mobileSidebarOpen { transform: translateX(0); }
 
-.mobileSidebarOpen {
-  transform: translateX(0);
-}
-
-/* Sidebar Header - इसे Sticky बनाया गया है */
 .sidebarHeader {
-  position: sticky; /* यह टॉप पर फिक्स रहेगा */
+  position: sticky; 
   top: 0;
-  background-color: #0f172a; /* पीछे का कंटेंट न दिखे */
+  background-color: #0f172a; 
   z-index: 10;
   display: flex;
   justify-content: space-between;
@@ -133,16 +200,15 @@
   font-size: 1.2rem;
   font-weight: 700;
   text-transform: uppercase;
-  margin: 0;
 }
 
 .closeBtn {
   background: rgba(255,255,255,0.05);
   border: none;
   color: #ffffff;
-  font-size: 1.5rem;
-  width: 40px;
-  height: 40px;
+  font-size: 1.2rem;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
@@ -151,15 +217,11 @@
   transition: 0.3s;
 }
 
-.closeBtn:hover {
-  background: #f59e0b;
-  color: #1e1b4b;
-}
+.closeBtn:hover { background: #ef4444; transform: rotate(90deg); }
 
-/* Mobile Links */
 .mobileNavLinks {
   list-style: none;
-  padding: 20px; /* हेडर के नीचे पैडिंग */
+  padding: 20px;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -185,7 +247,6 @@
   padding-left: 25px;
 }
 
-/* Overlay (Dark background) */
 .overlay {
   position: fixed;
   top: 0;
@@ -198,13 +259,14 @@
 }
 
 /* --- RESPONSIVE --- */
-
-@media (max-width: 1150px) {
+@media (max-width: 1250px) {
+  .navContainer { justify-content: flex-start; }
   .mobileMenuBtn { display: flex; }
   .desktopNav { display: none; }
-  .navContainer { justify-content: flex-start; gap: 20px; }
 }
 
 @media (max-width: 480px) {
-  .mobileSidebar { width: 85%; }
+  .mobileSidebar { width: 85%; max-width: 320px; }
+  .menuText { display: none; }
+  .mobileMenuBtn { padding: 10px; border-radius: 50%; width: 42px; justify-content: center; }
 }

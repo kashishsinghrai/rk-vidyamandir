@@ -1,6 +1,6 @@
 "use client";
-import { useState } from "react"; // Hook add kiya
-import { handleContactForm } from "../actions/contact"; // Action import kiya
+import { useState } from "react";
+import { handleContactForm } from "../actions/contact";
 import styles from "./page.module.css";
 import {
   FaPhoneAlt,
@@ -17,23 +17,50 @@ import {
 export default function ContactPage() {
   const [status, setStatus] = useState(null); // success, error, or loading
 
+  // Structured Data (JSON-LD) for Local SEO - Helps Google Maps ranking
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "School",
+    name: "Late Ramkali Vidya Mandir",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Ruhellapur, Khaga",
+      addressLocality: "Fatehpur",
+      addressRegion: "UP",
+      postalCode: "212655",
+      addressCountry: "IN",
+    },
+    telephone: "+918009337704",
+    url: "https://rkvidyamandir.edu",
+  };
+
   async function handleSubmit(event) {
     event.preventDefault();
     setStatus("loading");
 
     const formData = new FormData(event.target);
-    const result = await handleContactForm(formData);
 
-    if (result.success) {
-      setStatus("success");
-      event.target.reset(); // Form clear kar dega
-    } else {
+    try {
+      const result = await handleContactForm(formData);
+      if (result.success) {
+        setStatus("success");
+        event.target.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch (err) {
       setStatus("error");
     }
   }
 
   return (
     <div className={styles.main}>
+      {/* Injecting JSON-LD for Search Engines */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* 1. Hero Section */}
       <section className={styles.hero}>
         <h1>
@@ -82,13 +109,7 @@ export default function ContactPage() {
           <h2 style={{ marginBottom: "30px" }}>Send Us a Message</h2>
 
           <form onSubmit={handleSubmit}>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "20px",
-              }}
-            >
+            <div className={styles.formInputsContainer}>
               <div className={styles.inputGroup}>
                 <label>Full Name *</label>
                 <input
@@ -108,6 +129,7 @@ export default function ContactPage() {
                 />
               </div>
             </div>
+
             <div className={styles.inputGroup}>
               <label>Subject *</label>
               <select name="subject" required>
@@ -117,6 +139,7 @@ export default function ContactPage() {
                 <option value="General Feedback">Feedback/Suggestions</option>
               </select>
             </div>
+
             <div className={styles.inputGroup}>
               <label>Message *</label>
               <textarea
@@ -135,27 +158,14 @@ export default function ContactPage() {
               {status === "loading" ? "Sending..." : "Send Message"}
             </button>
 
-            {/* Status Feedback Messages */}
             {status === "success" && (
-              <p
-                style={{
-                  color: "#22c55e",
-                  marginTop: "15px",
-                  fontWeight: "bold",
-                }}
-              >
-                ✅ Message sent! A confirmation email has been sent to you.
+              <p className={styles.successMsg}>
+                ✅ Message sent! We will contact you shortly.
               </p>
             )}
             {status === "error" && (
-              <p
-                style={{
-                  color: "#ef4444",
-                  marginTop: "15px",
-                  fontWeight: "bold",
-                }}
-              >
-                ❌ Failed to send message. Please try again or call us.
+              <p className={styles.errorMsg}>
+                ❌ Failed to send. Please try again or call us.
               </p>
             )}
           </form>
@@ -169,6 +179,7 @@ export default function ContactPage() {
             style={{ border: 0 }}
             allowFullScreen=""
             loading="lazy"
+            title="School Location"
           ></iframe>
         </div>
       </section>
@@ -182,37 +193,19 @@ export default function ContactPage() {
               Office Hours
             </h3>
             <div style={{ marginTop: "20px" }}>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  marginBottom: "10px",
-                }}
-              >
+              <div className={styles.timeRow}>
                 <span>
                   <b>Mon - Fri:</b>
                 </span>{" "}
                 <span>8:00 AM - 4:00 PM</span>
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  marginBottom: "10px",
-                }}
-              >
+              <div className={styles.timeRow}>
                 <span>
                   <b>Saturday:</b>
                 </span>{" "}
                 <span>8:00 AM - 1:00 PM</span>
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  color: "#ef4444",
-                }}
-              >
+              <div className={styles.timeRow} style={{ color: "#ef4444" }}>
                 <span>
                   <b>Sunday:</b>
                 </span>{" "}
@@ -223,13 +216,13 @@ export default function ContactPage() {
           <div className={styles.hourCard}>
             <h3>Department Contacts</h3>
             <p style={{ margin: "15px 0 5px" }}>
-              <b>Academics:</b> academic@rkvidyamandir.edu
+              <b>Academics:</b> rkvjhighschool@gmail.com
             </p>
             <p style={{ margin: "5px 0" }}>
               <b>Admissions:</b> +91 8009337704
             </p>
             <p style={{ margin: "5px 0" }}>
-              <b>Accounts:</b> accounts@rkvidyamandir.edu
+              <b>Accounts:</b> info@rkvidyamandir.edu
             </p>
           </div>
         </div>
@@ -238,7 +231,8 @@ export default function ContactPage() {
       {/* 5. Quick Connect Socials */}
       <section className={styles.socialGrid}>
         <a
-          href="https://wa.me/917267011705"
+          href="https://wa.me/918009337704"
+          target="_blank"
           className={styles.socialBox}
           style={{ background: "#25D366" }}
         >
@@ -246,6 +240,7 @@ export default function ContactPage() {
         </a>
         <a
           href="http://www.youtube.com/@chandsir5588"
+          target="_blank"
           className={styles.socialBox}
           style={{ background: "#FF0000" }}
         >
@@ -286,7 +281,7 @@ export default function ContactPage() {
             style={{ background: "#1e1b4b", color: "white" }}
           >
             <h3 style={{ color: "#f59e0b" }}>Visitor Policy</h3>
-            <ul style={{ marginTop: "10px", fontSize: "0.9rem", opacity: 0.9 }}>
+            <ul className={styles.policyList}>
               <li>• Prior appointment recommended for Principal meeting.</li>
               <li>• Valid ID proof required at the reception.</li>
               <li>• Visiting hours: 9:00 AM to 12:00 PM.</li>

@@ -65,6 +65,12 @@
   box-shadow: 0 10px 40px rgba(0,0,0,0.03);
 }
 
+.formInputsContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
 .inputGroup {
   margin-bottom: 20px;
 }
@@ -85,7 +91,9 @@
   transition: 0.3s;
 }
 
-.inputGroup input:focus { border-color: #f59e0b; }
+.inputGroup input:focus, .inputGroup select:focus, .inputGroup textarea:focus { 
+  border-color: #f59e0b; 
+}
 
 .submitBtn {
   background: #1e1b4b;
@@ -98,7 +106,37 @@
   transition: 0.3s;
 }
 
-.submitBtn:hover { background: #f59e0b; color: #1e1b4b; }
+.submitBtn:hover { 
+  background: #f59e0b; 
+  color: #1e1b4b; 
+}
+
+.submitBtn:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+}
+
+/* Status Messages */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.successMsg {
+  color: #22c55e;
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.errorMsg {
+  color: #ef4444;
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  animation: fadeIn 0.3s ease-in;
+}
 
 /* Map Area */
 .mapFrame {
@@ -110,7 +148,10 @@
 }
 
 /* Office Hours & Emergency */
-.infoSection { padding: 50px 8%; background: #fff; }
+.infoSection { 
+  padding: 50px 8%; 
+  background: #fff; 
+}
 
 .grid2 {
   display: grid;
@@ -124,11 +165,31 @@
   border-radius: 15px;
 }
 
+.timeRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
 .emergencyCard {
   background: #fef2f2;
   border-left: 5px solid #ef4444;
   padding: 20px;
   border-radius: 10px;
+}
+
+.policyList {
+  list-style: none;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  opacity: 0.9;
+  padding: 0;
+}
+
+.policyList li {
+  margin-bottom: 8px;
+  line-height: 1.4;
 }
 
 /* Social Connect */
@@ -140,17 +201,74 @@
 }
 
 .socialBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 25px;
   border-radius: 15px;
   text-align: center;
   color: white;
+  text-decoration: none;
   transition: 0.3s;
 }
 
-.socialBox:hover { transform: translateY(-5px); opacity: 0.9; }
+.socialBox p {
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.socialBox svg {
+  transition: transform 0.3s ease;
+}
+
+.socialBox:hover { 
+  transform: translateY(-5px); 
+  opacity: 0.9; 
+}
+
+.socialBox:hover svg {
+  transform: scale(1.1);
+}
+
+/* --- Responsive Adjustments --- */
 
 @media (max-width: 968px) {
   .contactGrid, .actionSection, .grid2, .socialGrid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .contactGrid {
+    margin-top: 20px;
+    padding: 20px 5%;
+  }
+
+  .formInputsContainer {
+    grid-template-columns: 1fr; /* Stack name and email inputs on smaller screens */
+  }
+
+  .socialGrid {
+    grid-template-columns: repeat(2, 1fr); /* 2x2 grid for social boxes */
+    padding: 30px 5%;
+  }
+
+  .actionSection {
+    padding: 30px 5%;
+  }
+}
+
+@media (max-width: 480px) {
+  .socialGrid {
+    grid-template-columns: 1fr; /* Stack social boxes 1 by 1 on phones */
+  }
+
+  .hero {
+    padding: 60px 5%;
   }
 }

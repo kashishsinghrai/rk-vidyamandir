@@ -1,35 +1,437 @@
-.container {
-  max-width: 900px;
-  margin: auto;
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
+/* src/app/teachers/page.module.css */
+
+.main {
+  background-color: #f8fafc;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  color: #1e1b4b;
+  overflow-x: hidden;
 }
 
-.grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-.card {
+/* ================= Hero Section ================= */
+.hero {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+  padding: 100px 8% 140px;
   text-align: center;
-  width: 200px;
+  color: white;
+  clip-path: polygon(0 0, 100% 0, 100% 88%, 0% 100%);
+  position: relative;
 }
 
-.card img {
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  margin-bottom: 15px;
+  letter-spacing: -1px;
+}
+
+.hero h1 span { 
+  color: #f59e0b; 
+}
+
+.hero p {
+  font-size: 1.15rem;
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+/* ================= Intro Text ================= */
+.introSection {
+  padding: 0 8%;
+  margin-top: -60px; /* Pulls text up slightly */
+  position: relative;
+  z-index: 10;
+  text-align: center;
+}
+
+.introText {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.15rem;
+  color: #475569;
+  line-height: 1.8;
+  background: white;
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(30, 27, 75, 0.05);
+  border-top: 4px solid #f59e0b;
+}
+
+/* ================= Shared Section Styles ================= */
+.section { 
+  padding: 80px 8%; 
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.sectionHeader h2 {
+  font-size: 2.5rem;
+  color: #1e1b4b;
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+
+.sectionHeader p {
+  color: #64748b;
+  font-size: 1.1rem;
+}
+
+/* ================= Principal Section ================= */
+.principalSection {
+  padding: 80px 8%;
+  background: white;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.principalGrid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.principalCard {
+  text-align: center;
+}
+
+.principalImgWrapper {
+  position: relative;
   width: 100%;
-  border-radius: 8px;
+  max-width: 320px;
+  height: 380px;
+  margin: 0 auto 20px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  border: 5px solid #f8fafc;
 }
 
-/* mobile */
-@media(max-width: 600px) {
-  .grid { flex-direction: column; align-items: center; }
+.principalInfo h3 {
+  font-size: 1.8rem;
+  color: #1e1b4b;
+  margin-bottom: 5px;
 }
 
-.teacher-card{
+.roleTitle {
+  color: #f59e0b;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.qualifications {
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.messageCard {
+  background: #f8fafc;
+  padding: 50px 40px;
+  border-radius: 30px;
+  position: relative;
+  border-left: 5px solid #1e1b4b;
+}
+
+.quoteMark {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-size: 6rem;
+  color: rgba(245, 158, 11, 0.2);
+  font-family: serif;
+  line-height: 1;
+}
+
+.messageTitle {
+  font-size: 1.6rem;
+  color: #1e1b4b;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.messageText {
+  color: #475569;
+  line-height: 1.8;
+  margin-bottom: 15px;
+  font-size: 1.05rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* ================= Faculty Grid ================= */
+.facultyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.teacherCard {
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+  border: 1px solid #e2e8f0;
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.teacherCard:hover {
+  transform: translateY(-10px);
+  border-color: #f59e0b;
+  box-shadow: 0 20px 40px rgba(30, 27, 75, 0.1);
+}
+
+.teacherImgWrapper {
+  position: relative;
+  height: 300px;
   width: 100%;
-  height: 100%;
-  border-radius: 50%;
+  background: #f1f5f9;
+}
+
+.teacherInfo {
+  padding: 25px;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.teacherName {
+  font-size: 1.4rem;
+  color: #1e1b4b;
+  margin-bottom: 5px;
+}
+
+.teacherSubject {
+  color: #f59e0b;
+  font-size: 1.05rem;
+}
+
+.divider {
+  height: 2px;
+  background: #e2e8f0;
+  width: 40px;
+  margin: 15px auto;
+}
+
+.teacherQual {
+  color: #475569;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+
+.teacherExp {
+  color: #64748b;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ================= Philosophy Section ================= */
+.philosophySection {
+  padding: 80px 8%;
+  background: white;
+  border-top: 1px solid #e2e8f0;
+}
+
+.philosophyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.infoCard {
+  background: #f8fafc;
+  padding: 40px 30px;
+  border-radius: 20px;
+  text-align: center;
+  transition: 0.3s;
+  border: 1px solid transparent;
+}
+
+.infoCard:hover {
+  border-color: #f59e0b;
+  background: white;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+}
+
+.iconBox {
+  font-size: 3rem;
+  color: #f59e0b;
+  margin-bottom: 20px;
+}
+
+.infoCard h3 {
+  font-size: 1.3rem;
+  color: #1e1b4b;
+  margin-bottom: 15px;
+}
+
+.infoCard p {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* ================= Achievements Section ================= */
+.achievementGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 40px;
+}
+
+.achievementCard {
+  background: white;
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  border: 1px solid #e2e8f0;
+}
+
+.achievementCard h3 {
+  font-size: 1.5rem;
+  color: #1e1b4b;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 10px;
+}
+
+.achievementList {
+  list-style: none;
+  padding: 0;
+}
+
+.achievementList li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 15px;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.achievementList li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  color: #f59e0b;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* ================= Join CTA Section ================= */
+.joinSection {
+  padding: 0 5% 80px;
+}
+
+.joinBox {
+  background: linear-gradient(135deg, #1e1b4b, #312e81);
+  color: white;
+  padding: 70px 5%;
+  border-radius: 40px;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 20px 50px rgba(30, 27, 75, 0.2);
+}
+
+.joinBox h2 {
+  font-size: 2.2rem;
+  color: #f59e0b;
+  margin-bottom: 15px;
+}
+
+.joinBox p {
+  font-size: 1.1rem;
+  max-width: 650px;
+  margin: 0 auto 35px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.btnGold {
+  background: #f59e0b;
+  color: #1e1b4b;
+  padding: 16px 35px;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  font-size: 1.05rem;
+}
+
+.btnGold:hover {
+  background: #fbbf24;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+}
+
+/* ================= Responsive Queries ================= */
+@media (max-width: 968px) {
+  .hero {
+    padding: 100px 5% 120px;
+    clip-path: polygon(0 0, 100% 0, 100% 92%, 0% 100%);
+  }
+
+  .principalGrid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .principalImgWrapper {
+    height: 300px;
+  }
+  
+  .messageCard {
+    text-align: left;
+    padding: 40px 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .introText {
+    padding: 25px 20px;
+    font-size: 1rem;
+  }
+  
+  .section, .principalSection, .philosophySection {
+    padding: 60px 5%;
+  }
+
+  .facultyGrid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .achievementGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .joinBox {
+    padding: 50px 20px;
+    border-radius: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  
+  .sectionHeader h2 {
+    font-size: 2rem;
+  }
 }

@@ -2,17 +2,19 @@
 import Navbar from "./Navbar";
 import { FaPhone, FaUserCircle } from "react-icons/fa";
 import Image from "next/image";
+import Link from "next/link"; // Added Link for Logo navigation
 import styles from "./Header.module.css";
 
 export default function Header() {
   return (
     <header className={styles.headerWrapper}>
-      {/* 1. Top Mini-Header: Mobile par CSS isse hide kar degi space bachane ke liye */}
+      {/* 1. Top Mini-Header */}
       <div className={styles.topBar}>
         <div className={styles.topBarInfo}>
           <span>📍 Ruhellapur, Khaga, Fatehpur</span>
-          {/* Ye span tablet par hide ho jayega (CSS media query se) */}
-          <span className={styles.hideOnTablet}>🗓 Estd. 2000 by Chand Sir</span>
+          <span className={styles.hideOnTablet}>
+            🗓 Estd. 2000 by Chand Sir
+          </span>
         </div>
         <div className={styles.topBarInfo}>
           <span>
@@ -21,9 +23,10 @@ export default function Header() {
         </div>
       </div>
 
-      {/* 2. Main Branding Header: Flex layout jo screen ke saath adjust hoga */}
+      {/* 2. Main Branding Header */}
       <div className={styles.mainHeader}>
-        <div className={styles.brand}>
+        {/* Wrapped Brand in Link to navigate Home */}
+        <Link href="/" className={styles.brand}>
           <div className={styles.logo}>
             <Image
               src="/logo.png"
@@ -38,16 +41,15 @@ export default function Header() {
             <h1>
               Late Ramkali <span>Vidyamandir</span>
             </h1>
-            {/* Subtitle mobile par hide rehta hai clean look ke liye */}
             <p className={styles.subtitle}>
               Junior High School | Nurturing Excellence
             </p>
           </div>
-        </div>
+        </Link>
 
         {/* Header Actions: Call aur Login buttons */}
         <div className={styles.headerActions}>
-          {/* Contact Widget: Tablet/Mobile par sirf icon dikhega ya hide ho jayega */}
+          {/* Contact Widget */}
           <div className={styles.callWidget}>
             <div className={styles.iconCircle}>
               <a href="tel:+918009337704" aria-label="Call Us">
@@ -60,11 +62,11 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Login Button: Sabse important action */}
+          {/* Login Button */}
           <button className={styles.loginBtn} aria-label="Student Login">
-            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <div className={styles.btnContent}>
               <FaUserCircle className={styles.loginIcon} />
-              <span>Student Login</span>
+              <span className={styles.loginText}>Student Login</span>
             </div>
           </button>
         </div>

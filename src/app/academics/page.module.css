@@ -1,143 +1,256 @@
+/* src/app/academics/page.module.css */
+
 .main {
   background-color: #f8fafc;
   min-height: 100vh;
   font-family: 'Poppins', sans-serif;
   color: #1e1b4b;
+  overflow-x: hidden;
 }
 
-/* Hero Section */
+/* ================= Hero Section ================= */
 .hero {
   background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
   padding: 100px 8% 140px;
   text-align: center;
   color: white;
   clip-path: polygon(0 0, 100% 0, 100% 88%, 0% 100%);
+  position: relative;
 }
 
 .hero h1 {
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 800;
   margin-bottom: 15px;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
 }
 
-.hero h1 span { color: #f59e0b; }
+.hero h1 span { 
+  color: #f59e0b; 
+}
 
-/* Academic Levels Grid */
+.hero p {
+  font-size: 1.15rem;
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+/* ================= Academic Levels Grid ================= */
 .levelSection {
-  margin-top: -80px;
+  margin-top: -80px; /* Pulls the cards up over the hero gradient */
   padding: 0 8%;
+  position: relative;
+  z-index: 10;
 }
 
 .levelGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .levelCard {
   background: white;
   padding: 40px;
   border-radius: 24px;
-  box-shadow: 0 15px 35px rgba(30, 27, 75, 0.1);
+  box-shadow: 0 15px 35px rgba(30, 27, 75, 0.08);
   border-top: 5px solid #f59e0b;
-  transition: 0.4s;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .levelCard:hover {
   transform: translateY(-10px);
+  box-shadow: 0 20px 45px rgba(30, 27, 75, 0.12);
 }
 
 .levelCard h3 {
   color: #1e1b4b;
-  font-size: 1.5rem;
-  margin-bottom: 15px;
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  font-weight: 700;
 }
 
-/* Subjects Grid */
-.section { padding: 80px 8%; }
+/* ================= Subjects Grid ================= */
+.section { 
+  padding: 80px 8%; 
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
 .subjectGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 25px;
 }
 
 .subjectCard {
   background: #ffffff;
-  padding: 30px 20px;
+  padding: 35px 20px;
   border-radius: 20px;
   text-align: center;
   border: 1px solid #e2e8f0;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.02);
 }
 
 .subjectCard:hover {
   background: #1e1b4b;
   color: white;
   border-color: #f59e0b;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(30, 27, 75, 0.15);
+}
+
+/* Targeting inline styles on hover to ensure text turns white */
+.subjectCard:hover h4, 
+.subjectCard:hover p {
+  color: white !important;
 }
 
 .iconBox {
-  font-size: 2.5rem;
+  font-size: 3rem;
   color: #f59e0b;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
 }
 
-/* Teaching Methodology (Split Layout) */
+.subjectCard:hover .iconBox {
+  transform: scale(1.1);
+}
+
+/* ================= Teaching Methodology (Split Layout) ================= */
 .methodology {
-  background: #1e1b4b;
+  background: linear-gradient(135deg, #1e1b4b, #312e81);
   color: white;
   padding: 80px 8%;
   display: flex;
   align-items: center;
   gap: 60px;
-  border-radius: 50px;
-  margin: 40px 8%;
+  border-radius: 40px;
+  margin: 60px 5%;
+  box-shadow: 0 20px 50px rgba(30, 27, 75, 0.2);
 }
 
-.methodText { flex: 1; }
+.methodText { 
+  flex: 1; 
+}
+
 .methodImage {
   flex: 1;
   position: relative;
-  height: 400px;
+  height: 450px;
   border-radius: 30px;
   overflow: hidden;
   border: 5px solid rgba(245, 158, 11, 0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-/* Resources & Downloads */
+/* ================= Resources & Downloads ================= */
 .downloadSection {
   background: #f1f5f9;
-  padding: 60px 8%;
+  padding: 80px 8%;
   text-align: center;
+  border-top: 1px solid #e2e8f0;
 }
 
 .downloadGrid {
   display: flex;
   justify-content: center;
   gap: 20px;
-  margin-top: 30px;
+  margin-top: 40px;
   flex-wrap: wrap;
 }
 
 .btnDownload {
   background: white;
   color: #1e1b4b;
-  padding: 15px 30px;
+  padding: 16px 32px;
   border-radius: 12px;
-  border: 2px solid #1e1b4b;
+  border: 2px solid #cbd5e1;
   font-weight: 700;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
 }
 
 .btnDownload:hover {
   background: #f59e0b;
   border-color: #f59e0b;
   color: #1e1b4b;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(245, 158, 11, 0.2);
+}
+
+/* ================= Media Queries (Responsiveness) ================= */
+
+@media (max-width: 1024px) {
+  .methodology { 
+    gap: 40px; 
+    padding: 60px 5%; 
+  }
 }
 
 @media (max-width: 968px) {
-  .methodology { flex-direction: column; padding: 40px; margin: 20px 5%; }
-  .methodImage { width: 100%; height: 300px; }
+  .methodology { 
+    flex-direction: column; 
+    padding: 50px 30px; 
+    margin: 40px 5%; 
+    border-radius: 30px;
+  }
+  
+  .methodImage { 
+    width: 100%; 
+    height: 350px; 
+    order: -1; /* Puts image above text on mobile */
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 100px 5% 120px;
+    clip-path: polygon(0 0, 100% 0, 100% 92%, 0% 100%); /* Adjusted for mobile */
+  }
+
+  .levelSection {
+    margin-top: -60px;
+  }
+
+  .section {
+    padding: 60px 5%;
+  }
+
+  .downloadSection {
+    padding: 60px 5%;
+  }
+  
+  .btnDownload {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .levelCard {
+    padding: 30px 20px;
+  }
+  
+  .methodImage { 
+    height: 250px; 
+  }
 }

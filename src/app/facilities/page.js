@@ -10,6 +10,7 @@ import {
   FaBolt,
   FaUserShield,
   FaSun,
+  FaMapMarkerAlt, // Added for the map button
 } from "react-icons/fa";
 
 export default function CampusLife() {
@@ -17,39 +18,89 @@ export default function CampusLife() {
     {
       title: "Iconic Two-Story Building",
       desc: "Our grand school building is designed with multiple spacious floors, wide corridors, and easy access, providing a secure and organized environment for all classes.",
-      image: "/school-building.jpg", // Photos mein jo badi yellow building hai
+      image: "/school-building.jpg", // The large yellow building
       icon: <FaBuilding />,
     },
     {
       title: "Expansive Playground",
       desc: "A massive open ground as seen in our campus, perfect for morning assemblies, annual sports events, and daily outdoor activities for physical growth.",
-      image: "/sport-club.jpg", // Photos mein jo bada khula maidan hai
+      image: "/sport-club.jpg", // The open field
       icon: <FaFutbol />,
     },
     {
       title: "Nature-Rich Environment",
-      desc: "Located in a peaceful rural setting with plenty of fresh air and greenery, away from the dust and noise of city traffic.",
+      desc: "Located in a peaceful rural setting with plenty of fresh air and greenery, ensuring a focused learning atmosphere away from city noise.",
       image: "/campus-view.jpg", // Rural/Greenery view
       icon: <FaTree />,
     },
     {
       title: "Spacious Classrooms",
-      desc: "Our classrooms are built with high ceilings and large windows to ensure natural ventilation and a bright atmosphere for learning.",
+      desc: "Our classrooms are built with high ceilings and large windows to ensure natural ventilation and a bright, healthy atmosphere for learning.",
       image: "/classroom.jpg",
       icon: <FaUsers />,
     },
   ];
 
+  // SEO: Structured Data for the Campus/Facilities Page
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Campus & Facilities | Late Ramkali Vidya Mandir",
+    description:
+      "Explore the expansive campus, iconic two-story building, large playground, and modern facilities of Late R.K. Vidyamandir in Ruhellapur, Khaga.",
+    url: "https://www.rkvmjuniorhighschool.dpdns.org/facilities",
+    mainEntity: {
+      "@type": "Place",
+      name: "Late Ramkali Vidya Mandir Campus",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Ruhellapur Post Ukathu",
+        addressLocality: "Khaga",
+        addressRegion: "Uttar Pradesh",
+        postalCode: "212655",
+        addressCountry: "IN",
+      },
+      amenityFeature: [
+        {
+          "@type": "LocationFeatureSpecification",
+          name: "Large Playground",
+          value: "True",
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          name: "Two-Story Building",
+          value: "True",
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          name: "Pure Drinking Water",
+          value: "True",
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          name: "Power Backup",
+          value: "True",
+        },
+      ],
+    },
+  };
+
   return (
     <main className={styles.main}>
+      {/* Injecting Schema Markup */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* 1. Hero Section */}
       <section className={styles.hero}>
         <h1>
           Experience <span>Our Campus</span>
         </h1>
         <p>
-          Take a look at the infrastructure and peaceful environment of Late
-          R.K. Vidyamandir, Ruhellapur.
+          Take a look at the infrastructure and peaceful, nature-rich
+          environment of Late R.K. Vidyamandir, Ruhellapur.
         </p>
       </section>
 
@@ -57,155 +108,113 @@ export default function CampusLife() {
       <section className={styles.facilitySection}>
         <div className={styles.facilityGrid}>
           {schoolHighlights.map((item, i) => (
-            <div key={i} className={styles.facilityCard}>
+            <article key={i} className={styles.facilityCard}>
               <div className={styles.imgWrapper}>
                 <Image
                   src={item.image}
-                  alt={item.title}
+                  alt={`Late R.K. Vidyamandir - ${item.title}`}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  priority={i === 0} // Load the first image quickly
                   style={{ objectFit: "cover" }}
                 />
               </div>
               <div className={styles.cardBody}>
-                <div
-                  style={{
-                    color: "#f59e0b",
-                    fontSize: "1.5rem",
-                    marginBottom: "10px",
-                  }}
-                >
-                  {item.icon}
-                </div>
-                <h3>{item.title}</h3>
-                <p>{item.desc}</p>
+                <div className={styles.cardIcon}>{item.icon}</div>
+                <h3 className={styles.cardTitle}>{item.title}</h3>
+                <p className={styles.cardDesc}>{item.desc}</p>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </section>
 
       {/* 3. Infrastructure Statistics */}
       <section className={styles.highlightSection}>
-        <h2>
-          Campus <span>At A Glance</span>
-        </h2>
-        <div className={styles.statGrid}>
-          <div className={styles.statCard}>
-            <h2>20+</h2>
-            <p>Total Rooms</p>
-          </div>
-          <div className={styles.statCard}>
-            <h2>1</h2>
-            <p>Grand Playground</p>
-          </div>
-          <div className={styles.statCard}>
-            <h2>2</h2>
-            <p>Floors</p>
-          </div>
-          <div className={styles.statCard}>
-            <h2>100%</h2>
-            <p>Safe Environment</p>
+        <div className={styles.highlightContainer}>
+          <h2 className={styles.highlightTitle}>
+            Campus <span>At A Glance</span>
+          </h2>
+          <div className={styles.statGrid}>
+            <div className={styles.statCard}>
+              <h3 className={styles.statNumber}>20+</h3>
+              <p className={styles.statLabel}>Total Rooms</p>
+            </div>
+            <div className={styles.statCard}>
+              <h3 className={styles.statNumber}>1</h3>
+              <p className={styles.statLabel}>Grand Playground</p>
+            </div>
+            <div className={styles.statCard}>
+              <h3 className={styles.statNumber}>2</h3>
+              <p className={styles.statLabel}>Floors Building</p>
+            </div>
+            <div className={styles.statCard}>
+              <h3 className={styles.statNumber}>100%</h3>
+              <p className={styles.statLabel}>Safe Environment</p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* 4. Essential Services */}
-      <section style={{ padding: "80px 8%", background: "#f8fafc" }}>
-        <h2 style={{ textAlign: "center", marginBottom: "50px" }}>
-          Essential <span>Daily Services</span>
-        </h2>
-        <div className={styles.facilityGrid}>
+      <section className={styles.servicesSection}>
+        <div className={styles.servicesHeader}>
+          <h2>
+            Essential <span>Daily Services</span>
+          </h2>
+          <p>
+            We ensure that basic needs and safety are prioritized every day.
+          </p>
+        </div>
+
+        <div className={styles.servicesGrid}>
           {[
             {
               icon: <FaGlassWhiskey />,
               title: "Pure Drinking Water",
-              text: "Purified RO water facility is provided to ensure the health of our students.",
+              text: "Purified RO water facility is provided to ensure the health and hydration of our students.",
             },
             {
               icon: <FaBolt />,
               title: "Full Power Backup",
-              text: "Inverter and generator support so that learning never stops during power outages.",
+              text: "Inverter and generator support so that learning and ventilation never stop during power outages.",
             },
             {
               icon: <FaUserShield />,
               title: "Dedicated Security",
-              text: "Safe entry and exit points with continuous supervision by our disciplined staff.",
+              text: "Safe entry and exit points with continuous supervision by our disciplined administrative staff.",
             },
             {
               icon: <FaSun />,
               title: "Open Assembly Area",
-              text: "A spacious courtyard for daily prayers, yoga, and cultural performances.",
+              text: "A spacious courtyard for daily prayers, morning physical exercises, and cultural performances.",
             },
           ].map((service, idx) => (
-            <div
-              key={idx}
-              style={{
-                background: "#fff",
-                padding: "30px",
-                borderRadius: "20px",
-                border: "1px solid #e2e8f0",
-              }}
-            >
-              <div
-                style={{
-                  color: "#f59e0b",
-                  fontSize: "2rem",
-                  marginBottom: "15px",
-                }}
-              >
-                {service.icon}
-              </div>
-              <h4>{service.title}</h4>
-              <p
-                style={{
-                  fontSize: "0.9rem",
-                  color: "#64748b",
-                  marginTop: "10px",
-                }}
-              >
-                {service.text}
-              </p>
+            <div key={idx} className={styles.serviceCard}>
+              <div className={styles.serviceIcon}>{service.icon}</div>
+              <h3 className={styles.serviceTitle}>{service.title}</h3>
+              <p className={styles.serviceText}>{service.text}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* 5. Direct Visit CTA */}
-      <section style={{ padding: "80px 8%", textAlign: "center" }}>
-        <div
-          style={{
-            background: "#1e1b4b",
-            color: "white",
-            padding: "60px",
-            borderRadius: "40px",
-          }}
-        >
-          <h2 style={{ color: "#f59e0b" }}>Visit Our Campus Today</h2>
-          <p
-            style={{
-              margin: "20px auto 35px",
-              maxWidth: "600px",
-              opacity: 0.9,
-            }}
-          >
+      <section className={styles.ctaSection}>
+        <div className={styles.ctaBox}>
+          <h2 className={styles.ctaTitle}>Visit Our Campus Today</h2>
+          <p className={styles.ctaDesc}>
             Nothing beats a personal visit. We invite you to Ruhellapur to see
-            our grand building and meet our dedicated faculty.
+            our grand building, explore the playground, and meet our dedicated
+            faculty.
           </p>
           <a
-            href="https://maps.app.goo.gl/6jMwe3Np8MmamvoN8"
+            href="https://maps.google.com/?q=25.7766,81.1147" // Replace with actual Google Maps coordinates/link
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              background: "#f59e0b",
-              color: "#1e1b4b",
-              padding: "15px 40px",
-              borderRadius: "12px",
-              textDecoration: "none",
-              fontWeight: "700",
-              display: "inline-block",
-            }}
+            className={styles.ctaBtn}
           >
-            Get Location on Maps
+            <FaMapMarkerAlt /> Get Location on Maps
           </a>
         </div>
       </section>
